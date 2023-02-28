@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.ServerSocket;
+//import java.net.ServerSocket;
 import java.sql.*;
 
 public class Server extends Application {
@@ -19,7 +19,7 @@ public class Server extends Application {
         try (
 
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
-                Statement stmt = conn.createStatement();
+                Statement stmt = conn.createStatement()
 
         ) {
             //ServerSocket serverSocket = new ServerSocket(4444, 20);
@@ -34,3 +34,4 @@ public class Server extends Application {
         }
     }
 }
+

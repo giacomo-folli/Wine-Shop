@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.RegisterFXController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="265.0" style="-fx-background-color: #EEE1B3;">
+         <children>
+            <ImageView blendMode="MULTIPLY" fitHeight="164.0" fitWidth="234.0" layoutX="7.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@app_icon.png" />
+               </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" width="20.0">
+                     <color>
+                        <Color opacity="0.7020057439804077" />
+                     </color>
+                  </DropShadow>
+               </effect></ImageView>
+            <Label layoutX="76.0" layoutY="270.0" text="Inserisci i dati" textFill="#a00403">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane prefHeight="400.0" prefWidth="401.0">
+         <children>
+            <Label layoutX="44.0" layoutY="69.0" text="Nome" />
+            <Label layoutX="44.0" layoutY="100.0" text="Cognome" />
+            <Label layoutX="44.0" layoutY="133.0" text="Codice Fiscale" />
+            <Label layoutX="44.0" layoutY="161.0" text="Email" />
+            <Label layoutX="44.0" layoutY="197.0" text="Recapito Telefonico" />
+            <TextField fx:id="field_cognome" layoutX="164.0" layoutY="96.0" promptText="Rossi,..." />
+            <TextField fx:id="field_nome" layoutX="164.0" layoutY="65.0" promptText="Gianni,..." />
+            <TextField fx:id="field_cf" layoutX="164.0" layoutY="129.0" />
+            <TextField fx:id="field_email" layoutX="164.0" layoutY="157.0" promptText="example@gmail.com" />
+            <TextField fx:id="field_cell" layoutX="164.0" layoutY="193.0" />
+            <Label layoutX="44.0" layoutY="234.0" text="Indirizzo di Residenza" />
+            <TextField fx:id="field_res" layoutX="164.0" layoutY="230.0" />
+            <Label layoutX="44.0" layoutY="273.0" text="Password" />
+            <TextField fx:id="field_psd" layoutX="164.0" layoutY="269.0" />
+            <Button fx:id="btn_register" layoutX="131.0" layoutY="327.0" mnemonicParsing="false" onAction="#register_btn_is_clicked" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #a00403;" text="Register" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="12.0" />
+               </font></Button>
+         </children></AnchorPane>
+   </children>
+</HBox>

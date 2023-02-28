@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="265.0" style="-fx-background-color: #EEE1B3;">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="242.0" prefHeight="24.0" prefWidth="134.0" text="(555) - 555-5555" textFill="#a00403">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="295.0" prefHeight="24.0" prefWidth="134.0" text="Wine Shop" textFill="#a00403">
+               <font>
+                  <Font name="Bell MT" size="29.0" />
+               </font>
+            </Label>
+            <ImageView blendMode="MULTIPLY" fitHeight="164.0" fitWidth="234.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@app_icon.png" />
+               </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="20.0" radius="9.5" spread="0.05" width="20.0">
+                     <color>
+                        <Color opacity="0.5616045594215393" />
+                     </color>
+                  </DropShadow>
+               </effect></ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="200.0" prefWidth="399.0">
+         <children>
+            <ImageView fitHeight="114.0" fitWidth="120.0" layoutX="126.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@lock-logo.png" />
+               </image></ImageView>
+            <Label layoutX="53.0" layoutY="202.0" text="Username">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="53.0" layoutY="251.0" text="Password">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="username" layoutX="165.0" layoutY="200.0" promptText="username" />
+            <TextField fx:id="password" layoutX="163.0" layoutY="249.0" promptText="password" />
+            <Label layoutX="109.0" layoutY="347.0" text="oppure">
+               <font>
+                  <Font size="13.0" />
+               </font></Label>
+            <Button fx:id="btn_login" layoutX="108.0" layoutY="299.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="149.0" style="-fx-background-color: #a00403;" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_register" layoutX="148.0" layoutY="343.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #00000000;" text="registrati" textFill="#a00403">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</HBox>

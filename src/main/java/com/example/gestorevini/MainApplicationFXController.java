@@ -9,42 +9,56 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class MainApplicationFXController implements Initializable {
 
     @FXML
     private TextField username;
-
     @FXML
     private TextField password;
-
     @FXML
     private Button btn_login;
-
     @FXML
     private Button btn_register;
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Socket s = getSocket();
-        System.out.println("start");
+    public void initialize(URL url, ResourceBundle resourceBundle) { //TODO: implement your JavaFX initialization code here
+        try (Socket s = new Socket("localhost", 1234)) {
+
+            /*
+            while (true) { //TODO: implement your CLIENT_SIDE code here
+            }*/
+
+            System.out.println("Socket port: " + s.getPort());
+
+            //s.close();
+
+        } catch (Exception e) { //TODO: handle CLIENT_SIDE exception
+            System.out.println(e);
+        }
     }
 
     @FXML
-    private void btn_login_is_clicked() {
-        System.out.println("Login button is clicked");
+    private void btn_login_is_clicked() { //TODO: implement your LOGIN button handler here
     }
 
     @FXML
-    private void btn_register_is_clicked() throws IOException {
+    private void btn_register_is_clicked() throws IOException { //TODO: implement your REGISTER button handler here
 
         System.out.println("Register button is clicked");
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("register.fxml"));
         Stage window = (Stage) btn_register.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
 
+    }
+
+    public Socket getSocket() throws IOException{ //TODO: implement your CLIENT_SOCKET connection
+        Socket s = new Socket("localhost", 1234);
+        return s;
     }
 
 

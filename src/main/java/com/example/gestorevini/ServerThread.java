@@ -18,6 +18,12 @@ public class ServerThread extends Thread{
 
             //TODO: implement server logic here
 
+            //TODO: Register new user
+            //TODO: Login
+            //TODO: Search wine/customer/order
+            //TODO: Update customer data
+            //TODO: Delete customer/wine
+
             socket.close();
 
         } catch (IOException ex) {

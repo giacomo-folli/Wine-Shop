@@ -13,10 +13,10 @@ public class Server extends Application {
 
     @Override
     public void start(Stage stage) throws IOException { //TODO: initialize Server and connect to DB
-        final String DBURL = "jdbc:mysql://localhost:3306/wineshop";
+        final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
         //final String ARGS = "createDatabaseIfNotExist=true&serverTimezone=UTC";
         final String LOGIN = "root";
-        final String PASSWORD = "root";
+        final String PASSWORD = "";
 
         try ( //TODO: try to connect to DB
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
@@ -24,14 +24,13 @@ public class Server extends Application {
         ) { //TODO: if connection is successful, manage client-server connection
 
             while (true) {
-                int port = 1234; //TODO: set port number
+                int port = 1234; //set port number
                 try (ServerSocket serverSocket = new ServerSocket(port)) { //create a new server socket
                     System.out.println("Server is listening on port " + port);
 
                     while (true) {
                         Socket socket = serverSocket.accept();
                         System.out.println("New client connected");
-
                         new ServerThread(socket).start();
                     }
                 } catch (Exception e) { //TODO: handle start() exception;

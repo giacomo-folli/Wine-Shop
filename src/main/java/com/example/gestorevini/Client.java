@@ -2,6 +2,7 @@ package com.example.gestorevini;
 
 public class Client { //TODO: Client class
 
+    private String Username;
     private int IDClient;
     private String Name;
     private String Surname;
@@ -11,8 +12,9 @@ public class Client { //TODO: Client class
     private String Address;
     private String Password;
 
-    public Client(int IDClient, String nome, String cognome, String cf, String email, int cell, String indirizzoConsegna, String password) {
+    public Client(String username,int IDClient, String nome, String cognome, String cf, String email, int cell, String indirizzoConsegna, String password) {
         this.IDClient = IDClient;
+        this.Username = username;
         this.Name = nome;
         this.Surname = cognome;
         this.Cf = cf;
@@ -23,6 +25,7 @@ public class Client { //TODO: Client class
     }
 
     //getters
+    public String getUsername() {return Username;}
     public int getIDClient() {return IDClient;}
     public String getName() {return Name;}
     public String getSurname() {return Surname;}
@@ -33,6 +36,7 @@ public class Client { //TODO: Client class
     public String getPassword() {return Password;}
 
     //setters
+    public void setUsername(String username) {this.Username = username;}
     public void setIDClient(int IDClient) {this.IDClient = IDClient;}
     public void setAddress(String address) {this.Address = address;}
     public void setName(String name) {this.Name = name;}

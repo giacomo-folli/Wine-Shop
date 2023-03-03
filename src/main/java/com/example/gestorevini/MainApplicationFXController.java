@@ -12,10 +12,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class MainApplicationFXController implements Initializable {
+    private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
+    private static final String LOGIN = "root";
+    final String PASSWORD = "";
 
     @FXML
     private TextField username;
@@ -44,6 +50,20 @@ public class MainApplicationFXController implements Initializable {
 
     @FXML
     private void btn_login_is_clicked() { //TODO: implement your LOGIN button handler here
+        String username = this.username.getText();
+        String password = this.password.getText();
+
+        try (
+                Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
+                Statement stmt = conn.createStatement();
+                ) { //TODO: LOGIN CLIENT
+
+            //if (username)
+
+        } catch (Exception e) {
+            //TODO: handle CLIENT_SIDE exception
+        }
+
     }
 
     @FXML

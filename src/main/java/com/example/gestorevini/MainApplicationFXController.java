@@ -14,6 +14,7 @@ import java.net.Socket;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -56,9 +57,31 @@ public class MainApplicationFXController implements Initializable {
         try (
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
                 Statement stmt = conn.createStatement();
-                ) { //TODO: LOGIN CLIENT
+                ) {
+            String query = "SELECT PWD FROM client WHERE client.USR = '" + username + "';";
+            String true_psw;
 
-            //if (username)
+            try { //LOGIN LOGIC
+                ResultSet rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    true_psw = rs.getString("PWD");
+                    System.out.println(true_psw + " " + password + " " + username);
+
+                    if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
+                        System.out.println(username + " logged in");
+                        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+                        Stage window = (Stage) btn_login.getScene().getWindow();
+                        window.setScene(new Scene(fxmlLoader.load()));
+                    } else {
+                        System.out.println("Wrong password");
+                    }
+                } else {
+                    System.out.println("Wrong username");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
 
         } catch (Exception e) {
             //TODO: handle CLIENT_SIDE exception

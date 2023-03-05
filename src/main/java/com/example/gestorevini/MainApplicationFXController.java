@@ -35,18 +35,8 @@ public class MainApplicationFXController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) { //TODO: implement your JavaFX initialization code here
         try (Socket s = new Socket("localhost", 1234)) {
-
-            /*
-            while (true) { //TODO: implement your CLIENT_SIDE code here
-            }*/
-
             System.out.println("Socket port: " + s.getPort());
-
-            //s.close();
-
-        } catch (Exception e) { //TODO: handle CLIENT_SIDE exception
-            System.out.println(e);
-        }
+        } catch (Exception e) { System.out.println(e); }
     }
 
     @FXML

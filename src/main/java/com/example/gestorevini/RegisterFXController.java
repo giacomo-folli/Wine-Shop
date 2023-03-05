@@ -1,9 +1,15 @@
 package com.example.gestorevini;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +31,8 @@ public class RegisterFXController implements Initializable {
     private TextField field_psd;
     @FXML
     private Button btn_register;
+    @FXML
+    private ImageView img_getBack;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Socket s = getSocket();
@@ -44,5 +52,13 @@ public class RegisterFXController implements Initializable {
         if (name.isEmpty() || surname.isEmpty() || cf.isEmpty() || email.isEmpty() || address.isEmpty() || cell.isEmpty() || password.isEmpty()) {
             System.out.println("Register button pressed");
         }
+    }
+
+    @FXML
+    private void getBack_is_clicked() throws IOException {
+        System.out.println("Get back button pressed");
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
+        Stage window = (Stage) img_getBack.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load()));
     }
 }

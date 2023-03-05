@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -30,24 +31,35 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="400.0" prefWidth="401.0">
          <children>
-            <Label layoutX="44.0" layoutY="69.0" text="Nome" />
-            <Label layoutX="44.0" layoutY="100.0" text="Cognome" />
-            <Label layoutX="44.0" layoutY="133.0" text="Codice Fiscale" />
-            <Label layoutX="44.0" layoutY="161.0" text="Email" />
-            <Label layoutX="44.0" layoutY="197.0" text="Recapito Telefonico" />
-            <TextField fx:id="field_cognome" layoutX="164.0" layoutY="96.0" promptText="Rossi,..." />
-            <TextField fx:id="field_nome" layoutX="164.0" layoutY="65.0" promptText="Gianni,..." />
-            <TextField fx:id="field_cf" layoutX="164.0" layoutY="129.0" />
-            <TextField fx:id="field_email" layoutX="164.0" layoutY="157.0" promptText="example@gmail.com" />
-            <TextField fx:id="field_cell" layoutX="164.0" layoutY="193.0" />
-            <Label layoutX="44.0" layoutY="234.0" text="Indirizzo di Residenza" />
-            <TextField fx:id="field_res" layoutX="164.0" layoutY="230.0" />
-            <Label layoutX="44.0" layoutY="273.0" text="Password" />
-            <TextField fx:id="field_psd" layoutX="164.0" layoutY="269.0" />
-            <Button fx:id="btn_register" layoutX="131.0" layoutY="327.0" mnemonicParsing="false" onAction="#register_btn_is_clicked" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #a00403;" text="Register" textFill="WHITE">
+            <Label layoutX="44.0" layoutY="81.0" text="Nome" />
+            <Label layoutX="44.0" layoutY="112.0" text="Cognome" />
+            <Label layoutX="44.0" layoutY="145.0" text="Codice Fiscale" />
+            <Label layoutX="44.0" layoutY="173.0" text="Email" />
+            <Label layoutX="44.0" layoutY="209.0" text="Recapito Telefonico" />
+            <TextField fx:id="field_cognome" layoutX="164.0" layoutY="108.0" promptText="Rossi,..." />
+            <TextField fx:id="field_nome" layoutX="164.0" layoutY="77.0" promptText="Gianni,..." />
+            <TextField fx:id="field_cf" layoutX="164.0" layoutY="141.0" />
+            <TextField fx:id="field_email" layoutX="164.0" layoutY="169.0" promptText="example@gmail.com" />
+            <TextField fx:id="field_cell" layoutX="164.0" layoutY="205.0" />
+            <Label layoutX="44.0" layoutY="246.0" text="Indirizzo di Residenza" />
+            <TextField fx:id="field_res" layoutX="164.0" layoutY="242.0" />
+            <Label layoutX="44.0" layoutY="285.0" text="Password" />
+            <TextField fx:id="field_psd" layoutX="164.0" layoutY="281.0" />
+            <Button fx:id="btn_register" layoutX="131.0" layoutY="339.0" mnemonicParsing="false" onAction="#register_btn_is_clicked" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: #a00403;" text="Register" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="12.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <ImageView fx:id="img_getBack" fitHeight="25.0" fitWidth="29.0" layoutX="14.0" layoutY="18.0" onMouseClicked="#getBack_is_clicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@get_back.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children></AnchorPane>
    </children>
 </HBox>

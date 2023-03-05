@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -59,11 +60,17 @@
                <font>
                   <Font name="Arial Rounded MT Bold" size="16.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Button fx:id="btn_register" layoutX="148.0" layoutY="343.0" mnemonicParsing="false" onAction="#btn_register_is_clicked" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #00000000;" text="registrati" textFill="#a00403">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
          </children></AnchorPane>
    </children>

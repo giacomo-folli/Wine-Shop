@@ -50,7 +50,9 @@ public class RegisterFXController implements Initializable {
         String password = field_psd.getText();
 
         if (name.isEmpty() || surname.isEmpty() || cf.isEmpty() || email.isEmpty() || address.isEmpty() || cell.isEmpty() || password.isEmpty()) {
-            System.out.println("Register button pressed");
+            System.out.println("Empty field, cannot proceed");
+        } else {
+            //TODO: send data to server
         }
     }
 

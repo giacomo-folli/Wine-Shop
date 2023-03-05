@@ -2,6 +2,7 @@ package com.example.gestorevini;
 
 import java.io.*;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class ServerThread extends Thread{
@@ -16,17 +17,30 @@ public class ServerThread extends Thread{
             Scanner in = new Scanner(socket.getInputStream());
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
-            //TODO: implement server logic here
+            while (true) {//TODO: implement server logic here
+                //String line = in.nextLine();
 
-            //TODO: Register new user
-            //TODO: Login
-            //TODO: Search wine/customer/order
-            //TODO: Update customer data
-            //TODO: Delete customer/wine
+                /*
+                if (line.equals("SHOW_WINES")) {
+                    //TODO: Show wines
+                    System.out.println("Show wines handled");
+                } else if (line.equals("SEARCH_WINE")) {
+                    //TODO: Search wine
+                } else if (line.equals("SEARCH_ORDER")) {
+                    //TODO: Search order
+                } else if (line.equals("SEARCH_CUSTOMER")) {
+                    //TODO: Search customer
+                } else if (line.equals("GET_HELP")) {
+                    //TODO: Get help
+                } else if (line.equals("UPDATE_CUSTOMER_DATA")) {
+                    //TODO: Update customer data
+                } else if (line.equals("UPDATE_WINE_DATA")) {
+                    //TODO: Update wine data
+                }
+                */
 
-            socket.close();
-
-        } catch (IOException ex) {
+            }
+        } catch (IOException e) {
             //TODO: handle  run() exception
         }
     }

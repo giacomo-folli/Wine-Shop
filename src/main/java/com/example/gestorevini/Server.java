@@ -18,26 +18,26 @@ public class Server extends Application {
         final String LOGIN = "root";
         final String PASSWORD = "";
 
-        try ( //TODO: try to connect to DB
+        try (
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
-                //Statement stmt = conn.createStatement()
+                Statement stmt = conn.createStatement()
         ) { //TODO: if connection is successful, manage client-server connection
-
             while (true) {
                 int port = 1234; //set port number
                 try (ServerSocket serverSocket = new ServerSocket(port)) { //create a new server socket
                     System.out.println("Server is listening on port " + port);
 
                     while (true) {
+
                         Socket socket = serverSocket.accept();
                         System.out.println("New client connected");
                         new ServerThread(socket).start();
+
                     }
                 } catch (Exception e) { //TODO: handle start() exception;
                 }
             }
-
-        } catch (Exception e) { System.out.println(e.getMessage()); }
+        } catch (Exception e) { System.out.println(e); }
     }
 }
 

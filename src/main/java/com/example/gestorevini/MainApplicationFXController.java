@@ -34,7 +34,7 @@ public class MainApplicationFXController implements Initializable {
     private Button btn_register;
 
     public void initialize(URL url, ResourceBundle resourceBundle) { //TODO: implement your JavaFX initialization code here
-        try (Socket s = new Socket("localhost", 1234)) {
+        try (Socket s = getSocket()) {
             System.out.println("Socket port: " + s.getPort());
         } catch (Exception e) { System.out.println(e); }
     }
@@ -46,14 +46,14 @@ public class MainApplicationFXController implements Initializable {
 
         try (
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
-                Statement stmt = conn.createStatement();
-                ) {
+                Statement stmt = conn.createStatement();)
+        {
             String query = "SELECT PWD FROM client WHERE client.USR = '" + username + "';";
             String true_psw;
 
             try { //LOGIN LOGIC
                 ResultSet rs = stmt.executeQuery(query);
-                if(rs.next()){
+                if (rs.next()) {
                     true_psw = rs.getString("PWD");
                     System.out.println(true_psw + " " + password + " " + username);
 
@@ -62,37 +62,22 @@ public class MainApplicationFXController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
                         Stage window = (Stage) btn_login.getScene().getWindow();
                         window.setScene(new Scene(fxmlLoader.load()));
-                    } else {
-                        System.out.println("Wrong password");
-                    }
-                } else {
-                    System.out.println("Wrong username");
-                }
-
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-
-        } catch (Exception e) {
-            //TODO: handle CLIENT_SIDE exception
-        }
-
+                    } else { System.out.println("Wrong password"); }
+                } else { System.out.println("Username doesn't exist"); }
+            } catch (Exception e) { System.out.println(e); }
+        } catch (Exception e) { System.out.println("Failed to connect to database"); }
     }
 
     @FXML
-    private void btn_register_is_clicked() throws IOException { //TODO: implement your REGISTER button handler here
-
-        System.out.println("Register button is clicked");
+    private void btn_register_is_clicked() throws IOException {//implement your REGISTER button handler here
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("register.fxml"));
         Stage window = (Stage) btn_register.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
-
     }
 
     public Socket getSocket() throws IOException{ //TODO: implement your CLIENT_SOCKET connection
         Socket s = new Socket("localhost", 1234);
         return s;
     }
-
 
 }

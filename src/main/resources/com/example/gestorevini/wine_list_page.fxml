@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.wineListFXController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-21.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@app_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="btn_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="853.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@log_out.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="812.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@news.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="btn_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="767.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cart.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="btn_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="730.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@users_icon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <TableView prefHeight="405.0" prefWidth="900.0">
+              <columns>
+                <TableColumn fx:id="id_col" prefWidth="33.333346009254456" text="ID" />
+                <TableColumn fx:id="name_col" prefWidth="115.33334732055664" text="NAME" />
+                  <TableColumn fx:id="prod_col" prefWidth="94.0" text="PRODUCER" />
+                  <TableColumn fx:id="origin_col" prefWidth="84.33329772949219" text="ORIGIN" />
+                  <TableColumn fx:id="year_col" prefWidth="78.0" text="YEAR" />
+                  <TableColumn fx:id="notes_col" prefWidth="169.00003051757812" text="NOTES" />
+                  <TableColumn fx:id="grape_col" prefWidth="114.33331298828125" text="GRAPE" />
+                  <TableColumn fx:id="price_col" prefWidth="87.3333740234375" text="PRICE" />
+                  <TableColumn fx:id="avl_col" prefWidth="124.3333740234375" text="AVAILABILITY" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -23,10 +23,9 @@ import java.util.ResourceBundle;
 public class MainApplicationFXController implements Initializable {
     private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
     private static final String LOGIN = "root";
+    final String PASSWORD = "";
     private BufferedReader in;
     private PrintWriter out;
-    final String PASSWORD = "";
-
 
     @FXML
     private TextField username;
@@ -40,12 +39,10 @@ public class MainApplicationFXController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) { //JavaFX initialization code here
         try (Socket s = getSocket()) {
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            /*
-            while (true) {
-                String message = in.readLine();
-                System.out.println(message);
-            }
-            */
+
+            String message = in.readLine();
+            System.out.println(message);
+
         } catch (Exception e) { System.out.println("MainApplicationFXController, " + e); }
     }
 

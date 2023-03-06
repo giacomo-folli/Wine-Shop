@@ -8,7 +8,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
@@ -17,12 +19,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class MainApplicationFXController implements Initializable {
     private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
     private static final String LOGIN = "root";
+    private BufferedReader in;
+    private PrintWriter out;
     final String PASSWORD = "";
+
 
     @FXML
     private TextField username;
@@ -33,10 +37,15 @@ public class MainApplicationFXController implements Initializable {
     @FXML
     private Button btn_register;
 
-    public void initialize(URL url, ResourceBundle resourceBundle) { //TODO: implement your JavaFX initialization code here
+    public void initialize(URL url, ResourceBundle resourceBundle) { //JavaFX initialization code here
         try (Socket s = getSocket()) {
-            System.out.println("Socket port: " + s.getPort());
-        } catch (Exception e) { System.out.println(e); }
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+            while (true) {
+                String message = in.readLine();
+                System.out.println(message);
+            }
+        } catch (Exception e) { System.out.println("MainApplicationFXController, " + e); }
     }
 
     @FXML
@@ -55,7 +64,6 @@ public class MainApplicationFXController implements Initializable {
                 ResultSet rs = stmt.executeQuery(query);
                 if (rs.next()) {
                     true_psw = rs.getString("PWD");
-                    System.out.println(true_psw + " " + password + " " + username);
 
                     if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
                         System.out.println(username + " logged in");
@@ -75,7 +83,7 @@ public class MainApplicationFXController implements Initializable {
         window.setScene(new Scene(fxmlLoader.load()));
     }
 
-    public Socket getSocket() throws IOException{ //TODO: implement your CLIENT_SOCKET connection
+    public Socket getSocket() throws IOException{
         Socket s = new Socket("localhost", 1234);
         return s;
     }

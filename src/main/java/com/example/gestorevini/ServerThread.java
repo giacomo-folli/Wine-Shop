@@ -1,28 +1,38 @@
 package com.example.gestorevini;
-
 import java.io.*;
 import java.net.Socket;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.sql.Statement;
 
 public class ServerThread extends Thread{
+    private Connection conn;
     private Socket socket;
+    private BufferedReader in;
+    private PrintWriter out;
 
-    public ServerThread(Socket socket) {
+    public ServerThread(Socket socket, Connection conn) {
         this.socket = socket;
+        this.conn = conn;
     }
 
     public void run() {
-        try {
-            Scanner in = new Scanner(socket.getInputStream());
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        try ( Statement stmt = conn.createStatement()) {
+            in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
+            out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {//TODO: implement server logic here
-                //String line = in.nextLine();
+                out.println("Hello from server");
+                String line = in.readLine();
+                String query;
 
-                /*
                 if (line.equals("SHOW_WINES")) {
-                    //TODO: Show wines
+                    query = "SELECT * FROM wine;";
+                    ResultSet rs = stmt.executeQuery(query);
+                    while (rs.next()) {
+                        out.println(rs.getString("NAME"));
+                    }
                     System.out.println("Show wines handled");
                 } else if (line.equals("SEARCH_WINE")) {
                     //TODO: Search wine
@@ -37,11 +47,9 @@ public class ServerThread extends Thread{
                 } else if (line.equals("UPDATE_WINE_DATA")) {
                     //TODO: Update wine data
                 }
-                */
-
             }
-        } catch (IOException e) {
-            //TODO: handle  run() exception
+        } catch (IOException | SQLException e) {
+            System.out.println("ServerThread, " + e);
         }
     }
 }

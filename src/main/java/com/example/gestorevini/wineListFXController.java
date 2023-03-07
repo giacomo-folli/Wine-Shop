@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
@@ -16,6 +17,7 @@ import java.util.ResourceBundle;
 public class wineListFXController implements Initializable {
     private BufferedReader in;
     private PrintWriter out;
+    private ObservableList<Wine> list = FXCollections.observableArrayList();
 
     @FXML
     private TableView<Wine> table_view;
@@ -32,47 +34,51 @@ public class wineListFXController implements Initializable {
     @FXML
     private TableColumn<Wine, String> grape_col;
     @FXML
-    private TableColumn<Wine, String> price_col;
-    //@FXML
-    //private TableColumn<Wine, String> avl_col;
+    private TableColumn<Wine, Integer> price_col;
+    @FXML
+    private TableColumn<Wine, Integer> avl_col;
 
-    ObservableList<Wine> list = FXCollections.observableArrayList(
-            new Wine("Gutturnio", "Tommaso Zorzi", "Francia", 2001, "...", "Bianchi", "30£"),
-            new Wine("Gatto", "Stonks Datome", "Francia", 2001, "...", "Bianchi", "30£"),
-            new Wine("Colori", "Luca Zzo", "Francia", 2001, "...", "Bianchi", "30£")
-    );
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /*{
-            try (Socket s = getSocket()) {
-                out = new PrintWriter(s.getOutputStream(), true);
-                out.println("SHOW_WINES");
-
-                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-                while (!in.readLine().equals("/DONE")) {
-                    String line = in.readLine();
-                    System.out.println(line);
-                }
-
-                //String[] wine_list = {"","","","","","","","","",""};
-
-            } catch (Exception e) {
-                System.out.println("wineListFXController, " + e);
-            }
-        }*/
-
         name_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("nome"));
         prod_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("produttore"));
         origin_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("provenienza"));
         year_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("anno"));
         notes_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("note"));
-        grape_col.setCellValueFactory(new PropertyValueFactory<>("vitigniProvenienza"));
-        price_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("prezzo"));
-        //avl_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("Avail"));
+        grape_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("vitigniProvenienza"));
+        price_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("prezzo"));
+        avl_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("num"));
 
-        table_view.setItems(list);
+        try (Socket s = getSocket()) {
+            out = new PrintWriter(s.getOutputStream(), true);
+            out.println("SHOW_WINES");
+
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String line;
+
+            while (!(in.readLine()).equals("null")) {
+                line = in.readLine();
+                System.out.println("line:" + line);
+                String[] temp = line.split("/");
+                String name = temp[0];
+                String prod =temp[1];
+                String orig = temp[2];
+                String year = temp[3];
+                String notes = temp[4];
+                String grapes = temp[5];
+                int price = Integer.parseInt(temp[6]);
+                int num = Integer.parseInt(temp[7]);
+
+                list.add((new Wine(name, prod, orig, (Integer.parseInt(year)), notes, grapes, price, num)));
+            }
+
+            table_view.setItems(list);
+
+        } catch (Exception e) {
+            System.out.println("wineListFXController, " + e);
+        }
     }
 
     private Socket getSocket() throws Exception {

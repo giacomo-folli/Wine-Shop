@@ -55,8 +55,8 @@
                   <TableColumn fx:id="year_col" prefWidth="78.0" text="YEAR" />
                   <TableColumn fx:id="notes_col" prefWidth="169.00003051757812" text="NOTES" />
                   <TableColumn fx:id="grape_col" prefWidth="114.33331298828125" text="GRAPE" />
-                  <TableColumn fx:id="price_col" prefWidth="87.3333740234375" text="PRICE" />
-                  <TableColumn fx:id="avl_col" prefWidth="124.3333740234375" text="AVAILABILITY" />
+                  <TableColumn fx:id="price_col" prefWidth="107.0" text="PRICE" />
+                  <TableColumn fx:id="avl_col" prefWidth="135.0" text="AVAILABILITY" />
               </columns>
             </TableView>
          </children></AnchorPane>

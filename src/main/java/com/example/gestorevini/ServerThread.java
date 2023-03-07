@@ -25,7 +25,7 @@ public class ServerThread extends Thread {
             //System.out.println("Socket IO methods created");
 
             while (true) {//TODO: implement server logic here
-                out.println("SERVER START");
+                out.println("SERVER ROUND");
                 //String line;
                 String query;
 
@@ -33,10 +33,17 @@ public class ServerThread extends Thread {
                     query = "SELECT * FROM wine;";
                     ResultSet rs = stmt.executeQuery(query);
                     while (rs.next()) {
-                        out.println(rs.getString("Name"));
+                        String out_data = rs.getString("Name") + "/" +
+                                        rs.getString("Producer") + "/" +
+                                        rs.getString("Origin") + "/" +
+                                        rs.getString("Data") + "/" +
+                                        rs.getString("Notes") + "/" +
+                                        rs.getString("Grape") + "/" +
+                                        rs.getString("Price") + "/" +
+                                        rs.getString("Quantity");
+                        out.println(out_data);
                     }
-                    System.out.println("SHOW WINES HANDLED");
-                    out.println("/DONE");
+                    out.println("null");
 
                 } else if (in.readLine().equals("SEARCH_WINE")) {
                     //TODO: Search wine

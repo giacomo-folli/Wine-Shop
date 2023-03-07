@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Server extends Application {
 
     public void start(Stage stage) throws IOException { //TODO: initialize Server and connect to DB
-        final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
+        final String DBURL = "jdbc:mysql://localhost:3306/wineshop";
         final String LOGIN = "root";
         final String PASSWORD = "";
 
@@ -29,9 +29,9 @@ public class Server extends Application {
                         System.out.println("New client connected at port " + socket.getPort());
                         new ServerThread(socket, conn).start(); //create a new thread for each client
                     }
-                } catch (Exception e) { System.out.println("Server, " + e); }
+                } catch (Exception e) { System.out.println("Server connection failed, " + e); }
             }
-        } catch (Exception e) { System.out.println(e); }
+        } catch (Exception e) { System.out.println("DB connection failed, " + e); }
     }
 }
 

@@ -55,13 +55,13 @@ public class MainApplicationFXController implements Initializable {
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
                 Statement stmt = conn.createStatement();)
         {
-            String query = "SELECT PWD FROM client WHERE client.USR = '" + username + "';";
+            String query = "SELECT PSW FROM clienti WHERE clienti.USR = '" + username + "';";
             String true_psw;
 
             try { //LOGIN LOGIC
                 ResultSet rs = stmt.executeQuery(query);
                 if (rs.next()) {
-                    true_psw = rs.getString("PWD");
+                    true_psw = rs.getString("PSW");
 
                     if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
                         System.out.println(username + " logged in");

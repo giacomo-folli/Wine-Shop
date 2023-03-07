@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.LoggedInFXController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
@@ -52,28 +52,28 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <ImageView fx:id="btn_search_wine" fitHeight="100.0" fitWidth="120.0" layoutX="66.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="66.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@search_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView fx:id="btn_show_purch" fitHeight="100.0" fitWidth="120.0" layoutX="249.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="249.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@purch_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView fx:id="btn_help" fitHeight="100.0" fitWidth="120.0" layoutX="66.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="66.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@help_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView fx:id="btn_wine_list" fitHeight="100.0" fitWidth="120.0" layoutX="249.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="120.0" layoutX="249.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@list_icon.png" />
                            </image>
@@ -84,6 +84,10 @@
                         <Label layoutX="260.0" layoutY="285.0" text="Show all wines" />
                         <Label layoutX="256.0" layoutY="130.0" text="Show Purchases" />
                         <Label layoutX="93.0" layoutY="285.0" text="Get help" />
+                        <Button fx:id="btn_search_wine" cancelButton="true" layoutX="73.0" layoutY="17.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+                        <Button fx:id="btn_show_purch" cancelButton="true" layoutX="256.0" layoutY="17.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+                        <Button fx:id="btn_get_help" cancelButton="true" layoutX="73.0" layoutY="173.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+                        <Button fx:id="btn_show_wines" cancelButton="true" layoutX="256.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
                      </children>
                   </AnchorPane>
               </items>

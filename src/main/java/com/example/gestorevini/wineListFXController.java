@@ -98,6 +98,7 @@ public class wineListFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Stage window = (Stage) btn_logout.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Login");
     }
 
     @FXML
@@ -105,6 +106,7 @@ public class wineListFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
         Stage window = (Stage) btn_user.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("User Page");
     }
 
     @FXML
@@ -112,6 +114,7 @@ public class wineListFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
         Stage window = (Stage) btn_cart.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Cart");
     }
 
     @FXML
@@ -119,6 +122,7 @@ public class wineListFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
         Stage window = (Stage) btn_notifications.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Notifications");
     }
 
     private Socket getSocket() throws Exception {

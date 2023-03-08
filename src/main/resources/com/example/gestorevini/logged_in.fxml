@@ -14,7 +14,7 @@
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btn_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
                <image>
                   <Image url="@log_out.png" />
                </image>
@@ -29,14 +29,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="btn_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="467.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="467.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@cart.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="btn_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="430.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="430.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@users_icon.png" />
                </image>

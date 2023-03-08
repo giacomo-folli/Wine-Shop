@@ -27,7 +27,7 @@ public class Server extends Application {
                     while (true) {
                         final Socket socket = serverSocket.accept();
                         System.out.println("New client connected at port " + socket.getPort());
-                        new ServerThread(socket, conn).start(); //create a new thread for each client
+                        new ServerThread(socket, conn, stmt).start(); //create a new thread for each client
                     }
                 } catch (Exception e) { System.out.println("Server connection failed, " + e); }
             }

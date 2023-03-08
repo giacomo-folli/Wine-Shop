@@ -9,38 +9,32 @@ import java.sql.Statement;
 public class ServerThread extends Thread {
     final private Connection conn;
     final private Socket socket;
+    final private Statement stmt;
     private BufferedReader in;
     private PrintWriter out;
 
-    public ServerThread(Socket socket, Connection conn) {
+    public ServerThread(Socket socket, Connection conn, Statement stmt) {
+        this.stmt = stmt;
         this.socket = socket;
         this.conn = conn;
         //System.out.println("ServerThread Created");
     }
 
     public void run() {
-        try ( Statement stmt = conn.createStatement()) {
+        try {
             in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
             out = new PrintWriter(this.socket.getOutputStream(), true);
             //System.out.println("Socket IO methods created");
 
             while (true) {//TODO: implement server logic here
                 out.println("SERVER ROUND");
-                //String line;
-                String query;
+                String line = in.readLine();
 
-                if (in.readLine().equals("SHOW_WINES")) {
-                    query = "SELECT * FROM wine;";
-                    ResultSet rs = stmt.executeQuery(query);
+                if (line.equals("SHOW_WINES")) {
+                    String query = "SELECT * FROM wine;";
+                    ResultSet rs = this.stmt.executeQuery(query);
                     while (rs.next()) {
-                        String out_data = rs.getString("Name") + "/" +
-                                        rs.getString("Producer") + "/" +
-                                        rs.getString("Origin") + "/" +
-                                        rs.getString("Data") + "/" +
-                                        rs.getString("Notes") + "/" +
-                                        rs.getString("Grape") + "/" +
-                                        rs.getString("Price") + "/" +
-                                        rs.getString("Quantity");
+                        String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Notes") + "/" + rs.getString("Grape") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
                         out.println(out_data);
                     }
                     out.println("null");

@@ -3,6 +3,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +20,14 @@ public class wineListFXController implements Initializable {
     private PrintWriter out;
     private ObservableList<Wine> list = FXCollections.observableArrayList();
 
+    @FXML
+    private Button btn_users;
+    @FXML
+    private Button btn_cart;
+    @FXML
+    private Button btn_notifications;
+    @FXML
+    private Button btn_logout;
     @FXML
     private TableView<Wine> table_view;
     @FXML
@@ -60,7 +69,6 @@ public class wineListFXController implements Initializable {
 
             while (!(in.readLine()).equals("null")) {
                 line = in.readLine();
-                System.out.println("line:" + line);
                 String[] temp = line.split("/");
                 String name = temp[0];
                 String prod =temp[1];
@@ -71,10 +79,10 @@ public class wineListFXController implements Initializable {
                 int price = Integer.parseInt(temp[6]);
                 int num = Integer.parseInt(temp[7]);
 
-                list.add((new Wine(name, prod, orig, (Integer.parseInt(year)), notes, grapes, price, num)));
+                Wine w = new Wine(name, prod, orig, (Integer.parseInt(year)), notes, grapes, price, num);
+                list.add(w);
+                table_view.getItems().add(w);
             }
-
-            table_view.setItems(list);
 
         } catch (Exception e) {
             System.out.println("wineListFXController, " + e);

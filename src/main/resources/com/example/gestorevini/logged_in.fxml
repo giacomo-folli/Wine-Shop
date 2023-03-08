@@ -14,7 +14,7 @@
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btn_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
                <image>
                   <Image url="@log_out.png" />
                </image>
@@ -44,6 +44,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_users" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
          <children>
@@ -87,7 +91,10 @@
                         <Button fx:id="btn_search_wine" cancelButton="true" layoutX="73.0" layoutY="17.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
                         <Button fx:id="btn_show_purch" cancelButton="true" layoutX="256.0" layoutY="17.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
                         <Button fx:id="btn_get_help" cancelButton="true" layoutX="73.0" layoutY="173.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
-                        <Button fx:id="btn_show_wines" cancelButton="true" layoutX="256.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;" />
+                        <Button fx:id="btn_show_wines" cancelButton="true" layoutX="256.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="100.0" prefWidth="85.0" style="-fx-background-color: #00000000;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children>
                   </AnchorPane>
               </items>

@@ -51,8 +51,6 @@ public class wineListFXController implements Initializable {
     @FXML
     private TableColumn<Wine, Integer> avl_col;
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         name_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("nome"));

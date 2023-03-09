@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/helpFXController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/purchasesFXController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/search_wine_pageFXController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/help_page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/purchases_page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/search_wine_page.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/cart_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/cart_pageFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/notifications_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/notifications_pageFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_pageFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/cart_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/cart_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/wineListFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/wineListFXController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/notifications_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/notifications_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/wine_list_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/wine_list_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/wineListFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/wineListFXController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

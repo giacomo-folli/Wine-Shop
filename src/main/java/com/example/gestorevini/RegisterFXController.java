@@ -58,9 +58,9 @@ public class RegisterFXController implements Initializable {
 
     @FXML
     private void getBack_is_clicked() throws IOException {
-        System.out.println("Get back button pressed");
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Stage window = (Stage) img_getBack.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Home");
     }
 }

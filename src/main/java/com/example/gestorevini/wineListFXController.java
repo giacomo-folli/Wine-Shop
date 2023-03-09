@@ -33,6 +33,8 @@ public class wineListFXController implements Initializable {
     @FXML
     private Button btn_logout;
     @FXML
+    private Button btn_home;
+    @FXML
     private TableView<Wine> table_view;
     @FXML
     private TableColumn<Wine, String> name_col;
@@ -89,6 +91,14 @@ public class wineListFXController implements Initializable {
         } catch (Exception e) {
             System.out.println("wineListFXController, " + e);
         }
+    }
+
+    @FXML
+    public void btn_home_is_clicked() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+        Stage window = (Stage) btn_home.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Home");
     }
 
     @FXML

@@ -11,7 +11,8 @@ import java.net.URL;
 import java.io.IOException;
 
 public class purchasesFXController implements Initializable {
-
+    @FXML
+    private Button btn_home;
     @FXML
     private Button btn_logout;
     @FXML
@@ -24,6 +25,14 @@ public class purchasesFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //...
+    }
+
+    @FXML
+    public void btn_home_is_clicked() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+        Stage window = (Stage) btn_home.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Home");
     }
 
     @FXML

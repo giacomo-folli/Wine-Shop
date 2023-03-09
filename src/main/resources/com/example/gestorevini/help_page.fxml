@@ -60,6 +60,10 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
   </items>

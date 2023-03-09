@@ -13,6 +13,8 @@ import javafx.stage.Stage;
 
 public class search_wine_pageFXController implements Initializable {
     @FXML
+    private Button btn_home;
+    @FXML
     private Button btn_logout;
     @FXML
     private Button btn_user;
@@ -24,6 +26,14 @@ public class search_wine_pageFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //...
+    }
+
+    @FXML
+    public void btn_home_is_clicked() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+        Stage window = (Stage) btn_home.getScene().getWindow();
+        window.setScene(new Scene(fxmlLoader.load()));
+        window.setTitle("Home");
     }
 
     @FXML

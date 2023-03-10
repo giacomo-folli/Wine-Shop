@@ -17,7 +17,6 @@ public class ServerThread extends Thread {
         this.stmt = stmt;
         this.socket = socket;
         this.conn = conn;
-        //System.out.println("ServerThread Created");
     }
 
     public void run() {
@@ -26,9 +25,10 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
             //System.out.println("Socket IO methods created");
 
-            while (true) {//TODO: implement server logic here
-                out.println("SERVER ROUND");
+            while (true) {
+                System.out.println("SERVER ROUND");
                 String line = in.readLine();
+                System.out.println("SERVER RECEIVED CMD: " + line);
 
                 if (line.equals("SHOW_WINES")) {
                     String query = "SELECT * FROM wine;";
@@ -39,17 +39,32 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (in.readLine().equals("SEARCH_WINE")) {
-                    //TODO: Search wine
-                } else if (in.readLine().equals("SEARCH_ORDER")) {
+                } else if (line.equals("SEARCH_WINE")) {
+                    int trovato = 0;
+                    String name = in.readLine();
+                    System.out.println("Searching for " + name);
+                    String query = "SELECT * FROM wine WHERE wine.Name='" + name + "';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+
+                    while (rs.next()) {
+                        trovato = 1;
+                        String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Grape") + "/" + rs.getString("Quantity");
+                        out.println(out_data);
+                    }
+                    if (trovato == 0) {
+                        out.println("La sua ricerca non ha prodotto risultati");
+                    }
+                    out.println("null");
+
+                } else if (line.equals("SEARCH_ORDER")) {
                     //TODO: Search order
-                } else if (in.readLine().equals("SEARCH_CUSTOMER")) {
+                } else if (line.equals("SEARCH_CUSTOMER")) {
                     //TODO: Search customer
-                } else if (in.readLine().equals("GET_HELP")) {
+                } else if (line.equals("GET_HELP")) {
                     //TODO: Get help
-                } else if (in.readLine().equals("UPDATE_CUSTOMER_DATA")) {
+                } else if (line.equals("UPDATE_CUSTOMER_DATA")) {
                     //TODO: Update customer data
-                } else if (in.readLine().equals("UPDATE_WINE_DATA")) {
+                } else if (line.equals("UPDATE_WINE_DATA")) {
                     //TODO: Update wine data
                 } else {
                     System.out.println("ServerThread: Feature not added");

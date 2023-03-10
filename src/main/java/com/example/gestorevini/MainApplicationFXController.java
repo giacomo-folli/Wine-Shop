@@ -38,13 +38,12 @@ public class MainApplicationFXController implements Initializable {
     private Button btn_register;
 
     public void initialize(URL url, ResourceBundle resourceBundle) { //JavaFX initialization code here
-        try (Socket s = getSocket()) {
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            String message = in.readLine();
-            System.out.println(message);
-
-        } catch (Exception e) { System.out.println("MainApplicationFXController, " + e); }
+        try {
+            Socket s = getSocket();
+            System.out.println("Socket in MainFX: " + s);
+        } catch (IOException e) {
+            System.out.println("MainApplicationFXController, " + e);
+        }
     }
 
     @FXML
@@ -52,10 +51,7 @@ public class MainApplicationFXController implements Initializable {
         String username = this.username.getText();
         String password = this.password.getText();
 
-        try (
-                Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
-                Statement stmt = conn.createStatement();)
-        {
+        try ( Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD); Statement stmt = conn.createStatement()) {
             String query = "SELECT PSW FROM clienti WHERE clienti.USR = '" + username + "';";
             String true_psw;
 

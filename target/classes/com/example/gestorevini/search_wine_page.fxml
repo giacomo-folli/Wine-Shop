@@ -5,23 +5,23 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.search_wine_pageFXController">
+<SplitPane dividerPositions="0.17953020134228184, 0.27013422818791943" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.search_wine_pageFXController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="68.0" prefWidth="439.0">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-21.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@log_out.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@news.png" />
                </image>
@@ -44,33 +44,36 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_user" layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_cart" layoutX="471.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_logout" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_home" layoutX="17.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_home" layoutX="12.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="46.0" prefWidth="45.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
          </children></AnchorPane>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <AnchorPane prefHeight="39.0" prefWidth="597.0">
          <children>
-            <AnchorPane prefHeight="323.0" prefWidth="183.0" />
-            <AnchorPane prefHeight="323.0" prefWidth="404.0" />
+            <Button fx:id="btn_search" layoutX="487.0" layoutY="3.0" mnemonicParsing="false" onAction="#btn_search_is_clicked" prefHeight="29.0" prefWidth="110.0" style="-fx-background-color: #a00403;" text="Search" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="487.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <TextField fx:id="txt_search" layoutX="-23.0" layoutY="2.0" prefHeight="29.0" prefWidth="487.0" promptText="Insert name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
          </children>
-      </HBox>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="898.0">
+         <children>
+            <TableView fx:id="search_table" prefHeight="286.6666666666667" prefWidth="597.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="name_col" prefWidth="145.333353638649" text="NAME" />
+                  <TableColumn fx:id="prod_col" prefWidth="114.6666259765625" text="PRODUCER" />
+                  <TableColumn fx:id="origin_col" prefWidth="115.6666259765625" text="ORIGIN" />
+                  <TableColumn fx:id="year_col" prefWidth="49.3333740234375" text="YEAR" />
+                  <TableColumn fx:id="grape_col" prefWidth="81.0" text="GRAPE" />
+                  <TableColumn fx:id="avl_col" prefWidth="92.00006103515625" text="AVAILABILITY" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
   </items>
 </SplitPane>

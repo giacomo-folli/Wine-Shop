@@ -6,12 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInFXController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/logged_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/logged_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplicationFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplicationFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/search_wine_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/search_wine_pageFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/search_wine_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/search_wine_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/ServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/ServerThread.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/search_wine_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/search_wine_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/search_wine_pageFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/search_wine_pageFXController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +73,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giaco\IdeaProjects\Wine Shop\src\main\resources\com\example\gestorevini" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.gestorevini" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -93,5 +98,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplication.java</url>
+          <line>13</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

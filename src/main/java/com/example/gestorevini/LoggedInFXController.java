@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 
 public class LoggedInFXController implements Initializable {
     @FXML
+    private ImageView img1, img2, img3, img4;
+    @FXML
     private Button btn_logout;
     @FXML
     private Button btn_user;
@@ -28,10 +30,21 @@ public class LoggedInFXController implements Initializable {
     private Button btn_get_help;
     @FXML
     private Button btn_show_purch;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //...
+        btn_search_wine.onMouseEnteredProperty().set(e -> mouse_enters_img(img1));
+        btn_search_wine.onMouseExitedProperty().set(e -> mouse_exits_img(img1));
+        btn_show_wines.onMouseEnteredProperty().set(e -> mouse_enters_img(img2));
+        btn_show_wines.onMouseExitedProperty().set(e -> mouse_exits_img(img2));
+        btn_show_purch.onMouseEnteredProperty().set(e -> mouse_enters_img(img3));
+        btn_show_purch.onMouseExitedProperty().set(e -> mouse_exits_img(img3));
+        btn_get_help.onMouseEnteredProperty().set(e -> mouse_enters_img(img4));
+        btn_get_help.onMouseExitedProperty().set(e -> mouse_exits_img(img4));
     }
+
+    private void mouse_enters_img(ImageView a) { a.setVisible(false); }
+    private void mouse_exits_img(ImageView a) { a.setVisible(true); }
 
     @FXML
     private void btn_show_wines_clicked() throws IOException {

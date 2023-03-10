@@ -14,7 +14,3 @@
     -fx-background-radius: 0;
     -fx-text-fill: #eeeeee;
 }
-
-.image {
-    //-fx-filter: invert(1);
-}

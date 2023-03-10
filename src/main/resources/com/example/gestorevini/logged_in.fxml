@@ -99,28 +99,60 @@
                               <Insets left="25.0" />
                            </padding>
                         </Button>
-                        <ImageView disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                        <ImageView id="img4" fx:id="img4_neg" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@help_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="img3" fx:id="img3_neg" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@list_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="img2_neg" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@purchase_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="img1_neg" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@search_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="img4" fx:id="img4" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                            <image>
                               <Image url="@help_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                        <ImageView id="img3" fx:id="img3" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                            <image>
                               <Image url="@purch_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                        <ImageView id="img2" fx:id="img2" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
                            <image>
                               <Image url="@list_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></ImageView>
-                        <ImageView disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                        <ImageView fx:id="img1" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@search_icon.png" />
                            </image>

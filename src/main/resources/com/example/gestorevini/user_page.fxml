@@ -4,11 +4,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.user_pageFXController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
+            <Button fx:id="btn_user" layoutX="426.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #a00403;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@app_icon.png" />
@@ -44,19 +49,15 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_logout" layoutX="549.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_cart" layoutX="467.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -66,6 +67,61 @@
                </cursor>
             </Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <Label layoutX="125.0" layoutY="89.0" prefHeight="21.0" prefWidth="61.0" text="Name">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label fx:id="lbl_name" layoutX="214.0" layoutY="89.0" prefHeight="21.0" prefWidth="109.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="118.0" prefHeight="21.0" prefWidth="61.0" text="Surname">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_surname" layoutX="214.0" layoutY="118.0" prefHeight="21.0" prefWidth="109.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="150.0" prefHeight="21.0" prefWidth="61.0" text="Email">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_email" layoutX="214.0" layoutY="150.0" prefHeight="21.0" prefWidth="109.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="175.0" prefHeight="21.0" prefWidth="69.0" text="Username">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="209.0" prefHeight="21.0" prefWidth="79.0" text="Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_user" layoutX="323.0" layoutY="173.0" />
+            <TextField fx:id="txt_pwd" layoutX="323.0" layoutY="207.0" />
+            <Label fx:id="lbl_user" layoutX="214.0" layoutY="175.0" prefHeight="21.0" prefWidth="109.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_pwd" layoutX="214.0" layoutY="209.0" prefHeight="21.0" prefWidth="109.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_change_user" layoutX="483.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_change_user_is_clicked" text="Change" />
+            <Button fx:id="btn_change_pwd" layoutX="483.0" layoutY="207.0" mnemonicParsing="false" onAction="#btn_change_pwd_is_clicked" text="Change" />
+         </children></AnchorPane>
   </items>
 </SplitPane>

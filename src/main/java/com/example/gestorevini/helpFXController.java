@@ -12,15 +12,7 @@ import java.net.URL;
 
 public class helpFXController implements Initializable {
     @FXML
-    private Button btn_home;
-    @FXML
-    private Button btn_logout;
-    @FXML
-    private Button btn_user;
-    @FXML
-    private Button btn_cart;
-    @FXML
-    private Button btn_notifications;
+    private Button btn_home, btn_logout, btn_user, btn_cart, btn_notifications;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

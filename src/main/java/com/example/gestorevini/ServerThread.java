@@ -48,7 +48,7 @@ public class ServerThread extends Thread {
 
                     while (rs.next()) {
                         trovato = 1;
-                        String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Grape") + "/" + rs.getString("Quantity");
+                        String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
                         out.println(out_data);
                     }
                     if (trovato == 0) {

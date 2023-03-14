@@ -3,6 +3,7 @@ package com.example.gestorevini;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -12,24 +13,14 @@ import java.util.ResourceBundle;
 
 
 public class LoggedInFXController implements Initializable {
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
+
     @FXML
     private ImageView img1, img2, img3, img4;
     @FXML
-    private Button btn_logout;
-    @FXML
-    private Button btn_user;
-    @FXML
-    private Button btn_cart;
-    @FXML
-    private Button btn_notifications;
-    @FXML
-    private Button btn_show_wines;
-    @FXML
-    private Button btn_search_wine;
-    @FXML
-    private Button btn_get_help;
-    @FXML
-    private Button btn_show_purch;
+    private Button btn_logout, btn_user, btn_cart, btn_notifications, btn_show_wines, btn_search_wine, btn_get_help, btn_show_purch;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -107,7 +98,7 @@ public class LoggedInFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("purchases_page.fxml"));
         Stage window = (Stage) btn_show_purch.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Purchases");
+        window.setTitle("Purchase");
     }
 
 }

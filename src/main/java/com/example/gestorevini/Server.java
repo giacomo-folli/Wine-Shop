@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Server extends Application {
 
-    public void start(Stage stage) throws IOException { //TODO: initialize Server and connect to DB
+    public void start(Stage stage) throws IOException { //initialize Server and connect to DB
         final String DBURL = "jdbc:mysql://localhost:3306/wineshop";
         final String LOGIN = "root";
         final String PASSWORD = "";
@@ -19,7 +19,7 @@ public class Server extends Application {
         try (
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
                 Statement stmt = conn.createStatement()
-        ) { //TODO: if connection is successful, manage client-server connection
+        ) { //if connection is successful, manage client-server connection
             while (true) {
                 int port = 1234; //set port number
                 try (ServerSocket serverSocket = new ServerSocket(port))

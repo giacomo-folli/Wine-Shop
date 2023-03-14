@@ -16,19 +16,7 @@ import java.util.ResourceBundle;
 public class RegisterFXController implements Initializable {
 
     @FXML
-    private TextField field_nome;
-    @FXML
-    private TextField field_cognome;
-    @FXML
-    private TextField field_email;
-    @FXML
-    private TextField field_cf;
-    @FXML
-    private TextField field_res;
-    @FXML
-    private TextField field_cell;
-    @FXML
-    private TextField field_psd;
+    private TextField field_nome, field_cognome, field_email, field_cf, field_res, field_cell, field_psd;
     @FXML
     private Button btn_register;
     @FXML

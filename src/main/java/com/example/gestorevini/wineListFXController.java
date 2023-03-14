@@ -25,33 +25,13 @@ public class wineListFXController implements Initializable {
     private ObservableList<Wine> list = FXCollections.observableArrayList();
 
     @FXML
-    private Button btn_user;
-    @FXML
-    private Button btn_cart;
-    @FXML
-    private Button btn_notifications;
-    @FXML
-    private Button btn_logout;
-    @FXML
-    private Button btn_home;
+    private Button btn_home, btn_logout, btn_cart, btn_notifications, btn_user;
     @FXML
     private TableView<Wine> table_view;
     @FXML
-    private TableColumn<Wine, String> name_col;
+    private TableColumn<Wine, String> name_col, prod_col, origin_col, notes_col, grape_col;
     @FXML
-    private TableColumn<Wine, String> prod_col;
-    @FXML
-    private TableColumn<Wine, String> origin_col;
-    @FXML
-    private TableColumn<Wine, Integer> year_col;
-    @FXML
-    private TableColumn<Wine, String> notes_col;
-    @FXML
-    private TableColumn<Wine, String> grape_col;
-    @FXML
-    private TableColumn<Wine, Integer> price_col;
-    @FXML
-    private TableColumn<Wine, Integer> avl_col;
+    private TableColumn<Wine, Integer> year_col, price_col, avl_col;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

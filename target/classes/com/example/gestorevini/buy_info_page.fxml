@@ -5,11 +5,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.notifications_pageFXController">
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.buyInfoFXController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
-            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #a00403;">
+            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -25,7 +25,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="img_notifications" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@news.png" />
                </image>
@@ -60,11 +60,23 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_home" layoutX="12.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <TextField fx:id="txt_name" layoutX="224.0" layoutY="42.0" />
+            <TextField fx:id="txt_number" layoutX="224.0" layoutY="104.0" />
+            <TextField fx:id="txt_exp" layoutX="224.0" layoutY="167.0" />
+            <TextField fx:id="txt_cvv" layoutX="224.0" layoutY="230.0" />
+            <Label layoutX="224.0" layoutY="18.0" text="Name" />
+            <Label layoutX="224.0" layoutY="80.0" text="Number" />
+            <Label layoutX="224.0" layoutY="142.0" text="Expiry date" />
+            <Label layoutX="224.0" layoutY="206.0" text="CVV" />
+            <Button layoutX="224.0" layoutY="274.0" mnemonicParsing="false" onAction="#btn_buy_wine_is_clicked" prefHeight="30.0" prefWidth="149.0" text="Buy" />
+            <Label fx:id="lbl_cart_info" layoutX="14.0" layoutY="18.0" prefHeight="30.0" prefWidth="192.0" />
+         </children></AnchorPane>
   </items>
 </SplitPane>

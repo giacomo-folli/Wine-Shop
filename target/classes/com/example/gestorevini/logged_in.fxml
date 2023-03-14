@@ -83,12 +83,12 @@
                               <Insets left="45.0" />
                            </padding>
                         </Button>
-                        <Button fx:id="btn_show_wines" cancelButton="true" layoutY="80.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show wines">
+                        <Button fx:id="btn_show_wines" cancelButton="true" layoutY="80.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show all wines">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <padding>
-                              <Insets left="25.0" />
+                              <Insets left="37.0" />
                            </padding>
                         </Button>
                         <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Search wines">
@@ -96,7 +96,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <padding>
-                              <Insets left="25.0" />
+                              <Insets left="32.0" />
                            </padding>
                         </Button>
                         <ImageView id="img4" fx:id="img4_neg" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">

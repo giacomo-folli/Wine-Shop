@@ -1,0 +1,14 @@
+Passing data between pages:
+
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("purchases_page.fxml"));
+    root = loader.load();
+
+    //  Scene2Controller scene2Controller = loader.getController();
+    //  scene2Controller.displayName(username);
+
+    stage = (Stage) btn_show_purch.getScene().getWindow();
+    stage.setScene(new Scene(root));
+    stage.setTitle("Purchases");
+    stage.show();
+
+    Controllare che buyInfoFXController sia inizializzato con il max passato come parametro

@@ -55,11 +55,16 @@
          </children></AnchorPane>
       <AnchorPane prefHeight="39.0" prefWidth="597.0">
          <children>
-            <Button fx:id="btn_search" layoutX="487.0" layoutY="3.0" mnemonicParsing="false" onAction="#btn_search_is_clicked" prefHeight="29.0" prefWidth="110.0" style="-fx-background-color: #a00403;" text="Search" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="487.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button fx:id="btn_search" layoutX="376.0" mnemonicParsing="false" onAction="#btn_search_is_clicked" prefHeight="29.0" prefWidth="110.0" style="-fx-background-color: #a00403;" text="Search" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="0.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <TextField fx:id="txt_search" layoutX="-23.0" layoutY="2.0" prefHeight="29.0" prefWidth="487.0" promptText="Insert name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
+            <TextField fx:id="txt_search" layoutX="-23.0" layoutY="2.0" prefHeight="29.0" prefWidth="376.0" promptText="Insert name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="btn_buy_wine" layoutX="487.0" mnemonicParsing="false" onAction="#btn_buy_wine_is_clicked" prefHeight="29.0" prefWidth="110.0" style="-fx-background-color: #026060;" text="Buy" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="898.0">
@@ -70,7 +75,7 @@
                   <TableColumn fx:id="prod_col" prefWidth="114.6666259765625" text="PRODUCER" />
                   <TableColumn fx:id="origin_col" prefWidth="115.6666259765625" text="ORIGIN" />
                   <TableColumn fx:id="year_col" prefWidth="49.3333740234375" text="YEAR" />
-                  <TableColumn fx:id="grape_col" prefWidth="81.0" text="GRAPE" />
+                  <TableColumn fx:id="price_col" prefWidth="81.0" text="PRICE" />
                   <TableColumn fx:id="avl_col" prefWidth="92.00006103515625" text="AVAILABILITY" />
               </columns>
             </TableView>

@@ -15,16 +15,14 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class MainApplicationFXController implements Initializable {
     private static final String DBURL = "jdbc:mysql://127.0.0.1:3306/wineshop";
     private static final String LOGIN = "root";
-    final String PASSWORD = "";
+    private static final String PASSWORD = "";
+    private static String usr;
     private BufferedReader in;
     private PrintWriter out;
 
@@ -47,7 +45,7 @@ public class MainApplicationFXController implements Initializable {
     }
 
     @FXML
-    private void btn_login_is_clicked() { //TODO: implement your LOGIN button handler here
+    private void btn_login_is_clicked() { //implement your LOGIN button handler here
         String username = this.username.getText();
         String password = this.password.getText();
 
@@ -61,6 +59,7 @@ public class MainApplicationFXController implements Initializable {
                     true_psw = rs.getString("PSW");
 
                     if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
+                        usr = username;
                         System.out.println(username + " logged in");
                         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
                         Stage window = (Stage) btn_login.getScene().getWindow();
@@ -71,6 +70,10 @@ public class MainApplicationFXController implements Initializable {
         } catch (Exception e) { System.out.println("Failed to connect to database"); }
     }
 
+    public static String getUserUSR() { //return the username of the logged_in user
+        return usr;
+    }
+
     @FXML
     private void btn_register_is_clicked() throws IOException {//implement your REGISTER button handler here
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("register.fxml"));
@@ -79,8 +82,6 @@ public class MainApplicationFXController implements Initializable {
     }
 
     public Socket getSocket() throws IOException{
-        Socket s = new Socket("localhost", 1234);
-        return s;
+        return new Socket("localhost", 1234);
     }
-
 }

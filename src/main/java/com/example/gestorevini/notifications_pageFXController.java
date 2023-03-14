@@ -13,15 +13,7 @@ import java.net.URL;
 
 public class notifications_pageFXController implements Initializable {
     @FXML
-    private Button btn_home;
-    @FXML
-    private Button btn_logout;
-    @FXML
-    private Button btn_cart;
-    @FXML
-    private Button btn_notifications;
-    @FXML
-    private Button btn_user;
+    private Button btn_home, btn_logout, btn_cart, btn_notifications, btn_user;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

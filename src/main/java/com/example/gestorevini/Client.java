@@ -1,9 +1,8 @@
 package com.example.gestorevini;
 
-public class Client { //TODO: Client class
-
-    private String Username;
+public class Client {
     private int IDClient;
+    private String Username;
     private String Name;
     private String Surname;
     private String Cf;

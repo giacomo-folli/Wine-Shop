@@ -1,16 +1,33 @@
 package com.example.gestorevini;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ResourceBundle;
 import java.net.URL;
+import java.util.Scanner;
+
+import static java.lang.Thread.sleep;
 
 public class buyInfoFXController implements Initializable {
-    private int max;
+    private String client;
+    private Socket s;
+    private BufferedReader in;
+    private PrintWriter out;
+    private String name_wine;
+    private int temp_quantity;
+    private int tot_price;
+    private int price;
 
     @FXML
     private Button btn_home, btn_logout, btn_user, btn_cart, btn_notifications;
@@ -23,26 +40,53 @@ public class buyInfoFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //int current_value = spin_quantity.getValue();
+        spin_quantity.setOnMouseClicked((MouseEvent event) -> {
+            temp_quantity = spin_quantity.getValue();
+            tot_price = price * temp_quantity;
+            lbl_est_cost.setText(tot_price + "€");
+        });
     }
 
-    public void setLbl_cart_info(String text) {
+    public void setUserID(String c) { client = c; }
+
+    public void getSocket(Socket socket) { s = socket; }
+
+    public void setLbl_cart_info(String nameWine, String nameProducer) {
+        name_wine = nameWine;
+        String text = "You are buying " + name_wine + " from " + nameProducer;
         lbl_cart_info.setText(text);
     }
 
+    public void setPrice(int i) {
+        price = i;
+    }
+
     public void setMaxQuantity(int a) {
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, max);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, a);
         valueFactory.setValue(1);
         spin_quantity.setValueFactory(valueFactory);
+        lbl_est_cost.setText(String.valueOf(price) + "€");
     }
 
     @FXML
-    private void btn_buy_wine_is_clicked() {
+    private void btn_buy_wine_is_clicked() throws IOException, InterruptedException {
         if (txt_name.getText().isEmpty() || txt_number.getText().isEmpty() || txt_cvv.getText().isEmpty() || txt_exp.getText().isEmpty()) {
             lbl_cart_info.setText("Please fill all the fields");
         } else {
-            lbl_cart_info.setText("Purchase completed");
+            out = new PrintWriter(s.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            out.println("BUY_WINE");
+            out.println(client+"/"+name_wine+"/"+temp_quantity+"/"+tot_price+"/"+txt_name.getText()+"/"+txt_number.getText());
+            if (in.readLine().equals("SUCCESS")) {
+                lbl_cart_info.setText("Purchase successful");
+                sleep(2000);
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+                Stage window = (Stage) btn_home.getScene().getWindow();
+                window.setScene(new Scene(fxmlLoader.load()));
+                window.setTitle("Home");
+            } else if (in.readLine().equals("FAILED")) {
+                lbl_cart_info.setText("Something went wrong");
+            }
         }
     }
 

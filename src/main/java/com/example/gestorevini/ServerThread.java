@@ -23,14 +23,14 @@ public class ServerThread extends Thread {
         try {
             in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
             out = new PrintWriter(this.socket.getOutputStream(), true);
-            //System.out.println("Socket IO methods created");
 
             while (true) {
                 System.out.println("SERVER ROUND");
                 String line = in.readLine();
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
-                if (line.equals("SHOW_WINES")) {
+                if (line.equals("SHOW_WINES"))
+                {
                     String query = "SELECT * FROM wine;";
                     ResultSet rs = this.stmt.executeQuery(query);
                     while (rs.next()) {
@@ -39,7 +39,8 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (line.equals("SEARCH_WINE")) {
+                } else if (line.equals("SEARCH_WINE"))
+                {
                     int trovato = 0;
                     String name = in.readLine();
                     System.out.println("Searching for " + name);
@@ -56,8 +57,31 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (line.equals("SEARCH_ORDER")) {
-                    //TODO: Search order
+                } else if (line.equals("BUY_WINE"))
+                {
+                    //client/name_wine/quantity/tot_price/card_name/card_number
+                    String info = in.readLine();
+                    String[] temp = info.split("/");
+                    String user = temp[0];
+                    String name_wine = temp[1];
+                    int quantity = Integer.parseInt(temp[2]);
+                    int tot_price = Integer.parseInt(temp[3]);
+                    String card_name = temp[4];
+                    String card_number = temp[5];
+                    ResultSet rs = this.stmt.executeQuery("SELECT ID FROM clienti WHERE clienti.USR='" + user + "';");
+                    if (rs.next()) { //if user exists, get his ID and insert the purchase
+                        int id = rs.getInt("ID");
+                        String query = "INSERT INTO purchase (IDBuyer, WineName, WineQuantity, Price, CardName, CardNumber) VALUES (" + id + ", '" + name_wine + "', " + quantity + ", " + tot_price + ", '" + card_name + "', '" + card_number + "');";
+                        int count = this.stmt.executeUpdate(query);
+                        if (count == 1) {
+                            out.println("SUCCESS");
+                        } else {
+                            out.println("FAILED");
+                        }
+                    } else {
+                        System.out.println("User not found");
+                    }
+
                 } else if (line.equals("SEARCH_CUSTOMER")) {
                     //TODO: Search customer
                 } else if (line.equals("GET_HELP")) {

@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.io.BufferedReader;
@@ -29,6 +30,7 @@ public class search_wine_pageFXController implements Initializable {
     private PrintWriter out;
     private ObservableList<Wine> list = FXCollections.observableArrayList();
     private Wine temp_wine;
+    private String client;
 
     @FXML
     private TextField txt_search;
@@ -43,12 +45,12 @@ public class search_wine_pageFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        name_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("nome"));
-        prod_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("produttore"));
-        origin_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("provenienza"));
-        year_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("anno"));
-        price_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("prezzo"));
-        avl_col.setCellValueFactory(new PropertyValueFactory<Wine, Integer>("num"));
+        name_col.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        prod_col.setCellValueFactory(new PropertyValueFactory<>("produttore"));
+        origin_col.setCellValueFactory(new PropertyValueFactory<>("provenienza"));
+        year_col.setCellValueFactory(new PropertyValueFactory<>("anno"));
+        price_col.setCellValueFactory(new PropertyValueFactory<>("prezzo"));
+        avl_col.setCellValueFactory(new PropertyValueFactory<>("num"));
         search_table.getItems().clear();
         list.clear();
 
@@ -57,7 +59,13 @@ public class search_wine_pageFXController implements Initializable {
                 temp_wine = search_table.getSelectionModel().getSelectedItem();
             }
         });
+
+        txt_search.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER ) btn_search_is_clicked();
+        });
     }
+
+    public void setUserID(String c) { client = c; }
 
     @FXML
     public void btn_search_is_clicked() {
@@ -89,7 +97,7 @@ public class search_wine_pageFXController implements Initializable {
         }
     }
 
-    public void btn_buy_wine_is_clicked(ActionEvent event) throws IOException {
+    public void btn_buy_wine_is_clicked(ActionEvent event) throws Exception {
         if (temp_wine==null) {
             System.out.println("You have to select a wine");
         } else {
@@ -97,13 +105,15 @@ public class search_wine_pageFXController implements Initializable {
             Parent root = loader.load();
             //Set the wine to buy in new scene
             buyInfoFXController buyInfo = loader.getController();
-            buyInfo.setLbl_cart_info("You are buying " + temp_wine.getNome() + " from " + temp_wine.getProduttore());
+            buyInfo.setLbl_cart_info(temp_wine.getNome(), temp_wine.getProduttore());
+            buyInfo.setUserID(client);
+            buyInfo.setPrice(temp_wine.getPrezzo());
             buyInfo.setMaxQuantity(temp_wine.getNum());
+            buyInfo.getSocket(getSocket());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
         }
     }
-
 
     @FXML
     public void btn_home_is_clicked() throws IOException {

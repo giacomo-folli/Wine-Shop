@@ -1,8 +1,10 @@
 package com.example.gestorevini;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,6 +18,7 @@ public class LoggedInFXController implements Initializable {
     private Parent root;
     private Stage stage;
     private Scene scene;
+    private String client;
 
     @FXML
     private ImageView img1, img2, img3, img4;
@@ -36,6 +39,7 @@ public class LoggedInFXController implements Initializable {
 
     private void mouse_enters_img(ImageView a) { a.setVisible(false); }
     private void mouse_exits_img(ImageView a) { a.setVisible(true); }
+    public void setUser(String i) { client = i; }
 
     @FXML
     private void btn_show_wines_clicked() throws IOException {
@@ -78,10 +82,13 @@ public class LoggedInFXController implements Initializable {
     }
 
     @FXML
-    public void btn_search_wine_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("search_wine_page.fxml"));
-        Stage window = (Stage) btn_search_wine.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_search_wine_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("search_wine_page.fxml"));
+        Parent root = loader.load();
+        search_wine_pageFXController search_wine_page = loader.getController();
+        search_wine_page.setUserID(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Search Wine");
     }
 

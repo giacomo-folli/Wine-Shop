@@ -1,14 +1,19 @@
 package com.example.gestorevini;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,10 +43,13 @@ public class MainApplicationFXController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) { //JavaFX initialization code here
         try {
             Socket s = getSocket();
-            System.out.println("Socket in MainFX: " + s);
         } catch (IOException e) {
             System.out.println("MainApplicationFXController, " + e);
         }
+
+        password.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER ) btn_login_is_clicked();
+        });
     }
 
     @FXML
@@ -60,10 +68,16 @@ public class MainApplicationFXController implements Initializable {
 
                     if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
                         usr = username;
-                        System.out.println(username + " logged in");
-                        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
+                        Parent root = loader.load();
+                        //inject username in LoggedInFXController
+                        LoggedInFXController loggedIn = loader.getController();
+                        loggedIn.setUser(usr);
                         Stage window = (Stage) btn_login.getScene().getWindow();
-                        window.setScene(new Scene(fxmlLoader.load()));
+                        window.setScene(new Scene(root));
+                        window.setTitle("Home");
+                        System.out.println(username + " logged in");
+
                     } else { System.out.println("Wrong password"); }
                 } else { System.out.println("Username doesn't exist"); }
             } catch (Exception e) { System.out.println(e); }

@@ -82,8 +82,19 @@ public class ServerThread extends Thread {
                         System.out.println("User not found");
                     }
 
-                } else if (line.equals("SEARCH_CUSTOMER")) {
-                    //TODO: Search customer
+                } else if (line.equals("SHOW_PURCH"))
+                {
+                    String user = in.readLine();
+                    System.out.println("Showing purchases for " + user);
+                    String query = "SELECT * FROM purchase JOIN clienti ON purchase.IDBuyer=clienti.ID WHERE USR='" + user + "';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    while (rs.next()) {
+                        String out_data = rs.getString("ID") + "/" + rs.getString("WineName") + "/" + rs.getString("WineQuantity") + "/" + rs.getString("Price") + "/" + rs.getString("CardName");
+                        System.out.println(out_data);
+                        out.println(out_data);
+                    }
+                    out.println("null");
+
                 } else if (line.equals("GET_HELP")) {
                     //TODO: Get help
                 } else if (line.equals("UPDATE_CUSTOMER_DATA")) {

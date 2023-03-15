@@ -7,21 +7,21 @@
 
 <SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.purchasesFXController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="68.0" prefWidth="439.0">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-21.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@log_out.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@news.png" />
                </image>
@@ -44,27 +44,26 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_home" layoutX="12.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_user" layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_cart" layoutX="471.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_logout" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_home" layoutX="17.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="898.0">
+         <children>
+            <TableView fx:id="purchaseTableView" prefHeight="286.6666666666667" prefWidth="597.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="id_col" prefWidth="42.0" text="ID" />
+                  <TableColumn fx:id="wine_name_col" prefWidth="190.66665649414062" text="WINE NAME" />
+                  <TableColumn fx:id="quantity_col" prefWidth="72.33331298828125" text="QUANTITY" />
+                  <TableColumn fx:id="price_col" prefWidth="78.0" text="TOT PRICE" />
+                  <TableColumn fx:id="card_col" prefWidth="218.0" text="CARD NAME" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
   </items>
 </SplitPane>

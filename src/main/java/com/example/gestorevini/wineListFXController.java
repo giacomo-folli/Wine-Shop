@@ -51,8 +51,7 @@ public class wineListFXController implements Initializable {
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
 
-            while (!(in.readLine()).equals("null")) {
-                line = in.readLine();
+            while (!(line = in.readLine()).equals("null")) {
                 String[] temp = line.split("/");
                 String name = temp[0];
                 String prod =temp[1];

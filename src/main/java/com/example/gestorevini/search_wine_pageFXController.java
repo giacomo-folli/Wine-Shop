@@ -88,6 +88,7 @@ public class search_wine_pageFXController implements Initializable {
                     int price = Integer.parseInt(temp[4]);
                     int num = Integer.parseInt(temp[5]);
 
+                    list.clear();
                     list.add(new Wine(name, prod, orig, (Integer.parseInt(year)), "", "", price, num));
                     search_table.setItems(list);
                 }

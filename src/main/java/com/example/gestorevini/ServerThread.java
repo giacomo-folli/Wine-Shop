@@ -29,8 +29,7 @@ public class ServerThread extends Thread {
                 String line = in.readLine();
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
-                if (line.equals("SHOW_WINES"))
-                {
+                if (line.equals("SHOW_WINES")) {
                     String query = "SELECT * FROM wine;";
                     ResultSet rs = this.stmt.executeQuery(query);
                     while (rs.next()) {
@@ -39,8 +38,8 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (line.equals("SEARCH_WINE"))
-                {
+                }
+                else if (line.equals("SEARCH_WINE")) {
                     int trovato = 0;
                     String name = in.readLine();
                     System.out.println("Searching for " + name);
@@ -57,8 +56,8 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (line.equals("BUY_WINE"))
-                {
+                }
+                else if (line.equals("BUY_WINE")) {
                     //client/name_wine/quantity/tot_price/card_name/card_number
                     String info = in.readLine();
                     String[] temp = info.split("/");
@@ -82,8 +81,8 @@ public class ServerThread extends Thread {
                         System.out.println("User not found");
                     }
 
-                } else if (line.equals("SHOW_PURCH"))
-                {
+                }
+                else if (line.equals("SHOW_PURCH")) {
                     String user = in.readLine();
                     System.out.println("Showing purchases for " + user);
                     String query = "SELECT * FROM purchase JOIN clienti ON purchase.IDBuyer=clienti.ID WHERE USR='" + user + "';";
@@ -95,13 +94,17 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
 
-                } else if (line.equals("GET_HELP")) {
+                }
+                else if (line.equals("GET_HELP")) {
                     //TODO: Get help
-                } else if (line.equals("UPDATE_CUSTOMER_DATA")) {
+                }
+                else if (line.equals("UPDATE_CUSTOMER_DATA")) {
                     //TODO: Update customer data
-                } else if (line.equals("UPDATE_WINE_DATA")) {
+                }
+                else if (line.equals("UPDATE_WINE_DATA")) {
                     //TODO: Update wine data
-                } else {
+                }
+                else {
                     System.out.println("ServerThread: Feature not added");
                 }
             }

@@ -104,11 +104,11 @@ public class LoggedInFXController implements Initializable {
     public void btn_show_purch_clicked(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("purchases_page.fxml"));
         Parent root = loader.load();
-
+        //send username to purchase list page
         purchasesFXController purchases_page = loader.getController();
         purchases_page.setClient(client);
         purchases_page.setTableView();
-
+        //continue with the scene
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Purchases");

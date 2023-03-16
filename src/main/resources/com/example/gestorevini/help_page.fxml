@@ -9,10 +9,6 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
-            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #a00403;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
             <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@app_icon.png" />
@@ -61,6 +57,10 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

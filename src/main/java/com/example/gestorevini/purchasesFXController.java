@@ -1,6 +1,7 @@
 package com.example.gestorevini;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -104,10 +105,13 @@ public class purchasesFXController implements Initializable {
     }
 
     @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Stage window = (Stage) btn_cart.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cart_page.fxml"));
+        Parent root = loader.load();
+        cart_pageFXController cart_page = loader.getController();
+        //cart_page.setUserID(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Cart");
     }
 

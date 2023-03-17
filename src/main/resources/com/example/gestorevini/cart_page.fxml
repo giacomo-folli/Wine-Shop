@@ -18,14 +18,14 @@
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@log_out.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="img_notifications" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@news.png" />
                </image>
@@ -48,24 +48,34 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_user" layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_notifications" layoutX="513.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_logout" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="btn_home" layoutX="12.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="46.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_home" layoutX="17.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+               </cursor></Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <TableView fx:id="cart_table" prefHeight="323.0" prefWidth="600.0">
+              <columns>
+                <TableColumn fx:id="name_col" prefWidth="206.9999898672104" text="NAME" />
+                  <TableColumn fx:id="prod_col" prefWidth="191.00001525878906" text="PRODUCER" />
+                  <TableColumn fx:id="year_col" prefWidth="44.000030517578125" text="YEAR" />
+                  <TableColumn fx:id="quantity_col" prefWidth="79.0" text="QUANTITY" />
+                  <TableColumn fx:id="price_col" prefWidth="76.0" text="PRICE" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
   </items>
 </SplitPane>

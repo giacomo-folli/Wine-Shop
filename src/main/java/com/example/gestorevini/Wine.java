@@ -1,15 +1,14 @@
 package com.example.gestorevini;
-
 public class Wine {
 
-    private String nome;
-    private String produttore;
-    private String provenienza;
-    private int prezzo;
-    private int anno;
-    private String note;
-    private String vitigniProvenienza;
-    private int num;
+    public String nome;
+    public String produttore;
+    public String provenienza;
+    public int prezzo;
+    public int anno;
+    public String note;
+    public String vitigniProvenienza;
+    public int num;
 
     public Wine(String nome, String produttore, String provenienza, int anno, String note, String vitigniProvenienza, int prezzo, int num) {
         this.nome = nome;

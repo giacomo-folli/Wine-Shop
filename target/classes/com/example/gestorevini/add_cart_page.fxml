@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.buyInfoFXController">
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.addCartFXController">
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
@@ -17,7 +17,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
+            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -69,27 +69,15 @@
          <children>
             <HBox prefHeight="323.0" prefWidth="597.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane prefHeight="323.0" prefWidth="644.0">
                      <children>
-                        <Label fx:id="lbl_cart_info" layoutX="4.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" />
-                        <Spinner fx:id="spin_quantity" layoutX="26.0" layoutY="149.0" />
-                        <Label layoutX="26.0" layoutY="127.0" prefHeight="17.0" prefWidth="149.0" text="Select how many bottles:" />
-                        <Label layoutX="26.0" layoutY="193.0" text="Estimated cost:" />
-                        <Label fx:id="lbl_est_cost" layoutX="137.0" layoutY="193.0" prefHeight="17.0" prefWidth="38.0" />
+                        <Label fx:id="lbl_cart_info" layoutX="203.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" />
+                        <Spinner fx:id="spin_quantity" layoutX="225.0" layoutY="149.0" />
+                        <Label layoutX="224.0" layoutY="113.0" prefHeight="17.0" prefWidth="149.0" text="Select numer of bottles:" />
+                        <Label layoutX="225.0" layoutY="193.0" text="Estimated cost:" />
+                        <Label fx:id="lbl_est_cost" layoutX="336.0" layoutY="193.0" prefHeight="17.0" prefWidth="38.0" />
+                        <Button fx:id="btn_add_to_cart" layoutX="225.0" layoutY="243.0" mnemonicParsing="false" onAction="#btn_add_to_cart_clicked" prefHeight="25.0" prefWidth="149.0" text="Add to cart" />
                      </children></AnchorPane>
-                  <AnchorPane prefHeight="323.0" prefWidth="398.0">
-                     <children>
-                        <TextField fx:id="txt_name" layoutX="124.0" layoutY="63.0" />
-                        <TextField fx:id="txt_number" layoutX="124.0" layoutY="113.0" />
-                        <TextField fx:id="txt_exp" layoutX="124.0" layoutY="163.0" />
-                        <TextField fx:id="txt_cvv" layoutX="124.0" layoutY="213.0" />
-                        <Label layoutX="124.0" layoutY="45.0" text="Name" />
-                        <Label layoutX="124.0" layoutY="93.0" text="Number" />
-                        <Label layoutX="124.0" layoutY="144.0" text="Expiry date" />
-                        <Label layoutX="124.0" layoutY="195.0" text="CVV" />
-                        <Button layoutX="124.0" layoutY="251.0" mnemonicParsing="false" onAction="#btn_buy_wine_is_clicked" prefHeight="30.0" prefWidth="149.0" text="Buy" />
-                     </children>
-                  </AnchorPane>
                </children></HBox>
          </children></AnchorPane>
   </items>

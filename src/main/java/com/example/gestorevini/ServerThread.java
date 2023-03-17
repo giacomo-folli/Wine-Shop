@@ -93,13 +93,54 @@ public class ServerThread extends Thread {
                         out.println(out_data);
                     }
                     out.println("null");
+                }
+                else if (line.equals("ADD_TO_CART")) {
+                    //name_wine+"/"+client+"/"+name_producer+"/"+year+"/"+quantity+"/"+wines_price
+                    String info = in.readLine();
+                    String[] temp = info.split("/");
+                    String name_wine = temp[0];
+                    String user = temp[1];
+                    int quantity = Integer.parseInt(temp[2]);
+                    int tot_price = Integer.parseInt(temp[3]);
+                    String name_producer = "Error";
+                    int year = 000;
 
+                    ResultSet r = this.stmt.executeQuery("SELECT Producer, Data FROM wine WHERE wine.Name='"+name_wine+"';");
+                    if (r.next()) {
+                        name_producer = r.getString("Producer");
+                        year = r.getInt("Data");}
+
+                    ResultSet rs = this.stmt.executeQuery("SELECT ID FROM clienti WHERE clienti.USR='" + user + "';");
+                    if (rs.next()) { //if user exists, get his ID and insert the purchase
+                        int id = rs.getInt("ID");
+                        String query = "INSERT INTO cart (IDBuyer, WineName, NameProducer, WineQuantity, Price, Year) VALUES (" + id + ", '" + name_wine + "', '" + name_producer + "', " + quantity + ", " + tot_price + ", " + year + ");";
+                        int count = this.stmt.executeUpdate(query);
+                        if (count == 1) {
+                            out.println("ADDED");
+                        } else {
+                            out.println("FAILED");
+                        }
+                    } else {
+                        System.out.println("User not found");
+                    }
                 }
-                else if (line.equals("GET_HELP")) {
-                    //TODO: Get help
-                }
-                else if (line.equals("UPDATE_CUSTOMER_DATA")) {
-                    //TODO: Update customer data
+                else if (line.equals("SHOW_CART")) {
+                    String user = in.readLine();
+                    System.out.println("Showing cart for " + user);
+                    String query = "SELECT * FROM cart JOIN clienti ON cart.IDBuyer=clienti.ID WHERE USR='" + user + "';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    while (rs.next()) {
+                        String out_data =   rs.getString("ID")
+                                + "/" +     rs.getString("IDBuyer")
+                                + "/" +     rs.getString("WineName")
+                                + "/" +     rs.getString("NameProducer")
+                                + "/" +     rs.getString("WineQuantity")
+                                + "/" +     rs.getString("Price")
+                                + "/" +     rs.getString("Year");
+                        System.out.println(out_data);
+                        out.println(out_data);
+                    }
+                    out.println("null");
                 }
                 else if (line.equals("UPDATE_WINE_DATA")) {
                     //TODO: Update wine data

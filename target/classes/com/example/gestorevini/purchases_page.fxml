@@ -44,10 +44,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="btn_user" layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_cart" layoutX="471.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_logout" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
+            <Button fx:id="btn_user" layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_cart" layoutX="471.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_notifications" layoutX="512.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_logout" layoutX="553.0" layoutY="19.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="btn_home" layoutX="17.0" layoutY="11.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />

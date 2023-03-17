@@ -1,28 +1,22 @@
 package com.example.gestorevini;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.ResourceBundle;
 import java.net.URL;
-import java.util.Scanner;
-
+import java.util.ResourceBundle;
 import static java.lang.Thread.sleep;
 
-public class buyInfoFXController implements Initializable {
+public class addCartFXController implements Initializable {
     private String client;
     private Socket s;
     private BufferedReader in;
@@ -31,11 +25,11 @@ public class buyInfoFXController implements Initializable {
     private int temp_quantity;
     private int tot_price;
     private int price;
+    private String wine_name, user_buyer, name_producer;
+    private int quantity, wines_price, year;
 
     @FXML
-    private Button btn_home, btn_logout, btn_user, btn_cart, btn_notifications;
-    @FXML
-    private TextField txt_name, txt_number, txt_cvv, txt_exp;
+    private Button btn_home, btn_logout, btn_user, btn_cart, btn_notifications, btn_add_to_cart;
     @FXML
     public Label lbl_cart_info, lbl_est_cost;
     @FXML
@@ -72,24 +66,24 @@ public class buyInfoFXController implements Initializable {
     }
 
     @FXML
-    private void btn_buy_wine_is_clicked() throws IOException, InterruptedException {
-        if (txt_name.getText().isEmpty() || txt_number.getText().isEmpty() || txt_cvv.getText().isEmpty() || txt_exp.getText().isEmpty()) {
-            lbl_cart_info.setText("Please fill all the fields");
-        } else {
-            out = new PrintWriter(s.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out.println("BUY_WINE");
-            out.println(client+"/"+name_wine+"/"+temp_quantity+"/"+tot_price+"/"+txt_name.getText()+"/"+txt_number.getText());
-            if (in.readLine().equals("SUCCESS")) {
-                lbl_cart_info.setText("Purchase successful");
-                sleep(2000);
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-                Stage window = (Stage) btn_home.getScene().getWindow();
-                window.setScene(new Scene(fxmlLoader.load()));
-                window.setTitle("Home");
-            } else if (in.readLine().equals("FAILED")) {
-                lbl_cart_info.setText("Something went wrong");
-            }
+    private void btn_add_to_cart_clicked() throws IOException, InterruptedException {
+        out = new PrintWriter(s.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
+        wine_name = name_wine;
+        user_buyer = client;
+        quantity = spin_quantity.getValue();
+        wines_price = tot_price;
+
+        out.println("ADD_TO_CART");
+        out.println(name_wine+"/"+client+"/"+"/"+quantity+"/"+wines_price);
+        if (in.readLine().equals("ADDED")) {
+            lbl_cart_info.setText("Added to cart");
+            sleep(2000);
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("search_wine_page.fxml"));
+            Stage window = (Stage) btn_add_to_cart.getScene().getWindow();
+            window.setScene(new Scene(fxmlLoader.load()));
+            window.setTitle("Search Wine");
         }
     }
 
@@ -120,7 +114,6 @@ public class buyInfoFXController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
         Stage window = (Stage) btn_cart.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Cart");
     }
 
     @FXML

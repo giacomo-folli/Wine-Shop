@@ -14,40 +14,6 @@
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="853.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@log_out.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="img_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="812.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@news.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fx:id="img_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="767.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@cart.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="img_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="730.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@users_icon.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Button fx:id="btn_user" layoutX="730.0" layoutY="28.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_cart" layoutX="771.0" layoutY="28.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_notifications" layoutX="812.0" layoutY="28.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
-            <Button fx:id="btn_logout" layoutX="853.0" layoutY="28.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00000000;" />
             <Button fx:id="btn_home" layoutX="17.0" layoutY="20.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />

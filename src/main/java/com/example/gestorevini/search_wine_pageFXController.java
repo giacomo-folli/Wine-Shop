@@ -35,7 +35,7 @@ public class search_wine_pageFXController implements Initializable {
     @FXML
     private TextField txt_search;
     @FXML
-    private Button btn_user, btn_cart, btn_notifications, btn_logout, btn_home, btn_buy_wine;
+    private Button btn_user, btn_cart, btn_notifications, btn_logout, btn_home, btn_add_to_cart;
     @FXML
     private TableView<Wine> search_table;
     @FXML
@@ -98,19 +98,19 @@ public class search_wine_pageFXController implements Initializable {
         }
     }
 
-    public void btn_buy_wine_is_clicked(ActionEvent event) throws Exception {
+    public void btn_add_to_cart_is_clicked(ActionEvent event) throws Exception {
         if (temp_wine==null) {
             System.out.println("You have to select a wine");
         } else {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("buy_info_page.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("add_cart_page.fxml"));
             Parent root = loader.load();
             //Set the wine to buy in new scene
-            buyInfoFXController buyInfo = loader.getController();
-            buyInfo.setLbl_cart_info(temp_wine.getNome(), temp_wine.getProduttore());
-            buyInfo.setUserID(client);
-            buyInfo.setPrice(temp_wine.getPrezzo());
-            buyInfo.setMaxQuantity(temp_wine.getNum());
-            buyInfo.getSocket(getSocket());
+            addCartFXController cartAdd = loader.getController();
+            cartAdd.setLbl_cart_info(temp_wine.getNome(), temp_wine.getProduttore());
+            cartAdd.setUserID(client);
+            cartAdd.setPrice(temp_wine.getPrezzo());
+            cartAdd.setMaxQuantity(temp_wine.getNum());
+            cartAdd.getSocket(getSocket());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
         }

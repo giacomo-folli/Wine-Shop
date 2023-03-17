@@ -1,8 +1,11 @@
 package com.example.gestorevini;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -22,7 +25,7 @@ public class addCartFXController implements Initializable {
     private BufferedReader in;
     private PrintWriter out;
     private String name_wine;
-    private int temp_quantity;
+    private int temp_quantity = 1;
     private int tot_price;
     private int price;
     private String wine_name, user_buyer, name_producer;
@@ -66,32 +69,38 @@ public class addCartFXController implements Initializable {
     }
 
     @FXML
-    private void btn_add_to_cart_clicked() throws IOException, InterruptedException {
+    private void btn_add_to_cart_clicked(ActionEvent event) throws IOException, InterruptedException {
         out = new PrintWriter(s.getOutputStream(), true);
         in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
         wine_name = name_wine;
         user_buyer = client;
         quantity = spin_quantity.getValue();
-        wines_price = tot_price;
+        wines_price = price * temp_quantity;
 
         out.println("ADD_TO_CART");
-        out.println(name_wine+"/"+client+"/"+"/"+quantity+"/"+wines_price);
+        out.println(name_wine+"/"+client+"/"+quantity+"/"+wines_price);
+        System.out.println(name_wine+"/"+client+"/"+quantity+"/"+wines_price+":"+temp_quantity+":"+price);
         if (in.readLine().equals("ADDED")) {
             lbl_cart_info.setText("Added to cart");
-            sleep(2000);
-            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("search_wine_page.fxml"));
-            Stage window = (Stage) btn_add_to_cart.getScene().getWindow();
-            window.setScene(new Scene(fxmlLoader.load()));
+            sleep(1000);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("search_wine_page.fxml"));
+            Parent root = loader.load();
+            search_wine_pageFXController search_wine_page = loader.getController();
+            search_wine_page.setUserID(client);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(new Scene(root));
             window.setTitle("Search Wine");
         }
     }
 
     @FXML
-    public void btn_home_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-        Stage window = (Stage) btn_home.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_home_is_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
+        Parent root = loader.load();
+        LoggedInFXController LFXC = loader.getController();
+        LFXC.setUser(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Home");
     }
 

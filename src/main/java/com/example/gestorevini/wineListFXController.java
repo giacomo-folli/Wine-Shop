@@ -26,6 +26,7 @@ public class wineListFXController implements Initializable {
     private BufferedReader in;
     private PrintWriter out;
     private ObservableList<Wine> list = FXCollections.observableArrayList();
+    private String client;
 
     @FXML
     private Button btn_home, btn_logout, btn_cart, btn_notifications, btn_user;
@@ -35,6 +36,8 @@ public class wineListFXController implements Initializable {
     private TableColumn<Wine, String> name_col, prod_col, origin_col, notes_col, grape_col;
     @FXML
     private TableColumn<Wine, Integer> year_col, price_col, avl_col;
+
+    public void SetUserID(String i) { client = i; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -76,10 +79,13 @@ public class wineListFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-        Stage window = (Stage) btn_home.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_home_is_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
+        Parent root = loader.load();
+        LoggedInFXController LFXC = loader.getController();
+        LFXC.setUser(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Home");
     }
 

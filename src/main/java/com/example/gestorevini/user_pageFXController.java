@@ -82,12 +82,16 @@ public class user_pageFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-        Stage window = (Stage) btn_home.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_home_is_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
+        Parent root = loader.load();
+        LoggedInFXController LFXC = loader.getController();
+        LFXC.setUser(usr_coockie);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Home");
     }
+
 
     @FXML
     public void btn_logout_is_clicked() throws IOException {

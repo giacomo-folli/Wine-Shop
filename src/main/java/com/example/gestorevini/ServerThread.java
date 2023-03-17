@@ -95,7 +95,6 @@ public class ServerThread extends Thread {
                     out.println("null");
                 }
                 else if (line.equals("ADD_TO_CART")) {
-                    //name_wine+"/"+client+"/"+name_producer+"/"+year+"/"+quantity+"/"+wines_price
                     String info = in.readLine();
                     String[] temp = info.split("/");
                     String name_wine = temp[0];
@@ -104,25 +103,38 @@ public class ServerThread extends Thread {
                     int tot_price = Integer.parseInt(temp[3]);
                     String name_producer = "Error";
                     int year = 000;
+                    int current_q= 0;
+                    int id = 0;
 
                     ResultSet r = this.stmt.executeQuery("SELECT Producer, Data FROM wine WHERE wine.Name='"+name_wine+"';");
                     if (r.next()) {
                         name_producer = r.getString("Producer");
                         year = r.getInt("Data");}
 
+                    ResultSet a = this.stmt.executeQuery("SELECT * FROM wine WHERE Name='"+name_wine+"'");
+                    if (a.next())
+                        current_q = a.getInt("Quantity");
+
                     ResultSet rs = this.stmt.executeQuery("SELECT ID FROM clienti WHERE clienti.USR='" + user + "';");
-                    if (rs.next()) { //if user exists, get his ID and insert the purchase
-                        int id = rs.getInt("ID");
-                        String query = "INSERT INTO cart (IDBuyer, WineName, NameProducer, WineQuantity, Price, Year) VALUES (" + id + ", '" + name_wine + "', '" + name_producer + "', " + quantity + ", " + tot_price + ", " + year + ");";
-                        int count = this.stmt.executeUpdate(query);
-                        if (count == 1) {
-                            out.println("ADDED");
-                        } else {
-                            out.println("FAILED");
-                        }
-                    } else {
-                        System.out.println("User not found");
-                    }
+                    if (rs.next()) //if user exists, get his ID and insert the purchase
+                        id = rs.getInt("ID");
+
+                    System.out.println(tot_price + " : " + quantity + " : " + current_q);
+                    int count = this.stmt.executeUpdate("INSERT INTO cart (IDBuyer, WineName, NameProducer, WineQuantity, Price, Year) VALUES (" + id + ", '" + name_wine + "', '" + name_producer + "', " + quantity + ", " + tot_price + ", " + year + ");");
+                    if (count == 1) {
+                        System.out.println("Wine added");
+                        if (current_q >= quantity) {
+                            int new_q = current_q - quantity;
+                            System.out.println(new_q + " bottiglie disponibili");
+                            String query1 = "UPDATE wine SET Quantity=" + new_q + " WHERE Name='" + name_wine + "';";
+                            int z = this.stmt.executeUpdate(query1);
+                            if (z == 1) {
+                                System.out.println("Wine CApacity updated");
+                                out.println("ADDED");
+                            } else { out.println("FAILED"); }
+                        } else {out.println("LOW_WINE_CAPACITY");}
+                    } else { out.println("FAILED_ADD"); }
+
                 }
                 else if (line.equals("SHOW_CART")) {
                     String user = in.readLine();
@@ -137,7 +149,6 @@ public class ServerThread extends Thread {
                                 + "/" +     rs.getString("WineQuantity")
                                 + "/" +     rs.getString("Price")
                                 + "/" +     rs.getString("Year");
-                        System.out.println(out_data);
                         out.println(out_data);
                     }
                     out.println("null");

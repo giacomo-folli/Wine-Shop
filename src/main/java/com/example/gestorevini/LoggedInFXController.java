@@ -42,11 +42,14 @@ public class LoggedInFXController implements Initializable {
     public void setUser(String i) { client = i; }
 
     @FXML
-    private void btn_show_wines_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("wine_list_page.fxml"));
-        Stage window = (Stage) btn_show_wines.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Wine List");
+    private void btn_show_wines_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("wine_list_page.fxml"));
+        Parent root = loader.load();
+        wineListFXController WLFXC = loader.getController();
+        WLFXC.SetUserID(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Search Wine");
     }
 
     @FXML

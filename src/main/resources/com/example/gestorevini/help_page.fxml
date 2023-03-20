@@ -65,6 +65,53 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0" />
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <HBox layoutY="-1.0" prefHeight="323.0" prefWidth="597.0">
+               <children>
+                  <AnchorPane prefHeight="323.0" prefWidth="400.0">
+                     <children>
+                        <ImageView fitHeight="88.0" fitWidth="139.0" layoutX="105.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@doc_icon.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="btn_pda" layoutX="108.0" layoutY="112.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="82.0" style="-fx-background-color: #00000000;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
+                        <Label layoutX="114.0" layoutY="211.0" text="Compile PDA" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="323.0" prefWidth="400.0">
+                     <children>
+                        <ImageView fitHeight="99.0" fitWidth="88.0" layoutX="106.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@support_icon.png" />
+                           </image></ImageView>
+                        <Button fx:id="btn_support" layoutX="109.0" layoutY="112.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="82.0" style="-fx-background-color: #00000000;" />
+                        <Label layoutX="121.0" layoutY="211.0" text="Contact Us" />
+                        <AnchorPane fx:id="pane_pda" prefHeight="323.0" prefWidth="299.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Button fx:id="btn_send" layoutX="128.0" layoutY="268.0" mnemonicParsing="false" onAction="#btn_send_is_clicked" text="Send">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                              <TextField fx:id="txt_name" layoutX="122.0" layoutY="28.0" AnchorPane.rightAnchor="27.999999999999943" />
+                              <TextField fx:id="txt_year" layoutX="122.0" layoutY="110.0" AnchorPane.rightAnchor="27.999999999999943" />
+                              <TextField fx:id="txt_notes" layoutX="122.0" layoutY="206.0" AnchorPane.rightAnchor="27.999999999999943" />
+                              <Label layoutX="27.0" layoutY="32.0" text="Wine Name" AnchorPane.leftAnchor="27.0" />
+                              <Label layoutX="27.0" layoutY="114.0" text="Wine Year" AnchorPane.leftAnchor="27.0" />
+                              <Label layoutX="27.0" layoutY="162.0" text="Quantity" AnchorPane.leftAnchor="27.0" />
+                              <Label layoutX="27.0" layoutY="210.0" text="Notes" AnchorPane.leftAnchor="27.0" />
+                              <Spinner fx:id="spin_quantity" layoutX="122.0" layoutY="158.0" AnchorPane.rightAnchor="27.999999999999943" />
+                              <TextField fx:id="txt_producer" layoutX="122.0" layoutY="69.0" AnchorPane.rightAnchor="27.999999999999943" />
+                              <Label layoutX="27.0" layoutY="73.0" text="Wine Producer" AnchorPane.leftAnchor="27.0" />
+                           </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children></AnchorPane>
   </items>
 </SplitPane>

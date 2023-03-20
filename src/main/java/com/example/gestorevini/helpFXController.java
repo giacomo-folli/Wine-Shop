@@ -7,25 +7,72 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ResourceBundle;
 import java.net.URL;
+import java.util.Scanner;
 
 public class helpFXController implements Initializable {
+    private PrintWriter out;
     private String client;
+    private boolean visibility = false;
 
     @FXML
-    private Button btn_home, btn_logout, btn_user, btn_cart, btn_notifications;
+    private Button btn_logout, btn_user, btn_cart, btn_notifications, btn_support, btn_pda, btn_send;
+    @FXML
+    private AnchorPane pane_pda;
+    @FXML
+    private TextField txt_name, txt_year, txt_notes, txt_producer;
+    @FXML
+    private Spinner spin_quantity;
+
+    public void setClient(String i) { client = i; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //...
+        pane_pda.setVisible(visibility);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 12);
+        valueFactory.setValue(1);
+        spin_quantity.setValueFactory(valueFactory);
+
+        btn_support.onActionProperty().set(e -> {
+            //...
+        });
+
+        btn_pda.onActionProperty().set(e -> {
+            if (visibility) {
+                pane_pda.setVisible(false);
+                visibility = false;
+            } else {
+                pane_pda.setVisible(true);
+                visibility = true;
+            }
+        });
     }
 
-    public void setUserID(String i) {
-        client = i;
+    @FXML
+    public void btn_send_is_clicked() {
+        try (Socket s = getSocket()) {
+            out = new PrintWriter(s.getOutputStream(), true);
+            String pda = client + "/" + txt_name.getText() + "/" + txt_year.getText() + "/" + txt_producer.getText() + "/" + txt_notes.getText() + "/" + spin_quantity.getValue();
+
+            out.println("ADD_PDA");
+            out.println(pda);
+
+            pane_pda.setVisible(false);
+        } catch (IOException e) {
+            System.out.println("HelpFXCotroller: " + e.getMessage());
+        }
     }
 
     @FXML
@@ -33,7 +80,7 @@ public class helpFXController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
         Parent root = loader.load();
         LoggedInFXController LFXC = loader.getController();
-        //LFXC.setUser(client);
+        LFXC.setUser(client);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Home");
@@ -70,5 +117,9 @@ public class helpFXController implements Initializable {
         Stage window = (Stage) btn_notifications.getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
         window.setTitle("Notifications");
+    }
+
+    public Socket getSocket() throws IOException {
+        return new Socket("localhost", 1234);
     }
 }

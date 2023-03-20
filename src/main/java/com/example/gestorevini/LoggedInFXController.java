@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
 
 
 public class LoggedInFXController implements Initializable {
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
     private String client;
 
     @FXML
@@ -96,12 +93,18 @@ public class LoggedInFXController implements Initializable {
     }
 
     @FXML
-    public void btn_help_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("help_page.fxml"));
-        Stage window = (Stage) btn_get_help.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_help_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("help_page.fxml"));
+        Parent root = loader.load();
+        //send username to purchase list page
+        helpFXController helpFX = loader.getController();
+        helpFX.setClient(client);
+        //continue with the scene
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Help");
     }
+
 
     @FXML
     public void btn_show_purch_clicked(ActionEvent event) throws IOException {

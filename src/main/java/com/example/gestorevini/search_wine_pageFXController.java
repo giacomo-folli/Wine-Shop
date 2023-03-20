@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
@@ -31,9 +28,12 @@ public class search_wine_pageFXController implements Initializable {
     private ObservableList<Wine> list = FXCollections.observableArrayList();
     private Wine temp_wine;
     private String client;
+    private String search_type = "SEARCH_WINE_NAME";
 
     @FXML
     private TextField txt_search;
+    @FXML
+    private CheckBox check_year;
     @FXML
     private Button btn_user, btn_cart, btn_notifications, btn_logout, btn_home, btn_add_to_cart;
     @FXML
@@ -63,6 +63,16 @@ public class search_wine_pageFXController implements Initializable {
         txt_search.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER ) btn_search_is_clicked();
         });
+
+        check_year.setOnAction(event -> {
+            if (check_year.isSelected()) {
+                check_year.setText("Search by year");
+                search_type = "SEARCH_WINE_YEAR";
+            } else {
+                check_year.setText("Search by name");
+                search_type = "SEARCH_WINE_NAME";
+            }
+        });
     }
 
     public void setUserID(String c) { client = c; }
@@ -73,9 +83,11 @@ public class search_wine_pageFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
+            list.clear();
+
             String search = txt_search.getText();
             if (search != "") {
-                out.println("SEARCH_WINE");
+                out.println(search_type);
                 out.println(search);
                 String line;
 
@@ -88,14 +100,11 @@ public class search_wine_pageFXController implements Initializable {
                     int price = Integer.parseInt(temp[4]);
                     int num = Integer.parseInt(temp[5]);
 
-                    list.clear();
                     list.add(new Wine(name, prod, orig, (Integer.parseInt(year)), "", "", price, num));
                     search_table.setItems(list);
                 }
             }
-        } catch (Exception t) {
-            System.out.println("wineListFXController, " + t);
-        }
+        } catch (Exception t) { System.out.println("wineListFXController, " + t); }
     }
 
     public void btn_add_to_cart_is_clicked(ActionEvent event) throws Exception {

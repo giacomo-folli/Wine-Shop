@@ -39,11 +39,29 @@ public class ServerThread extends Thread {
                     out.println("null");
 
                 }
-                else if (line.equals("SEARCH_WINE")) {
+                else if (line.equals("SEARCH_WINE_NAME")) {
                     int trovato = 0;
                     String name = in.readLine();
                     System.out.println("Searching for " + name);
                     String query = "SELECT * FROM wine WHERE wine.Name='" + name + "';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+
+                    while (rs.next()) {
+                        trovato = 1;
+                        String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
+                        out.println(out_data);
+                    }
+                    if (trovato == 0) {
+                        out.println("La sua ricerca non ha prodotto risultati");
+                    }
+                    out.println("null");
+
+                }
+                else if (line.equals("SEARCH_WINE_YEAR")) {
+                    int trovato = 0;
+                    String year = in.readLine();
+                    System.out.println("Searching for " + year);
+                    String query = "SELECT * FROM wine WHERE wine.Data='" + year + "';";
                     ResultSet rs = this.stmt.executeQuery(query);
 
                     while (rs.next()) {
@@ -153,16 +171,29 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
-                else if (line.equals("UPDATE_WINE_DATA")) {
-                    //TODO: Update wine data
-                }
-                else {
-                    System.out.println("ServerThread: Feature not added");
-                }
+                else if (line.equals("ADD_PDA")) {
+                    String info = in.readLine();
+                    String[] temp = info.split("/");
+                    String USR = temp[0];
+                    String wine_name = temp[1];
+                    String wine_producer = temp[2];
+                    String wine_year = temp[3];
+                    String notes = temp[4];
+                    int quantity = Integer.parseInt(temp[5]);
+
+                    int id = 0;
+
+                    ResultSet rs = this.stmt.executeQuery("SELECT ID FROM clienti WHERE clienti.USR='" + USR + "';");
+                    if (rs.next()) //if user exists, get his ID and insert the purchase
+                        id = rs.getInt("ID");
+
+                    int count = this.stmt.executeUpdate("INSERT INTO pda (IDClient, WineName, WineProducer, WineYear, Quantity, Notes) VALUES (" + id + ", '" + wine_name + "', '" + wine_producer + "', '" + wine_year + "', " + quantity + ", '" + notes + "');");
+                    if (count == 1) {
+                        System.out.println("Wine added");
+                    } else { out.println("FAILED_ADD"); }
+                } else { System.out.println("ServerThread: Feature not added"); }
             }
-        } catch (IOException | SQLException e) {
-            System.out.println("ServerThread, " + e);
-        }
+        } catch (IOException | SQLException e) { System.out.println("ServerThread, " + e); }
     }
 }
 

@@ -1,8 +1,8 @@
 package com.example.gestorevini;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,11 +23,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class search_wine_pageFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
     private BufferedReader in;
     private PrintWriter out;
     private ObservableList<Wine> list = FXCollections.observableArrayList();
     private Wine temp_wine;
     private String client;
+    private String type;
     private String search_type = "SEARCH_WINE_NAME";
 
     @FXML
@@ -42,6 +44,9 @@ public class search_wine_pageFXController implements Initializable {
     private TableColumn<Wine, String> name_col, prod_col, origin_col;
     @FXML
     private TableColumn<Wine, Integer> year_col, avl_col, price_col;
+
+    public void setUserID(String c) { client = c; }
+    public void setUserType(String c) { type = c; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,8 +79,6 @@ public class search_wine_pageFXController implements Initializable {
             }
         });
     }
-
-    public void setUserID(String c) { client = c; }
 
     @FXML
     public void btn_search_is_clicked() {
@@ -126,51 +129,20 @@ public class search_wine_pageFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-        Parent root = loader.load();
-        LoggedInFXController LFXC = loader.getController();
-        LFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Home");
-    }
-
+    public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }
 
     @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
-    }
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
 
     @FXML
-    public void btn_user_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Stage window = (Stage) btn_user.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("User Page");
-    }
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
 
     @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Stage window = (Stage) btn_cart.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Cart");
-    }
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
 
     @FXML
-    public void btn_notifications_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
-        Stage window = (Stage) btn_notifications.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Notifications");
-    }
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 
-    private Socket getSocket() throws Exception {
-        return new Socket("localhost", 1234);
-    }
+    private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 
 }

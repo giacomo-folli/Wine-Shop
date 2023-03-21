@@ -1,35 +1,28 @@
 package com.example.gestorevini;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ResourceBundle;
 import java.net.URL;
-import java.util.Scanner;
 
 public class helpFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
     private PrintWriter out;
     private String client;
+    private String type;
     private boolean visibility_pda = false;
     private boolean visibility_info = false;
 
     @FXML
-    private Button btn_logout, btn_user, btn_cart, btn_notifications, btn_support, btn_pda, btn_send;
+    private Button btn_support, btn_pda;
     @FXML
     private AnchorPane pane_pda, pane_contact_info;
     @FXML
@@ -38,9 +31,11 @@ public class helpFXController implements Initializable {
     private Spinner spin_quantity;
 
     public void setClient(String i) { client = i; }
+    public void setUserType(String i) { type = i; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println("HelpFXController: " + client + " " + type);
         pane_pda.setVisible(visibility_pda);
         pane_contact_info.setVisible(visibility_info);
 
@@ -84,50 +79,19 @@ public class helpFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-        Parent root = loader.load();
-        LoggedInFXController LFXC = loader.getController();
-        LFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Home");
-    }
-
+    public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }
 
     @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
-    }
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
 
     @FXML
-    public void btn_user_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Stage window = (Stage) btn_user.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("User");
-    }
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
 
     @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Stage window = (Stage) btn_cart.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Cart");
-    }
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
 
     @FXML
-    public void btn_notifications_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
-        Stage window = (Stage) btn_notifications.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Notifications");
-    }
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 
-    public Socket getSocket() throws IOException {
-        return new Socket("localhost", 1234);
-    }
+    public Socket getSocket() throws IOException { return new Socket("localhost", 1234); }
 }

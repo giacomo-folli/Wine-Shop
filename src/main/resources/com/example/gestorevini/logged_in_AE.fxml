@@ -22,42 +22,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@news.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <ImageView fx:id="img_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="467.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@cart.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="img_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="430.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@users_icon.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
             <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -65,105 +30,115 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
          <children>
-            <SplitPane dividerPositions="0.29797979797979796" prefHeight="323.0" prefWidth="597.0">
-              <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <Button fx:id="btn_get_help" cancelButton="true" layoutY="240.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_help_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Get help">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets left="10.0" />
-                           </padding></Button>
-                        <Button fx:id="btn_show_purch" cancelButton="true" layoutY="160.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_purch_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show purchases">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets left="45.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btn_show_wines" cancelButton="true" layoutY="80.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show all wines">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets left="37.0" />
-                           </padding>
-                        </Button>
-                        <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Search wines">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                           <padding>
-                              <Insets left="32.0" />
-                           </padding>
-                        </Button>
-                        <ImageView id="img4" fx:id="img4_neg" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-                           <image>
-                              <Image url="@help_icon_neg.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView id="img3" fx:id="img3_neg" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-                           <image>
-                              <Image url="@list_icon_neg.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fx:id="img2_neg" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@purchase_icon_neg.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView fx:id="img1_neg" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@search_icon_neg.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ImageView>
-                        <ImageView id="img4" fx:id="img4" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-                           <image>
-                              <Image url="@help_icon.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
-                        <ImageView id="img3" fx:id="img3" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-                           <image>
-                              <Image url="@purch_icon.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
-                        <ImageView id="img2" fx:id="img2" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-                           <image>
-                              <Image url="@list_icon.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
-                        <ImageView fx:id="img1" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@search_icon.png" />
-                           </image>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor></ImageView>
-                     </children></AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-              </items>
-            </SplitPane>
+            <GridPane alignment="BASELINE_CENTER" hgap="100.0" prefHeight="323.0" prefWidth="597.0" vgap="70.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ImageView fx:id="img_user" accessibleText="user" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@users_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="img_user1" accessibleText="user" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@analytics_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+                  <ImageView id="img4" fx:id="img4" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@help_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView id="img3" fx:id="img3" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@purch_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView id="img2" fx:id="img2" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@list_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="img1" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <image>
+                        <Image url="@search_icon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Button fx:id="btn_report" mnemonicParsing="false" onAction="#btn_report_is_clicked" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #00000000;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_mail" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_mail_is_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_show_client" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_client_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="37.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="37.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_show_wines" cancelButton="true" minWidth="91.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="187.0" stylesheets="@styles.css" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="32.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_user" alignment="CENTER" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="80.0" prefWidth="74.0" style="-fx-background-color: #00000000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />
+               </padding>
+            </GridPane>
          </children></AnchorPane>
   </items>
 </SplitPane>

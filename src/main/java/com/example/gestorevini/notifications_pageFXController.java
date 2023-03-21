@@ -15,44 +15,30 @@ import java.net.URL;
 
 public class notifications_pageFXController implements Initializable {
     private String client;
-
-    @FXML
-    private Button btn_logout, btn_cart, btn_user;
+    private String type;
+    private MAIN_LIB lib = new MAIN_LIB();
 
     public void setUser(String i) { client = i; }
+    public void setUserType(String i) { type = i; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(client + ", " + type);
+        //TODO: implementare la funzione di notifica(?)
     }
 
     @FXML
-    public void btn_home_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-        Parent root = loader.load();
-        LoggedInFXController LFXC = loader.getController();
-        LFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Home");
-    }
-
-
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
 
     @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
-    }
+    public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type);}
 
     @FXML
-    public void btn_user_is_clicked() throws IOException {
-        //...
-    }
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
 
     @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        //...
-    }
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
+
+    @FXML
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 }

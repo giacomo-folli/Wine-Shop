@@ -3,16 +3,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,10 +17,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class purchasesFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
     private BufferedReader in;
     private PrintWriter out;
     private ObservableList<Purchase> list = FXCollections.observableArrayList();
     private String client;
+    private String type;
 
     @FXML
     private Button btn_user, btn_cart, btn_notifications, btn_logout, btn_home;
@@ -36,9 +33,11 @@ public class purchasesFXController implements Initializable {
     @FXML
     private TableColumn<Purchase, Integer> id_col, quantity_col, price_col;
 
+    public void setClient(String i) { client = i; }
+    public void setUserType(String i) { type = i; }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         wine_name_col.setCellValueFactory(new PropertyValueFactory<>("wineName"));
         card_col.setCellValueFactory(new PropertyValueFactory<>("cardName"));
         id_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -47,10 +46,6 @@ public class purchasesFXController implements Initializable {
 
         purchaseTableView.getItems().clear();
         list.clear();
-    }
-
-    public void setClient(String client) {
-        this.client = client;
     }
 
     public void setTableView() {
@@ -81,51 +76,19 @@ public class purchasesFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-        Parent root = loader.load();
-        LoggedInFXController LFXC = loader.getController();
-        LFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Home");
-    }
-
+    public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }
 
     @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
-    }
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
 
     @FXML
-    public void btn_user_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Stage window = (Stage) btn_user.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("User Page");
-    }
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
 
     @FXML
-    public void btn_cart_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("cart_page.fxml"));
-        Parent root = loader.load();
-        cart_pageFXController cart_page = loader.getController();
-        //cart_page.setUserID(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Cart");
-    }
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
 
     @FXML
-    public void btn_notifications_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
-        Stage window = (Stage) btn_notifications.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Notifications");
-    }
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 
     private Socket getSocket() throws Exception {
         return new Socket("localhost", 1234);

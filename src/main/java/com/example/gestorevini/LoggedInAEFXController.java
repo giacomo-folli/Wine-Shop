@@ -19,48 +19,49 @@ import java.util.ResourceBundle;
 
 public class LoggedInAEFXController implements Initializable {
     private String client;
-    private String grant = MainApplicationFXController.getUserTYPE();
+    private String type = MainApplicationFXController.getUserTYPE();
 
     @FXML
     private Label lbl_user_type;
     @FXML
     private ImageView img1, img2, img3, img4;
     @FXML
-    private Button btn_logout, btn_user, btn_cart, btn_show_wines, btn_search_wine, btn_get_help, btn_show_purch;
+    private Button btn_search_wine, btn_show_wines, btn_show_client, btn_mail, btn_logout, btn_report;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_search_wine.onMouseEnteredProperty().set(e -> mouse_enters_img(img1));
-        btn_search_wine.onMouseExitedProperty().set(e -> mouse_exits_img(img1));
-        btn_show_wines.onMouseEnteredProperty().set(e -> mouse_enters_img(img2));
-        btn_show_wines.onMouseExitedProperty().set(e -> mouse_exits_img(img2));
-        btn_show_purch.onMouseEnteredProperty().set(e -> mouse_enters_img(img3));
-        btn_show_purch.onMouseExitedProperty().set(e -> mouse_exits_img(img3));
-        btn_get_help.onMouseEnteredProperty().set(e -> mouse_enters_img(img4));
-        btn_get_help.onMouseExitedProperty().set(e -> mouse_exits_img(img4));
+        //btn_search_wine.onMouseEnteredProperty().set(e -> mouse_enters_img(img1));
+        //btn_search_wine.onMouseExitedProperty().set(e -> mouse_exits_img(img1));
+        System.out.println("Logged in as: " + type);
 
-        System.out.println(grant);
-
-        if (grant.equals("admin")) {
+        if (type.equals("admin")) {
             lbl_user_type.setText("ADMIN");
         } else {
             lbl_user_type.setText("EMPLOYEE");
         }
     }
 
-    private void mouse_enters_img(ImageView a) { a.setVisible(false); }
-    private void mouse_exits_img(ImageView a) { a.setVisible(true); }
+    //private void mouse_enters_img(ImageView a) { a.setVisible(false); }
+    //private void mouse_exits_img(ImageView a) { a.setVisible(true); }
     public void setUser(String i) { client = i; }
+    public void setUserType(String i) { type = i; }
 
     @FXML
     private void btn_show_wines_clicked(ActionEvent event) throws IOException {
+        //TODO: maybe add way to change wine's data
         FXMLLoader loader = new FXMLLoader(getClass().getResource("wine_list_page.fxml"));
         Parent root = loader.load();
         wineListFXController WLFXC = loader.getController();
         WLFXC.SetUserID(client);
+        WLFXC.SetUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Search Wine");
+    }
+
+    @FXML
+    public void btn_report_is_clicked(ActionEvent event) throws IOException {
+        //TODO: open report page
     }
 
     @FXML
@@ -73,68 +74,30 @@ public class LoggedInAEFXController implements Initializable {
 
     @FXML
     public void btn_user_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Stage window = (Stage) btn_user.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("User Page");
-    }
-
-    @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Stage window = (Stage) btn_cart.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Cart");
-    }
-
-    @FXML
-    public void btn_notifications_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("notifications_page.fxml"));
-        Parent root = loader.load();
-        notifications_pageFXController nFXC = loader.getController();
-        nFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Notifications");
+        //TODO: open to user page. Admin actions are different from employee actions.
     }
 
     @FXML
     public void btn_search_wine_clicked(ActionEvent event) throws IOException {
+        //TODO: maybe add method to choose between search a client or search a wine
         FXMLLoader loader = new FXMLLoader(getClass().getResource("search_wine_page.fxml"));
         Parent root = loader.load();
         search_wine_pageFXController search_wine_page = loader.getController();
         search_wine_page.setUserID(client);
+        search_wine_page.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Search Wine");
     }
 
     @FXML
-    public void btn_help_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("help_page.fxml"));
-        Parent root = loader.load();
-        //send username to purchase list page
-        helpFXController helpFX = loader.getController();
-        helpFX.setClient(client);
-        //continue with the scene
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Help");
+    public void btn_mail_is_clicked(ActionEvent event) throws IOException {
+        //TODO: open to mail page with messages from clients
     }
 
-
     @FXML
-    public void btn_show_purch_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("purchases_page.fxml"));
-        Parent root = loader.load();
-        //send username to purchase list page
-        purchasesFXController purchases_page = loader.getController();
-        purchases_page.setClient(client);
-        purchases_page.setTableView();
-        //continue with the scene
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Purchases");
+    public void btn_show_client_clicked(ActionEvent event) throws IOException {
+        //TODO: open client list page
     }
 
 }

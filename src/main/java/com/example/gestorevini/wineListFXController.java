@@ -23,13 +23,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class wineListFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
     private BufferedReader in;
     private PrintWriter out;
     private ObservableList<Wine> list = FXCollections.observableArrayList();
     private String client;
+    private String type;
 
-    @FXML
-    private Button btn_home, btn_logout, btn_cart, btn_notifications, btn_user;
     @FXML
     private TableView<Wine> table_view;
     @FXML
@@ -38,9 +38,12 @@ public class wineListFXController implements Initializable {
     private TableColumn<Wine, Integer> year_col, price_col, avl_col;
 
     public void SetUserID(String i) { client = i; }
+    public void SetUserType(String i) { type = i; }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        System.out.println(client + ", " + type);
         name_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("nome"));
         prod_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("produttore"));
         origin_col.setCellValueFactory(new PropertyValueFactory<Wine, String>("provenienza"));
@@ -79,15 +82,7 @@ public class wineListFXController implements Initializable {
     }
 
     @FXML
-    public void btn_home_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-        Parent root = loader.load();
-        LoggedInFXController LFXC = loader.getController();
-        LFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Home");
-    }
+    public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }
 
     private Socket getSocket() throws Exception {
         return new Socket("localhost", 1234);

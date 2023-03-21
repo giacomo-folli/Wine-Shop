@@ -1,5 +1,6 @@
 package com.example.gestorevini;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RegisterFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
 
     @FXML
     private TextField field_nome, field_cognome, field_email, field_cf, field_res, field_cell, field_psd;
@@ -45,10 +47,5 @@ public class RegisterFXController implements Initializable {
     }
 
     @FXML
-    private void getBack_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) img_getBack.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Home");
-    }
+    private void getBack_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
 }

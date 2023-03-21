@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class LoggedInFXController implements Initializable {
     private String client;
+    private String type;
+    private MAIN_LIB lib = new MAIN_LIB();
 
     @FXML
     private ImageView img1, img2, img3, img4;
@@ -37,52 +39,7 @@ public class LoggedInFXController implements Initializable {
     private void mouse_enters_img(ImageView a) { a.setVisible(false); }
     private void mouse_exits_img(ImageView a) { a.setVisible(true); }
     public void setUser(String i) { client = i; }
-
-    @FXML
-    private void btn_show_wines_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("wine_list_page.fxml"));
-        Parent root = loader.load();
-        wineListFXController WLFXC = loader.getController();
-        WLFXC.SetUserID(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Search Wine");
-    }
-
-    @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
-    }
-
-    @FXML
-    public void btn_user_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Stage window = (Stage) btn_user.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("User Page");
-    }
-
-    @FXML
-    public void btn_cart_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Stage window = (Stage) btn_cart.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Cart");
-    }
-
-    @FXML
-    public void btn_notifications_is_clicked(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("notifications_page.fxml"));
-        Parent root = loader.load();
-        notifications_pageFXController nFXC = loader.getController();
-        nFXC.setUser(client);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Notifications");
-    }
+    public void setUserType(String i) { type = i; }
 
     @FXML
     public void btn_search_wine_clicked(ActionEvent event) throws IOException {
@@ -90,6 +47,20 @@ public class LoggedInFXController implements Initializable {
         Parent root = loader.load();
         search_wine_pageFXController search_wine_page = loader.getController();
         search_wine_page.setUserID(client);
+        search_wine_page.setUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Search Wine");
+    }
+
+    @FXML
+    private void btn_show_wines_clicked(ActionEvent event) throws IOException {
+        //TODO: maybe add way to change wine's data
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("wine_list_page.fxml"));
+        Parent root = loader.load();
+        wineListFXController WLFXC = loader.getController();
+        WLFXC.SetUserID(client);
+        WLFXC.SetUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Search Wine");
@@ -102,12 +73,12 @@ public class LoggedInFXController implements Initializable {
         //send username to purchase list page
         helpFXController helpFX = loader.getController();
         helpFX.setClient(client);
+        helpFX.setUserType(type);
         //continue with the scene
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Help");
     }
-
 
     @FXML
     public void btn_show_purch_clicked(ActionEvent event) throws IOException {
@@ -116,6 +87,7 @@ public class LoggedInFXController implements Initializable {
         //send username to purchase list page
         purchasesFXController purchases_page = loader.getController();
         purchases_page.setClient(client);
+        purchases_page.setUserType(type);
         purchases_page.setTableView();
         //continue with the scene
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -123,4 +95,15 @@ public class LoggedInFXController implements Initializable {
         window.setTitle("Purchases");
     }
 
+    @FXML
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
+
+    @FXML
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
+
+    @FXML
+    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
+
+    @FXML
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 }

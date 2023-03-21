@@ -79,6 +79,7 @@ public class MainApplicationFXController implements Initializable {
                                 //inject username in LoggedInAEFXController
                                 LoggedInAEFXController LIAE = loader.getController();
                                 LIAE.setUser(usr);
+                                LIAE.setUserType(user_type);
                                 Stage window = (Stage) btn_login.getScene().getWindow();
                                 window.setScene(new Scene(root));
                                 window.setTitle("Home");

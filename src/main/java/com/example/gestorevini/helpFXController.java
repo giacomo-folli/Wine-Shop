@@ -25,12 +25,13 @@ import java.util.Scanner;
 public class helpFXController implements Initializable {
     private PrintWriter out;
     private String client;
-    private boolean visibility = false;
+    private boolean visibility_pda = false;
+    private boolean visibility_info = false;
 
     @FXML
     private Button btn_logout, btn_user, btn_cart, btn_notifications, btn_support, btn_pda, btn_send;
     @FXML
-    private AnchorPane pane_pda;
+    private AnchorPane pane_pda, pane_contact_info;
     @FXML
     private TextField txt_name, txt_year, txt_notes, txt_producer;
     @FXML
@@ -40,22 +41,30 @@ public class helpFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pane_pda.setVisible(visibility);
+        pane_pda.setVisible(visibility_pda);
+        pane_contact_info.setVisible(visibility_info);
+
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 12);
         valueFactory.setValue(1);
         spin_quantity.setValueFactory(valueFactory);
 
         btn_support.onActionProperty().set(e -> {
-            //...
+            if (visibility_info) {
+                pane_contact_info.setVisible(false);
+                visibility_info = false;
+            } else {
+                pane_contact_info.setVisible(true);
+                visibility_info = true;
+            }
         });
 
         btn_pda.onActionProperty().set(e -> {
-            if (visibility) {
+            if (visibility_pda) {
                 pane_pda.setVisible(false);
-                visibility = false;
+                visibility_pda = false;
             } else {
                 pane_pda.setVisible(true);
-                visibility = true;
+                visibility_pda = true;
             }
         });
     }
@@ -65,10 +74,9 @@ public class helpFXController implements Initializable {
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             String pda = client + "/" + txt_name.getText() + "/" + txt_year.getText() + "/" + txt_producer.getText() + "/" + txt_notes.getText() + "/" + spin_quantity.getValue();
-
             out.println("ADD_PDA");
             out.println(pda);
-
+            //Hide the pane when the request is sent
             pane_pda.setVisible(false);
         } catch (IOException e) {
             System.out.println("HelpFXCotroller: " + e.getMessage());

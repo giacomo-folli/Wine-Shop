@@ -9,7 +9,7 @@ import java.net.Socket;
 import java.sql.*;
 import java.util.Scanner;
 
-public class Server extends Application {
+public class    Server extends Application {
 
     public void start(Stage stage) throws IOException { //initialize Server and connect to DB
         final String DBURL = "jdbc:mysql://localhost:3306/wineshop";
@@ -26,7 +26,6 @@ public class Server extends Application {
                 { //create a new server socket
                     while (true) {
                         final Socket socket = serverSocket.accept();
-                        //System.out.println("New client connected at port " + socket.getPort());
                         new ServerThread(socket, conn, stmt).start(); //create a new thread for each client
                     }
                 } catch (Exception e) { System.out.println("Server connection failed, " + e); }

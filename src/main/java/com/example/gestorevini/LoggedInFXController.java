@@ -74,10 +74,13 @@ public class LoggedInFXController implements Initializable {
     }
 
     @FXML
-    public void btn_notifications_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
-        Stage window = (Stage) btn_notifications.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("notifications_page.fxml"));
+        Parent root = loader.load();
+        notifications_pageFXController nFXC = loader.getController();
+        nFXC.setUser(client);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setTitle("Notifications");
     }
 

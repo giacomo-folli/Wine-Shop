@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.LoggedInAEFXController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@app_icon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+               <image>
+                  <Image url="@log_out.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@news.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="img_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="467.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@cart.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <ImageView fx:id="img_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="430.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@users_icon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_notifications" layoutX="515.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="lbl_user_type" layoutX="68.0" layoutY="25.0" prefHeight="17.0" prefWidth="74.0" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <SplitPane dividerPositions="0.29797979797979796" prefHeight="323.0" prefWidth="597.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="btn_get_help" cancelButton="true" layoutY="240.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_help_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Get help">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding></Button>
+                        <Button fx:id="btn_show_purch" cancelButton="true" layoutY="160.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_purch_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show purchases">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="45.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btn_show_wines" cancelButton="true" layoutY="80.0" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Show all wines">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="37.0" />
+                           </padding>
+                        </Button>
+                        <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" text="Search wines">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <padding>
+                              <Insets left="32.0" />
+                           </padding>
+                        </Button>
+                        <ImageView id="img4" fx:id="img4_neg" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@help_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="img3" fx:id="img3_neg" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@list_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="img2_neg" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@purchase_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="img1_neg" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@search_icon_neg.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="img4" fx:id="img4" disable="true" fitHeight="58.0" fitWidth="38.0" layoutX="14.0" layoutY="261.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@help_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
+                        <ImageView id="img3" fx:id="img3" disable="true" fitHeight="57.0" fitWidth="38.0" layoutX="14.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@purch_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
+                        <ImageView id="img2" fx:id="img2" disable="true" fitHeight="51.0" fitWidth="38.0" layoutX="14.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
+                           <image>
+                              <Image url="@list_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
+                        <ImageView fx:id="img1" disable="true" fitHeight="38.0" fitWidth="38.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@search_icon.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></ImageView>
+                     </children></AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

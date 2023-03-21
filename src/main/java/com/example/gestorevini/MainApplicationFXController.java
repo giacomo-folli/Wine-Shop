@@ -28,6 +28,7 @@ public class MainApplicationFXController implements Initializable {
     private static final String LOGIN = "root";
     private static final String PASSWORD = "";
     private static String usr;
+    private static String user_type;
     private BufferedReader in;
     private PrintWriter out;
 
@@ -66,27 +67,42 @@ public class MainApplicationFXController implements Initializable {
                 if (rs.next()) {
                     true_psw = rs.getString("PSW");
 
-                    if (true_psw.equals(password)) { //start "LoggedIn" JavaFX scene
+                    if (true_psw.equals(password)) { //if password correct
                         usr = username;
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
-                        Parent root = loader.load();
-                        //inject username in LoggedInFXController
-                        LoggedInFXController loggedIn = loader.getController();
-                        loggedIn.setUser(usr);
-                        Stage window = (Stage) btn_login.getScene().getWindow();
-                        window.setScene(new Scene(root));
-                        window.setTitle("Home");
-                        System.out.println(username + " logged in");
-
+                        String type = "SELECT type FROM clienti WHERE clienti.USR = '" + usr + "';";
+                        ResultSet s  = stmt.executeQuery(type);
+                        if (s.next()) {
+                            user_type = s.getString("type");
+                            if (user_type.equals("admin") || user_type.equals("employee")) {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in_AE.fxml"));
+                                Parent root = loader.load();
+                                //inject username in LoggedInAEFXController
+                                LoggedInAEFXController LIAE = loader.getController();
+                                LIAE.setUser(usr);
+                                Stage window = (Stage) btn_login.getScene().getWindow();
+                                window.setScene(new Scene(root));
+                                window.setTitle("Home");
+                                System.out.println(usr + " logged in as admin");
+                            } else {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
+                                Parent root = loader.load();
+                                //inject username in LoggedInFXController
+                                LoggedInFXController loggedIn = loader.getController();
+                                loggedIn.setUser(usr);
+                                Stage window = (Stage) btn_login.getScene().getWindow();
+                                window.setScene(new Scene(root));
+                                window.setTitle("Home");
+                                System.out.println(usr +" logged in as customer");
+                            }
+                        }
                     } else { System.out.println("Wrong password"); }
                 } else { System.out.println("Username doesn't exist"); }
             } catch (Exception e) { System.out.println(e); }
         } catch (Exception e) { System.out.println("Failed to connect to database"); }
     }
 
-    public static String getUserUSR() { //return the username of the logged_in user
-        return usr;
-    }
+    public static String getUserUSR() { return usr; }
+    public static String getUserTYPE() { return user_type; }
 
     @FXML
     private void btn_register_is_clicked() throws IOException {//implement your REGISTER button handler here

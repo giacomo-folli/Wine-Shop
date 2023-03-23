@@ -41,7 +41,49 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <ImageView fx:id="img_user" accessibleText="user" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="btn_report" mnemonicParsing="false" onAction="#btn_report_is_clicked" prefHeight="82.0" prefWidth="99.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btn_mail" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_mail_is_clicked" prefHeight="87.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_show_client" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_client_clicked" prefHeight="86.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="37.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="90.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="37.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_show_wines" cancelButton="true" minWidth="91.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="86.0" prefWidth="99.0" stylesheets="@styles.css" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="32.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btn_user" alignment="CENTER" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="85.0" prefWidth="99.0" stylesheets="@styles.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fx:id="img_user" accessibleText="user" disable="true" fitHeight="75.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@users_icon.png" />
                      </image>
@@ -49,7 +91,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="img_user1" accessibleText="user" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_user1" accessibleText="user" disable="true" fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@analytics_icon.png" />
                      </image>
@@ -92,48 +134,6 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Button fx:id="btn_report" mnemonicParsing="false" onAction="#btn_report_is_clicked" prefHeight="75.0" prefWidth="75.0" style="-fx-background-color: #00000000;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="btn_mail" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_mail_is_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="btn_show_client" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_show_client_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <padding>
-                        <Insets left="37.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="80.0" prefWidth="174.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <padding>
-                        <Insets left="37.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="btn_show_wines" cancelButton="true" minWidth="91.0" mnemonicParsing="false" onAction="#btn_show_wines_clicked" prefHeight="80.0" prefWidth="187.0" stylesheets="@styles.css" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <padding>
-                        <Insets left="32.0" />
-                     </padding>
-                  </Button>
-                  <Button fx:id="btn_user" alignment="CENTER" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="80.0" prefWidth="74.0" style="-fx-background-color: #00000000;" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
                <padding>
                   <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />

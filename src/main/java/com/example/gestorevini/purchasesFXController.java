@@ -25,8 +25,6 @@ public class purchasesFXController implements Initializable {
     private String type;
 
     @FXML
-    private Button btn_user, btn_cart, btn_notifications, btn_logout, btn_home;
-    @FXML
     private TableView<Purchase> purchaseTableView;
     @FXML
     private TableColumn<Purchase, String> wine_name_col, card_col;

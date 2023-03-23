@@ -65,7 +65,7 @@ public class MAIN_LIB {
         NPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
-        window.setTitle("Noifications");
+        window.setTitle("Notifications");
     }
 
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }

@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,6 +18,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class cart_pageFXController implements Initializable {
@@ -26,6 +26,7 @@ public class cart_pageFXController implements Initializable {
     private String client = MainApplicationFXController.getUserUSR();
     private String type;
     private BufferedReader in;
+    private ArrayList<String> temp_id = new ArrayList<>();
     private PrintWriter out;
     private ObservableList<CartItem> list = FXCollections.observableArrayList();
 
@@ -71,6 +72,36 @@ public class cart_pageFXController implements Initializable {
             }
         } catch (Exception e) {
             System.out.println("cartPageFXController, " + e);
+        }
+    }
+
+    @FXML
+    public void btn_check_out_is_clicked(ActionEvent event) {
+        try (Socket s = getSocket()) {
+            temp_id.clear();
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            out = new PrintWriter(s.getOutputStream(), true);
+            out.println("GET_ID_CART");
+            out.println(client);
+            String line;
+
+            while (!(line = in.readLine()).equals("null")) {
+                System.out.println(line);
+                temp_id.add(line);
+            }
+
+            FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("buy_info_page.fxml"));
+            Parent root = loader.load();
+            buyInfoFXController BIFX = loader.getController();
+            BIFX.setUserType(type);
+            BIFX.setUserID(client);
+            BIFX.setCartID(temp_id);
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(new Scene(root));
+            window.setTitle("Card Info");
+
+        } catch (Exception e) {
+            System.out.println("cartPageFXController - btn_checkout, " + e);
         }
     }
 

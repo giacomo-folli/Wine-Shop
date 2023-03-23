@@ -52,7 +52,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <ImageView fx:id="img_getBack" fitHeight="25.0" fitWidth="29.0" layoutX="14.0" layoutY="18.0" onMouseClicked="#getBack_is_clicked" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img_getBack" fitHeight="25.0" fitWidth="29.0" layoutX="14.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@get_back.png" />
                </image>
@@ -60,6 +60,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <Label layoutX="44.0" layoutY="49.0" text="Username" />
+            <TextField fx:id="field_user" layoutX="164.0" layoutY="45.0" promptText="username" />
+            <Button layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#get_back_is_clicked" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children></AnchorPane>
    </children>
 </HBox>

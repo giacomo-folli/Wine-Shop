@@ -119,6 +119,7 @@ public class search_wine_pageFXController implements Initializable {
             //Set the wine to buy in new scene
             addCartFXController cartAdd = loader.getController();
             cartAdd.setLbl_cart_info(temp_wine.getNome(), temp_wine.getProduttore());
+            cartAdd.setUserType(type);
             cartAdd.setUserID(client);
             cartAdd.setPrice(temp_wine.getPrezzo());
             cartAdd.setMaxQuantity(temp_wine.getNum());
@@ -144,5 +145,4 @@ public class search_wine_pageFXController implements Initializable {
     public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
-
 }

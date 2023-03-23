@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.net.URL;
 import java.util.Scanner;
@@ -26,12 +27,11 @@ public class buyInfoFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
     private String type;
     private String client;
+    private ArrayList temp_id;
     private Socket s;
     private BufferedReader in;
     private PrintWriter out;
     private String name_wine;
-    private int temp_quantity;
-    private int tot_price;
     private int price;
 
     @FXML
@@ -40,71 +40,51 @@ public class buyInfoFXController implements Initializable {
     private TextField txt_name, txt_number, txt_cvv, txt_exp;
     @FXML
     public Label lbl_cart_info, lbl_est_cost;
-    @FXML
-    private Spinner<Integer> spin_quantity;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        spin_quantity.setOnMouseClicked((MouseEvent event) -> {
-            temp_quantity = spin_quantity.getValue();
-            tot_price = price * temp_quantity;
-            lbl_est_cost.setText(tot_price + "€");
-        });
-    }
 
     public void setUserID(String c) { client = c; }
     public void setUserType(String c) { type = c; }
-
-    public void getSocket(Socket socket) { s = socket; }
-
-    public void setLbl_cart_info(String nameWine, String nameProducer) {
-        name_wine = nameWine;
-        String text = "You are buying " + name_wine + " from " + nameProducer;
-        lbl_cart_info.setText(text);
-    }
-
+    public void setCartID(ArrayList l) { temp_id = l; }
+    private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
     public void setPrice(int i) {
         price = i;
     }
 
-    public void setMaxQuantity(int a) {
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, a);
-        valueFactory.setValue(1);
-        spin_quantity.setValueFactory(valueFactory);
-        lbl_est_cost.setText(String.valueOf(price) + "€");
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        //...
     }
 
     @FXML
-    private void btn_buy_wine_is_clicked() throws IOException, InterruptedException {
+    private void btn_buy_wine_is_clicked(ActionEvent event) {
         if (txt_name.getText().isEmpty() || txt_number.getText().isEmpty() || txt_cvv.getText().isEmpty() || txt_exp.getText().isEmpty()) {
             lbl_cart_info.setText("Please fill all the fields");
         } else {
-            out = new PrintWriter(s.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out.println("BUY_WINE");
-            out.println(client+"/"+name_wine+"/"+temp_quantity+"/"+tot_price+"/"+txt_name.getText()+"/"+txt_number.getText());
-            if (in.readLine().equals("SUCCESS")) {
-                lbl_cart_info.setText("Purchase successful");
-                sleep(2000);
-                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-                Stage window = (Stage) btn_home.getScene().getWindow();
-                window.setScene(new Scene(fxmlLoader.load()));
+            try (Socket s = getSocket()) {
+                out = new PrintWriter(s.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                System.out.println("list is long " + temp_id.size());
+
+                for (int i = 0; i < temp_id.size(); i++)
+                {
+                    out.println("BUY_WINE");
+                    out.println(temp_id.get(i) + "/" + txt_name.getText() + "/" + txt_number.getText());
+                    String next;
+                    if ((next = in.readLine())=="DONE")
+                        System.out.println(txt_name + " bought");
+                }
+
+                //sleep(1000);
+
+                //get back to main page
+                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
+                Parent root = loader.load();
+                LoggedInFXController controller = loader.getController();
+                controller.setUser(client);
+                controller.setUserType(type);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(new Scene(root));
                 window.setTitle("Home");
-            } else if (in.readLine().equals("FAILED")) {
-                lbl_cart_info.setText("Something went wrong");
-            }
+            } catch (Exception e) { System.out.println("buyInfoFX, " + e); }
         }
     }
-
-    @FXML
-    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
-
-    @FXML
-    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
-
-    @FXML
-    public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
-
-    @FXML
-    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 }

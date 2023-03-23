@@ -84,7 +84,7 @@ public class MainApplicationFXController implements Initializable {
                                 window.setScene(new Scene(root));
                                 window.setTitle("Home");
                                 System.out.println(usr + " logged in as admin");
-                            } else {
+                            } else if (user_type.equals("null")) {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
                                 Parent root = loader.load();
                                 //inject username in LoggedInFXController
@@ -94,7 +94,7 @@ public class MainApplicationFXController implements Initializable {
                                 window.setScene(new Scene(root));
                                 window.setTitle("Home");
                                 System.out.println(usr +" logged in as customer");
-                            }
+                            } else { System.out.println("User type not recognized"); }
                         }
                     } else { System.out.println("Wrong password"); }
                 } else { System.out.println("Username doesn't exist"); }

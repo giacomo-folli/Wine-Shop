@@ -38,7 +38,4 @@ public class notifications_pageFXController implements Initializable {
 
     @FXML
     public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
-
-    @FXML
-    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
 }

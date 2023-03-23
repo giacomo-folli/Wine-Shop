@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -9,88 +8,24 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
-            <ImageView fx:id="btn_info" accessibleText="info" fitHeight="30.0" fitWidth="36.0" layoutX="512.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@news.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Button fx:id="btn_notifications" layoutX="508.0" layoutY="15.0" mnemonicParsing="false" onAction="#btn_notifications_is_clicked" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
             <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@app_icon.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
-               <image>
-                  <Image url="@log_out.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="img_cart" accessibleText="cart" fitHeight="44.0" fitWidth="38.0" layoutX="467.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@cart.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="img_user" accessibleText="user" fitHeight="30.0" fitWidth="30.0" layoutX="430.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@users_icon.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </ImageView>
-            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_cart" layoutX="474.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_cart_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_user" layoutX="433.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+      <AnchorPane prefHeight="323.0" prefWidth="398.0">
          <children>
-            <HBox prefHeight="323.0" prefWidth="597.0">
-               <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="lbl_cart_info" layoutX="4.0" layoutY="14.0" prefHeight="30.0" prefWidth="192.0" />
-                        <Spinner fx:id="spin_quantity" layoutX="26.0" layoutY="149.0" />
-                        <Label layoutX="26.0" layoutY="127.0" prefHeight="17.0" prefWidth="149.0" text="Select how many bottles:" />
-                        <Label layoutX="26.0" layoutY="193.0" text="Estimated cost:" />
-                        <Label fx:id="lbl_est_cost" layoutX="137.0" layoutY="193.0" prefHeight="17.0" prefWidth="38.0" />
-                     </children></AnchorPane>
-                  <AnchorPane prefHeight="323.0" prefWidth="398.0">
-                     <children>
-                        <TextField fx:id="txt_name" layoutX="124.0" layoutY="63.0" />
-                        <TextField fx:id="txt_number" layoutX="124.0" layoutY="113.0" />
-                        <TextField fx:id="txt_exp" layoutX="124.0" layoutY="163.0" />
-                        <TextField fx:id="txt_cvv" layoutX="124.0" layoutY="213.0" />
-                        <Label layoutX="124.0" layoutY="45.0" text="Name" />
-                        <Label layoutX="124.0" layoutY="93.0" text="Number" />
-                        <Label layoutX="124.0" layoutY="144.0" text="Expiry date" />
-                        <Label layoutX="124.0" layoutY="195.0" text="CVV" />
-                        <Button layoutX="124.0" layoutY="251.0" mnemonicParsing="false" onAction="#btn_buy_wine_is_clicked" prefHeight="30.0" prefWidth="149.0" text="Buy" />
-                     </children>
-                  </AnchorPane>
-               </children></HBox>
-         </children></AnchorPane>
+            <TextField fx:id="txt_name" layoutX="224.0" layoutY="61.0" />
+            <TextField fx:id="txt_number" layoutX="224.0" layoutY="111.0" />
+            <TextField fx:id="txt_exp" layoutX="224.0" layoutY="161.0" />
+            <TextField fx:id="txt_cvv" layoutX="224.0" layoutY="211.0" />
+            <Label layoutX="224.0" layoutY="43.0" text="Name" />
+            <Label layoutX="224.0" layoutY="91.0" text="Number" />
+            <Label layoutX="224.0" layoutY="142.0" text="Expiry date" />
+            <Label layoutX="224.0" layoutY="193.0" text="CVV" />
+            <Button layoutX="224.0" layoutY="249.0" mnemonicParsing="false" onAction="#btn_buy_wine_is_clicked" prefHeight="30.0" prefWidth="149.0" text="Buy" />
+         </children>
+      </AnchorPane>
   </items>
 </SplitPane>

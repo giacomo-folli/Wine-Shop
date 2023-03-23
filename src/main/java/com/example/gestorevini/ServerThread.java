@@ -79,26 +79,28 @@ public class ServerThread extends Thread {
                     //client/name_wine/quantity/tot_price/card_name/card_number
                     String info = in.readLine();
                     String[] temp = info.split("/");
-                    String user = temp[0];
-                    String name_wine = temp[1];
-                    int quantity = Integer.parseInt(temp[2]);
-                    int tot_price = Integer.parseInt(temp[3]);
-                    String card_name = temp[4];
-                    String card_number = temp[5];
-                    ResultSet rs = this.stmt.executeQuery("SELECT ID FROM clienti WHERE clienti.USR='" + user + "';");
-                    if (rs.next()) { //if user exists, get his ID and insert the purchase
-                        int id = rs.getInt("ID");
+                    String cart_id = temp[0];
+                    String card_name = temp[1];
+                    String card_number = temp[2];
+
+                    ResultSet rs = this.stmt.executeQuery("SELECT * FROM cart WHERE cart.ID=" + cart_id + ";");
+                    if (rs.next()) { //retrieve card item data
+                        int id = rs.getInt("IDBuyer");
+                        String name_wine = rs.getString("WineName");
+                        int quantity = rs.getInt("WineQuantity");
+                        int tot_price = rs.getInt("Price");
+                        System.out.println("ID: " + id + " Name: " + name_wine + " Quantity: " + quantity + " Price: " + tot_price);
                         String query = "INSERT INTO purchase (IDBuyer, WineName, WineQuantity, Price, CardName, CardNumber) VALUES (" + id + ", '" + name_wine + "', " + quantity + ", " + tot_price + ", '" + card_name + "', '" + card_number + "');";
                         int count = this.stmt.executeUpdate(query);
-                        if (count == 1) {
-                            out.println("SUCCESS");
-                        } else {
-                            out.println("FAILED");
-                        }
-                    } else {
-                        System.out.println("User not found");
-                    }
 
+                        if (count == 1) {
+                            int x = this.stmt.executeUpdate("DELETE FROM cart WHERE cart.ID=" + cart_id + ";");
+                            if (x == 1)
+                                out.println("DONE");
+                        } else
+                            System.out.println("Error in purchase");
+                    } else
+                        System.out.println("User not found");
                 }
                 else if (line.equals("SHOW_PURCH")) {
                     String user = in.readLine();
@@ -110,6 +112,20 @@ public class ServerThread extends Thread {
                         System.out.println(out_data);
                         out.println(out_data);
                     }
+                    out.println("null");
+                }
+                else if (line.equals("GET_ID_CART")) {
+                    String user = in.readLine();
+                    String query = "SELECT * FROM cart JOIN clienti ON cart.IDBuyer = clienti.ID WHERE clienti.USR = '" + user + "';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    System.out.println("Getting ID cart for " + user);
+
+                    while (rs.next()) {
+                        String out_data = String.valueOf(rs.getInt("ID"));
+                        out.println(out_data);
+                    }
+
+                    System.out.println("ID cart retrieved");
                     out.println("null");
                 }
                 else if (line.equals("ADD_TO_CART")) {
@@ -153,6 +169,24 @@ public class ServerThread extends Thread {
                         } else {out.println("LOW_WINE_CAPACITY");}
                     } else { out.println("FAILED_ADD"); }
 
+                }
+                else if (line.equals("REGISTER")) {
+                    String info = in.readLine();
+                    String[] temp = info.split("/");
+                    String name = temp[0];
+                    String surname = temp[1];
+                    String cf = temp[2];
+                    String email = temp[3];
+                    String address = temp[4];
+                    String cell = temp[5];
+                    String pssw = temp[6];
+                    String usr = temp[7];
+
+                    System.out.println(name + " " + surname + " " + cf + " " + email + " " + address + " " + cell + " " + pssw + " " + usr);
+                    int count = this.stmt.executeUpdate("INSERT INTO clienti (USR, PSW, Name, Surname, Email, Cf, Cell, Addres) VALUES ('"+usr+"','"+pssw+"','"+name+"','"+surname+"','"+email+"','"+cf+"','"+cell+"','"+address+"');");
+                    if (count == 1) {
+                        out.println("REGISTERED");
+                    } else { out.println("FAILED_ADD"); }
                 }
                 else if (line.equals("SHOW_CART")) {
                     String user = in.readLine();

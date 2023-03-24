@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 
 public class LoggedInAEFXController implements Initializable {
+    private MAIN_LIB lib = new MAIN_LIB();
     private String client;
     private String type = MainApplicationFXController.getUserTYPE();
 
@@ -34,11 +35,11 @@ public class LoggedInAEFXController implements Initializable {
         //btn_search_wine.onMouseExitedProperty().set(e -> mouse_exits_img(img1));
         System.out.println("Logged in as: " + type);
 
-        if (type.equals("admin")) {
+        if (type.equals("admin"))
             lbl_user_type.setText("ADMIN");
-        } else {
+        else
             lbl_user_type.setText("EMPLOYEE");
-        }
+
     }
 
     //private void mouse_enters_img(ImageView a) { a.setVisible(false); }
@@ -60,16 +61,13 @@ public class LoggedInAEFXController implements Initializable {
     }
 
     @FXML
-    public void btn_report_is_clicked(ActionEvent event) throws IOException {
-        //TODO: open report page
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException {
+        lib.getLogout(event);
     }
 
     @FXML
-    public void btn_logout_is_clicked() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage) btn_logout.getScene().getWindow();
-        window.setScene(new Scene(fxmlLoader.load()));
-        window.setTitle("Login");
+    public void btn_report_is_clicked(ActionEvent event) throws IOException {
+        lib.getReport(event, type);
     }
 
     @FXML

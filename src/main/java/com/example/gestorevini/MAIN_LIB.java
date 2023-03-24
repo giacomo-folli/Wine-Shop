@@ -68,5 +68,15 @@ public class MAIN_LIB {
         window.setTitle("Notifications");
     }
 
+    public void getReport(ActionEvent event, String type) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("report_page.fxml"));
+        Parent root = loader.load();
+        report_pageFXController RPFX = loader.getController();
+        RPFX.setUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Report");
+    }
+
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

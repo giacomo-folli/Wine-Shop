@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/report_pageFXController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in_AE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in_AE.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +64,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/giaco/IdeaProjects/Wine Shop/src/main/resources/com/example/gestorevini&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giaco/IdeaProjects/Wine Shop/target/classes/com/example/gestorevini&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,6 +84,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\giaco\IdeaProjects\Wine Shop\target\classes\com\example\gestorevini" />
       <recent name="C:\Users\giaco\IdeaProjects\Wine Shop\src\main\resources\com\example\gestorevini" />
       <recent name="C:\Users\giaco\IdeaProjects\Wine Shop\src\main\resources" />
     </key>
@@ -93,7 +98,7 @@
       <recent name="com.example.gestorevini" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MainApplication">
     <configuration name="MainApplication" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="com.example.gestorevini.MainApplication" />
       <module name="Wine Shop" />
@@ -101,6 +106,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" singleton="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.gestorevini.Server" />
+      <module name="Wine Shop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.MainApplication" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -124,7 +140,13 @@
       <workItem from="1679412357813" duration="7522000" />
       <workItem from="1679424335720" duration="1191000" />
       <workItem from="1679563460576" duration="9274000" />
-      <workItem from="1679586325905" duration="383000" />
+      <workItem from="1679586325905" duration="717000" />
+      <workItem from="1679646795728" duration="1587000" />
+      <workItem from="1679648521431" duration="1051000" />
+      <workItem from="1679649590510" duration="228000" />
+      <workItem from="1679650169024" duration="702000" />
+      <workItem from="1679650890742" duration="492000" />
+      <workItem from="1679651399971" duration="3514000" />
     </task>
     <servers />
   </component>

@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/report_pageFXController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/report_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/report_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,6 +144,8 @@
       <workItem from="1679650169024" duration="702000" />
       <workItem from="1679650890742" duration="492000" />
       <workItem from="1679651399971" duration="3514000" />
+      <workItem from="1679655140011" duration="578000" />
+      <workItem from="1679656375897" duration="444000" />
     </task>
     <servers />
   </component>

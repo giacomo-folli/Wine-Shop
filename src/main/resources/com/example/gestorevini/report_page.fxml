@@ -18,16 +18,16 @@
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor></Button>
-            <ImageView accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="5.0" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../target/classes/com/example/gestorevini/log_out.png" />
-               </image>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView accessibleText="log out" disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="553.0" layoutY="5.0" preserveRatio="true">
+                <image>
+                    <Image url="@log_out.png" />
+                </image>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor></ImageView>
+            <ImageView disable="true" fitHeight="30.0" fitWidth="30.0" layoutX="8.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                  <image>
-                     <Image url="@../../../../../../target/classes/com/example/gestorevini/get_back.png" />
+                     <Image url="@get_back.png" />
                  </image>
                     <cursor>
                         <Cursor fx:constant="HAND" />

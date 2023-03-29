@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class ServerThread extends Thread {
     final private Connection conn;
@@ -12,6 +13,7 @@ public class ServerThread extends Thread {
     final private Statement stmt;
     private BufferedReader in;
     private PrintWriter out;
+    LocalDate date = LocalDate.now();
 
     public ServerThread(Socket socket, Connection conn, Statement stmt) {
         this.stmt = stmt;
@@ -205,6 +207,40 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
+                else if (line.equals("GET_WEEKLY_SALES")) {
+                    String year = in.readLine();
+                    String month = in.readLine();
+                    String start = in.readLine();
+                    String end = in.readLine();
+                    String query = "SELECT * FROM purchase WHERE year(PurchDate)=" + year + " AND month(PurchDate)=" + month + " AND day(PurchDate)>=" + start + " AND day(PurchDate)<=" + end + ";";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    int sum = 0;
+                    while (rs.next()) {
+                        sum++;
+                    }
+                    out.println(sum);
+                }
+                else if (line.equals("SEND_REPORT")) {
+                    String REPORT = in.readLine();
+                    System.out.println("REPORTaaaaaaaaaaaa");
+                    String today = date.getYear() + "-" + date.getMonth() + "-" + date.getDayOfMonth();
+                    System.out.println(today);
+                    String query = "INSERT INTO reports(ReportDate, text) VALUES ('" + today + "' + '" + REPORT + "');";
+
+                    int count = this.stmt.executeUpdate(query);
+                }
+                else if (line.equals("GET_MOST_SOLD")) {
+                    String query = "SELECT WineName, COUNT(WineQuantity) AS Num FROM purchase GROUP BY WineName ORDER BY Num DESC";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    String names = "";
+                    String nums = "";
+                    while (rs.next()) {
+                        names += rs.getString("WineName") + "/";
+                        nums += rs.getString("Num") + "/";
+                    }
+                    out.println(names);
+                    out.println(nums);
+                }
                 else if (line.equals("ADD_PDA")) {
                     String info = in.readLine();
                     String[] temp = info.split("/");
@@ -225,7 +261,8 @@ public class ServerThread extends Thread {
                     if (count == 1) {
                         System.out.println("Wine added");
                     } else { out.println("FAILED_ADD"); }
-                } else { System.out.println("ServerThread: Feature not added"); }
+                }
+                else { System.out.println("ServerThread: Feature not added"); }
             }
         } catch (IOException | SQLException e) { System.out.println("ServerThread, " + e); }
     }

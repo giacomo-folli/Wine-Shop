@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c7f3c150-3dea-436f-afc0-65d534cf312e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c7f3c150-3dea-436f-afc0-65d534cf312e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/report_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/report_pageFXController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/report_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/report_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/ServerThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/ServerThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_page.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_pageFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/report_pageFXController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,8 +116,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.MainApplication" />
+      <item itemvalue="Application.Server" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -145,7 +150,9 @@
       <workItem from="1679650890742" duration="492000" />
       <workItem from="1679651399971" duration="3514000" />
       <workItem from="1679655140011" duration="578000" />
-      <workItem from="1679656375897" duration="444000" />
+      <workItem from="1679656375897" duration="1143000" />
+      <workItem from="1680034620746" duration="2000" />
+      <workItem from="1680080949810" duration="11701000" />
     </task>
     <servers />
   </component>

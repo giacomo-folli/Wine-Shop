@@ -27,7 +27,6 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
-                System.out.println("SERVER ROUND");
                 String line = in.readLine();
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
@@ -39,7 +38,6 @@ public class ServerThread extends Thread {
                         out.println(out_data);
                     }
                     out.println("null");
-
                 }
                 else if (line.equals("SEARCH_WINE_NAME")) {
                     int trovato = 0;
@@ -222,12 +220,13 @@ public class ServerThread extends Thread {
                 }
                 else if (line.equals("SEND_REPORT")) {
                     String REPORT = in.readLine();
-                    System.out.println("REPORTaaaaaaaaaaaa");
-                    String today = date.getYear() + "-" + date.getMonth() + "-" + date.getDayOfMonth();
-                    System.out.println(today);
-                    String query = "INSERT INTO reports(ReportDate, text) VALUES ('" + today + "' + '" + REPORT + "');";
-
+                    String today = date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
+                    String query = "INSERT INTO reports(ReportDate, text) VALUES ('" + today + "', '" + REPORT + "');";
                     int count = this.stmt.executeUpdate(query);
+                    if (count == 1)
+                        out.println("REPORT_SENT");
+                    else
+                        out.println("FAILED_ADD");
                 }
                 else if (line.equals("GET_MOST_SOLD")) {
                     String query = "SELECT WineName, COUNT(WineQuantity) AS Num FROM purchase GROUP BY WineName ORDER BY Num DESC";

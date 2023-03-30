@@ -36,8 +36,6 @@ public class report_pageFXController implements Initializable {
     @FXML
     private LineChart<?, ?> chart_report;
     @FXML
-    private Button btn_send_report;
-    @FXML
     private PieChart pie_chart;
     @FXML
     private AnchorPane note_pane;
@@ -46,6 +44,7 @@ public class report_pageFXController implements Initializable {
 
     public void setUser(String i) { client = i; }
     public void setUserType(String i) { type = i; }
+    private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,10 +58,6 @@ public class report_pageFXController implements Initializable {
             getMostSold();
             inPieChart();
             btn_lineChart_clicked();
-
-            btn_send_report.setOnAction((ActionEvent event) -> {
-                sendReport();
-            });
 
         } catch (Exception e) {
             System.out.println("report_pageFXController: " + e);
@@ -111,11 +106,17 @@ public class report_pageFXController implements Initializable {
         mostSold_nums.addAll(Arrays.asList(temp_nums));
     }
 
-    private void sendReport() {
-        out.println("SEND_REPORT");
-        String REPORT = "Report mensile del " + date.getMonthValue() + "/" + date.getYear() + ":\n" + "Vendite totali: " + total_sales + "\n" + "Vino più venduto: " + mostSold_names.get(0) + " (" + mostSold_nums.get(0) + ")\n" + "Vino meno venduto: " + mostSold_names.get(mostSold_names.size() - 1) + " (" + mostSold_nums.get(mostSold_nums.size() - 1) + ")\n" + "Ulteriori informazioni: " + txt_note.getText() + "\n";
-        out.println(REPORT);
-        //lib.getHome(event, client, type);
+    @FXML
+    public void btn_send_report_is_clicked(ActionEvent event) {
+        try (Socket s = getSocket()) {
+            //in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            out = new PrintWriter(s.getOutputStream(), true);
+
+            out.println("SEND_REPORT");
+            String REPORT = "Report mensile del " + date.getMonthValue() + "/" + date.getYear() + "||" + "Vendite totali: " + total_sales + "||" + "Vino più venduto: " + mostSold_names.get(0) + " (" + mostSold_nums.get(0) + ")||" + "Vino meno venduto: " + mostSold_names.get(mostSold_names.size() - 1) + " (" + mostSold_nums.get(mostSold_nums.size() - 1) + ")||" + "Ulteriori informazioni: " + txt_note.getText() + "";
+            out.println(REPORT);
+            lib.getHome(event, client, type);
+            } catch (Exception e) { System.out.println("SEND REPORT FAILED: " + e); }
     }
 
     private void inlineChart() throws Exception {
@@ -148,6 +149,4 @@ public class report_pageFXController implements Initializable {
 
     @FXML
     public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
-
-    private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

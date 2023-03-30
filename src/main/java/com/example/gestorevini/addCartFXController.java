@@ -82,7 +82,6 @@ public class addCartFXController implements Initializable {
 
         out.println("ADD_TO_CART");
         out.println(name_wine+"/"+client+"/"+quantity+"/"+wines_price);
-        System.out.println(name_wine+"/"+client+"/"+quantity+"/"+wines_price+":"+temp_quantity+":"+price);
         if (in.readLine().equals("ADDED")) {
             lbl_cart_info.setText("Added to cart");
             sleep(1000);

@@ -67,7 +67,7 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Button fx:id="btn_send_report" layoutX="67.0" layoutY="32.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="199.0" stylesheets="@styles.css" text="Send Report" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button layoutX="67.0" layoutY="32.0" mnemonicParsing="false" onAction="#btn_send_report_is_clicked" prefHeight="88.0" prefWidth="199.0" stylesheets="@styles.css" text="Send Report" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor></Button>

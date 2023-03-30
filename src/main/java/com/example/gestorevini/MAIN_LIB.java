@@ -10,10 +10,12 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class MAIN_LIB {
+    private Parent root;
+
     public void getHome(ActionEvent event, String client, String type) throws IOException {
         if (type == null) {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-            Parent root = loader.load();
+            root = loader.load();
             LoggedInFXController LFXC = loader.getController();
             LFXC.setUser(client);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -21,7 +23,7 @@ public class MAIN_LIB {
             window.setTitle("Home");
         } else {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in_AE.fxml"));
-            Parent root = loader.load();
+            root = loader.load();
             LoggedInAEFXController LAEFX = loader.getController();
             LAEFX.setUser(client);
             LAEFX.setUserType(type);
@@ -40,7 +42,7 @@ public class MAIN_LIB {
 
     public void getUser(ActionEvent event, String type) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("user_page.fxml"));
-        Parent root = loader.load();
+        root = loader.load();
         user_pageFXController UPFX = loader.getController();
         UPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -50,7 +52,7 @@ public class MAIN_LIB {
 
     public void getCart(ActionEvent event, String type) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
-        Parent root = loader.load();
+        root = loader.load();
         cart_pageFXController CPFX = loader.getController();
         CPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -60,7 +62,7 @@ public class MAIN_LIB {
 
     public void getNotifications(ActionEvent event, String type) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
-        Parent root = loader.load();
+        root = loader.load();
         notifications_pageFXController NPFX = loader.getController();
         NPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -70,12 +72,22 @@ public class MAIN_LIB {
 
     public void getReport(ActionEvent event, String type) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("report_page.fxml"));
-        Parent root = loader.load();
+        root = loader.load();
         report_pageFXController RPFX = loader.getController();
-        RPFX.setUserType(type);
+        RPFX  .setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Report");
+    }
+
+    public void getMail(ActionEvent event, String type) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("list_pda_page.fxml"));
+        root = loader.load();
+        list_pda_pageFXController LPFX = loader.getController();
+        LPFX.setUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Support");
     }
 
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }

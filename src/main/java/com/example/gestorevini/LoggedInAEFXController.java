@@ -90,7 +90,7 @@ public class LoggedInAEFXController implements Initializable {
 
     @FXML
     public void btn_mail_is_clicked(ActionEvent event) throws IOException {
-        //TODO: open to mail page with messages from clients
+        lib.getMail(event, type);
     }
 
     @FXML

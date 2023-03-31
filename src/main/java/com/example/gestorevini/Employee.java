@@ -1,9 +1,10 @@
-package com.example.gestorevini;
+/*package com.example.gestorevini;
 
 public class Employee {
 
     private String Nome;
     private String Cognome;
+    //private String dipartimento;
     private String cf;
     private String email;
     private String cell;
@@ -33,4 +34,4 @@ public class Employee {
     public void setCf(String cf) {this.cf = cf;}
     public void setEmail(String email) {this.email = email;}
     public void setIndirizzoResidenza(String indirizzoResidenza) {this.indirizzoResidenza = indirizzoResidenza;}
-}
+}*/

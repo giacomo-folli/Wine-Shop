@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/pda_pageAdminFXController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/pda_page_admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/c7f3c150-3dea-436f-afc0-65d534cf312e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c7f3c150-3dea-436f-afc0-65d534cf312e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInAEFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/LoggedInFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/list_pda_pageFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/list_pda_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page_admin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in_AE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/logged_in_AE.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInAEFXController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/LoggedInFXController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/MAIN_LIB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/list_pda_page.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/list_pda_pageFXController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/logged_in_AE.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/logged_in_AE.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,31 +58,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/giaco/IdeaProjects/Wine Shop/src/main/resources/com/example/gestorevini",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/giaco/IdeaProjects/Wine Shop/src/main/resources/com/example/gestorevini&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\giaco\IdeaProjects\Wine Shop\src\main\resources\com\example\gestorevini" />
@@ -170,7 +158,8 @@
       <workItem from="1680080949810" duration="12945000" />
       <workItem from="1680160990325" duration="10355000" />
       <workItem from="1680247884366" duration="119000" />
-      <workItem from="1680248122771" duration="5149000" />
+      <workItem from="1680248122771" duration="6585000" />
+      <workItem from="1680272769301" duration="4969000" />
     </task>
     <servers />
   </component>
@@ -187,5 +176,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalStateException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

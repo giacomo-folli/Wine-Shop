@@ -1,5 +1,6 @@
 package com.example.gestorevini;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class user_page_adminFXController implements Initializable {
@@ -24,16 +26,18 @@ public class user_page_adminFXController implements Initializable {
     private BufferedReader in;
     private String client;
     private String type;
-    private ObservableList<PDA> pda_list = FXCollections.observableArrayList();;
+    private ObservableList<String[]> data = FXCollections.observableArrayList();
     private boolean visibility_pda = false;
     private boolean visibility_info = false;
 
     @FXML
-    private TableView<PDA> pda_table;
+    private TableView<String[]> pda_table;
     @FXML
-    private TableColumn<PDA, String> col1, col2, col3;
+    private TableColumn<String[], String> col1 = new TableColumn<>("ID");
     @FXML
-    private TableColumn<PDA, Integer> pda_type;
+    private TableColumn<String[], String> col2 = new TableColumn<>("Name");
+    @FXML
+    private TableColumn<String[], String> col3 = new TableColumn<>("Surname");
     @FXML
     private TextField c1, c2, c3, c4;
 
@@ -42,42 +46,50 @@ public class user_page_adminFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pda_list.clear();
-        col1.setCellValueFactory(new PropertyValueFactory<PDA, String>("wineName"));
-        col2.setCellValueFactory(new PropertyValueFactory<PDA, String>("wineProducer"));
-        col3.setCellValueFactory(new PropertyValueFactory<PDA, String>("quantity"));
+        data.clear();
+        col1.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[0]));
+        col2.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[1]));
+        col3.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[2]));
 
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
-            out.println("GET_PDA");
+            out.println("GET_EMPLOYEE");
 
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
 
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
-                int idClient = Integer.parseInt(temp[0]);
-                String wineName = temp[1];
-                String wineProd = temp[2];
-                int wineYear = Integer.parseInt(temp[3]);
-                int quantity = Integer.parseInt(temp[4]);
-                String notes = temp[5];
+                String ID = temp[0];
+                String Name = temp[1];
+                String Surname = temp[2];
 
-                pda_list.add(new PDA(idClient, wineName, wineProd, wineYear, quantity, notes));
-                pda_table.setItems(pda_list);
+                data.add(new String[]{ID, Name, Surname});
+                pda_table.setItems(data);
             }
 
+            pda_table.getColumns().addAll(col1, col2, col3);
+
         } catch (Exception e) {
-            System.out.println("wineListFXController, " + e);
+            System.out.println("userPageADMIN, " + e);
         }
     }
 
     @FXML
     public void btn_send_is_clicked() {
         try (Socket s = getSocket()) {
-            //TODO: send the data to the courier
+            out = new PrintWriter(s.getOutputStream(), true);
+            out.println("ADD_EMPLOYEE");
+            out.println(c1.getText() + "/" + c2.getText() + "/" + c3.getText() + "/" + c4.getText());
+
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            String line;
+
+
+
+            pda_table.getColumns().addAll(col1, col2, col3);
         } catch (IOException e) {
-            System.out.println("HelpFXCotroller: " + e.getMessage());
+            System.out.println("userPageADMIN, sendBTN: " + e.getMessage());
         }
     }
 

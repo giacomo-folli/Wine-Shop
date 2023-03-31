@@ -50,6 +50,51 @@ public class MAIN_LIB {
         window.setTitle("User Page");
     }
 
+    public void showWines(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("wine_list_page.fxml"));
+        root = loader.load();
+        wineListFXController WLFXC = loader.getController();
+        WLFXC.SetUserID(client);
+        WLFXC.SetUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Search Wine");
+    }
+
+    public void getHelp(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("help_page.fxml"));
+        root = loader.load();
+        helpFXController helpFX = loader.getController();
+        helpFX.setClient(client);
+        helpFX.setUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Help");
+    }
+
+    public void getPurchases(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("purchases_page.fxml"));
+        root = loader.load();
+        purchasesFXController purchases_page = loader.getController();
+        purchases_page.setClient(client);
+        purchases_page.setUserType(type);
+        purchases_page.setTableView();
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Purchases");
+    }
+
+    public void searchWine(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("search_wine_page.fxml"));
+        root = loader.load();
+        search_wine_pageFXController search_wine_page = loader.getController();
+        search_wine_page.setUserID(client);
+        search_wine_page.setUserType(type);
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Search Wine");
+    }
+
     public void getCart(ActionEvent event, String type) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("cart_page.fxml"));
         root = loader.load();
@@ -74,20 +119,31 @@ public class MAIN_LIB {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("report_page.fxml"));
         root = loader.load();
         report_pageFXController RPFX = loader.getController();
-        RPFX  .setUserType(type);
+        RPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Report");
     }
 
     public void getMail(ActionEvent event, String type) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("list_pda_page.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("pda_page_admin.fxml"));
         root = loader.load();
-        list_pda_pageFXController LPFX = loader.getController();
-        LPFX.setUserType(type);
+        pda_pageAdminFXController PPFX = loader.getController();
+        PPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setTitle("Support");
+    }
+
+    public void getUserADMIN(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("user_page_admin.fxml"));
+        root = loader.load();
+        user_page_adminFXController UPFX = loader.getController();
+        UPFX.setUserType(type);
+        UPFX.setClient(client);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("User Page");
     }
 
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }

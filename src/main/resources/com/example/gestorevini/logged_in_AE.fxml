@@ -46,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btn_mail" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_mail_is_clicked" prefHeight="87.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="btn_user" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="87.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -78,14 +78,14 @@
                         <Insets left="32.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btn_user" alignment="CENTER" mnemonicParsing="false" onAction="#btn_user_is_clicked" prefHeight="85.0" prefWidth="99.0" stylesheets="@styles.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="btn_mail" alignment="CENTER" mnemonicParsing="false" onAction="#btn_mail_is_clicked" prefHeight="85.0" prefWidth="99.0" stylesheets="@styles.css" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <ImageView fx:id="img_user" accessibleText="user" disable="true" fitHeight="75.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
-                        <Image url="@users_icon.png" />
+                        <Image url="@help_icon.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -104,7 +104,7 @@
                   </ImageView>
                   <ImageView id="img4" fx:id="img4" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
-                        <Image url="@help_icon.png" />
+                        <Image url="@users_icon.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />

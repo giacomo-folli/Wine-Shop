@@ -24,10 +24,6 @@ public class LoggedInAEFXController implements Initializable {
 
     @FXML
     private Label lbl_user_type;
-    @FXML
-    private ImageView img1, img2, img3, img4;
-    @FXML
-    private Button btn_search_wine, btn_show_wines, btn_show_client, btn_mail, btn_logout, btn_report;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -39,7 +35,6 @@ public class LoggedInAEFXController implements Initializable {
             lbl_user_type.setText("ADMIN");
         else
             lbl_user_type.setText("EMPLOYEE");
-
     }
 
     //private void mouse_enters_img(ImageView a) { a.setVisible(false); }
@@ -48,54 +43,23 @@ public class LoggedInAEFXController implements Initializable {
     public void setUserType(String i) { type = i; }
 
     @FXML
-    private void btn_show_wines_clicked(ActionEvent event) throws IOException {
-        //TODO: maybe add way to change wine's data
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("wine_list_page.fxml"));
-        Parent root = loader.load();
-        wineListFXController WLFXC = loader.getController();
-        WLFXC.SetUserID(client);
-        WLFXC.SetUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Search Wine");
-    }
-
+    private void btn_show_wines_clicked(ActionEvent event) throws IOException { lib.showWines(event, type, client); }
     @FXML
-    public void btn_logout_is_clicked(ActionEvent event) throws IOException {
-        lib.getLogout(event);
-    }
-
+    public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
     @FXML
-    public void btn_report_is_clicked(ActionEvent event) throws IOException {
-        lib.getReport(event, type);
-    }
-
+    public void btn_report_is_clicked(ActionEvent event) throws IOException { lib.getReport(event, type); }
     @FXML
-    public void btn_user_is_clicked() throws IOException {
-        //TODO: open to user page. Admin actions are different from employee actions.
-    }
+    public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUserADMIN(event, type, client); }
+    @FXML
+    public void btn_mail_is_clicked(ActionEvent event) throws IOException { lib.getMail(event, type); }
 
     @FXML
     public void btn_search_wine_clicked(ActionEvent event) throws IOException {
-        //TODO: maybe add method to choose between search a client or search a wine
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("search_wine_page.fxml"));
-        Parent root = loader.load();
-        search_wine_pageFXController search_wine_page = loader.getController();
-        search_wine_page.setUserID(client);
-        search_wine_page.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
-        window.setTitle("Search Wine");
+        //TODO: the admin doesn't need to search for wines!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     @FXML
-    public void btn_mail_is_clicked(ActionEvent event) throws IOException {
-        lib.getMail(event, type);
-    }
-
-    @FXML
-    public void btn_show_client_clicked(ActionEvent event) throws IOException {
+    public void btn_show_client_clicked(ActionEvent event) {
         //TODO: open client list page
     }
-
 }

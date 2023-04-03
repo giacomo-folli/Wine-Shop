@@ -39,19 +39,14 @@ public class user_page_adminFXController implements Initializable {
     @FXML
     private TableColumn<String[], String> col3 = new TableColumn<>("Surname");
     @FXML
-    private TextField c1, c2, c3, c4;
+    private TextField txt_name, txt_surname, txt_user, txt_pwd, txt_email, txt_cell, txt_address, txt_cf;
 
     public void setClient(String i) { client = i; }
     public void setUserType(String i) { type = i; }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        data.clear();
-        col1.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[0]));
-        col2.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[1]));
-        col3.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[2]));
-
+    private void setTable() {
         try (Socket s = getSocket()) {
+            data.clear();
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_EMPLOYEE");
 
@@ -75,22 +70,25 @@ public class user_page_adminFXController implements Initializable {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        data.clear();
+        col1.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[0]));
+        col2.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[1]));
+        col3.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[2]));
+
+        setTable();
+    }
+
     @FXML
     public void btn_send_is_clicked() {
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
-            out.println(c1.getText() + "/" + c2.getText() + "/" + c3.getText() + "/" + c4.getText());
+            out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
 
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            String line;
-
-
-
-            pda_table.getColumns().addAll(col1, col2, col3);
-        } catch (IOException e) {
-            System.out.println("userPageADMIN, sendBTN: " + e.getMessage());
-        }
+            setTable();
+        } catch (IOException e) { System.out.println("userPageADMIN, sendBTN: " + e.getMessage()); }
     }
 
     @FXML

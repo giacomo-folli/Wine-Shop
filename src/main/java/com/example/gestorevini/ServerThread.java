@@ -114,6 +114,25 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
+                else if (line.equals("ADD_EMPLOYEE")) {
+                    String info = in.readLine();
+                    String[] temp = info.split("/");
+                    String name = temp[0];
+                    String surname = temp[1];
+                    String usr = temp[2];
+                    String pwd = temp[3];
+                    String email = temp[4];
+                    String cell = temp[5];
+                    String Address = temp[6];
+                    String cf = temp[7];
+
+                    String query = "INSERT INTO clienti (Name, Surname, USR, PSW, Email, Cell, Addres, CF, Type) VALUES ('" + name + "', '" + surname + "', '" + usr + "', '" + pwd + "', '" + email + "', '" + cell + "', '" + Address + "', '" + cf + "', 'employee');";
+                    int count = this.stmt.executeUpdate(query);
+                    if (count == 1)
+                        out.println("DONE");
+                    else
+                        out.println("ERROR");
+                }
                 else if (line.equals("GET_EMPLOYEE")) {
                     String query = "SELECT * FROM clienti WHERE type='employee';";
                     ResultSet rs = this.stmt.executeQuery(query);

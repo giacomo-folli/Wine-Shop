@@ -48,74 +48,127 @@
                   </AnchorPane>
                   <AnchorPane fx:id="pane_contact_info" prefHeight="323.0" prefWidth="299.0" style="-fx-background-color: #eeeeee;">
                      <children>
-                        <VBox alignment="BASELINE_CENTER" layoutY="10.0" prefHeight="331.0" prefWidth="276.0" spacing="2.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+                        <VBox alignment="TOP_CENTER" prefHeight="323.0" prefWidth="237.0" spacing="5.0">
                            <children>
-                              <Label text="Name">
+                              <Label alignment="CENTER" contentDisplay="CENTER" text="Insert New Employee">
                                  <VBox.margin>
-                                    <Insets bottom="-5.0" left="-140.0" />
+                                    <Insets top="2.0" />
                                  </VBox.margin></Label>
-                              <TextField fx:id="c1" prefWidth="236.0">
+                              <HBox prefHeight="140.0" prefWidth="237.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="295.0" prefWidth="118.0" spacing="2.0">
+                                       <children>
+                                          <Label text="Name">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <TextField fx:id="txt_name" layoutX="40.0" layoutY="133.0">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label layoutX="114.0" layoutY="104.0" text="Username">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_user">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Email">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_email">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="156.0" prefWidth="120.0" spacing="2.0">
+                                       <children>
+                                          <Label text="Surname">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <TextField fx:id="txt_surname" layoutX="40.0" layoutY="133.0">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label layoutX="114.0" layoutY="104.0" text="Password">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_pwd">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Cell">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_cell">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin></TextField>
-                              <Label text="Surname">
-                                 <VBox.margin>
-                                    <Insets left="-130.0" />
+                                    <Insets top="5.0" />
                                  </VBox.margin>
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets></Label>
-                              <TextField fx:id="c21" layoutX="40.0" layoutY="133.0">
+                              </HBox>
+                              <Label snapToPixel="false" text="Address">
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin>
-                              </TextField>
-                              <Label layoutX="114.0" layoutY="104.0" text="Username">
-                                 <VBox.margin>
-                                    <Insets left="-123.0" />
+                                    <Insets left="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="c2">
+                              <TextField fx:id="txt_address" prefHeight="25.0" prefWidth="217.0">
                                  <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin></TextField>
-                              <Label text="Password">
-                                 <VBox.margin>
-                                    <Insets left="-128.0" />
-                                 </VBox.margin></Label>
-                              <TextField fx:id="c3">
-                                 <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin></TextField>
-                              <Label text="Label">
-                                 <VBox.margin>
-                                    <Insets left="-140.0" />
-                                 </VBox.margin></Label>
-                              <TextField fx:id="c4">
-                                 <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin></TextField>
-                              <Label layoutX="114.0" layoutY="163.0" text="Email">
-                                 <VBox.margin>
-                                    <Insets left="-140.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <TextField fx:id="c22" layoutX="40.0" layoutY="192.0">
-                                 <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
+                                    <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="25.0" prefWidth="82.0" text="Send">
+                              <Label snapToPixel="false" text="CF">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="txt_cf" prefHeight="25.0" prefWidth="217.0">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="227.0" snapToPixel="false" text="Send">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
-                                 <VBox.margin>
-                                    <Insets top="3.0" />
-                                 </VBox.margin>
                               </Button>
                            </children>
                            <padding>
-                              <Insets bottom="10.0" />
+                              <Insets top="2.0" />
                            </padding>
                         </VBox>
                      </children>

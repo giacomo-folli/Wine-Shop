@@ -1,6 +1,7 @@
 package com.example.gestorevini;
 
 public class PDA {
+    private int ID;
     private int idClient;
     private String wineName;
     private String wineProducer;
@@ -8,7 +9,8 @@ public class PDA {
     private int quantity;
     private String notes;
 
-    public PDA(int idClient, String wineName, String wineProducer, int wineYear, int quantity, String notes) {
+    public PDA(int ID, int idClient, String wineName, String wineProducer, int wineYear, int quantity, String notes) {
+        this.ID = ID;
         this.idClient = idClient;
         this.wineName = wineName;
         this.wineProducer = wineProducer;
@@ -18,6 +20,7 @@ public class PDA {
     }
 
     //getters
+    public int getID() { return ID; }
     public int getIdClient() { return idClient; }
     public String getWineName() { return wineName; }
     public String getWineProducer() { return wineProducer; }
@@ -25,6 +28,7 @@ public class PDA {
     public int getQuantity() { return quantity; }
     public String getNotes() { return notes; }
     //setters
+    public void setID(int ID) { this.ID = ID; }
     public void setIdClient(int idClient) { this.idClient = idClient; }
     public void setWineName(String wineName) { this.wineName = wineName; }
     public void setWineProducer(String wineProducer) { this.wineProducer = wineProducer; }

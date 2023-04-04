@@ -55,22 +55,19 @@
                            <children>
                               <Label text="Courier Info" />
                               <Label text="Name" />
-                              <TextField fx:id="c1" prefWidth="236.0">
+                              <TextField fx:id="txt_name" prefWidth="236.0">
                                  <VBox.margin>
                                     <Insets left="30.0" right="30.0" />
                                  </VBox.margin></TextField>
                               <Label text="Email" />
-                              <TextField fx:id="c2">
+                              <TextField fx:id="txt_email">
                                  <VBox.margin>
                                     <Insets left="30.0" right="30.0" />
                                  </VBox.margin></TextField>
                               <Label text="Date" />
-                              <TextField fx:id="c3">
-                                 <VBox.margin>
-                                    <Insets left="30.0" right="30.0" />
-                                 </VBox.margin></TextField>
+                              <DatePicker prefHeight="25.0" prefWidth="201.0" fx:id="pda_date"/>
                               <Label text="Label" />
-                              <TextField fx:id="c4">
+                              <TextField fx:id="txt_c4">
                                  <VBox.margin>
                                     <Insets left="30.0" right="30.0" />
                                  </VBox.margin></TextField>

@@ -292,7 +292,7 @@ public class ServerThread extends Thread {
                 else if (line.equals("GET_PDA")) {
                     ResultSet rs = this.stmt.executeQuery("SELECT * FROM pda;");
                     while (rs.next()) {
-                        String out_data = rs.getString("IDClient") + "/" + rs.getString("WineName") + "/" + rs.getString("WineProducer") + "/" + rs.getString("WineYear") + "/" + rs.getString("Quantity") + "/" + rs.getString("Notes");
+                        String out_data = rs.getString("ID") + "/" + rs.getString("IDClient") + "/" + rs.getString("WineName") + "/" + rs.getString("WineProducer") + "/" + rs.getString("WineYear") + "/" + rs.getString("Quantity") + "/" + rs.getString("Notes");
                         out.println(out_data);
                     }
                     out.println("null");

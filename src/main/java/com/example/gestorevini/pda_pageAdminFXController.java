@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,7 +23,8 @@ public class pda_pageAdminFXController implements Initializable {
     private BufferedReader in;
     private String client;
     private String type;
-    private ObservableList<PDA> pda_list = FXCollections.observableArrayList();;
+    private ObservableList<PDA> pda_list = FXCollections.observableArrayList();
+    private PDA pda_temp;
     private boolean visibility_pda = false;
     private boolean visibility_info = false;
 
@@ -33,7 +35,9 @@ public class pda_pageAdminFXController implements Initializable {
     @FXML
     private TableColumn<PDA, Integer> pda_type;
     @FXML
-    private TextField c1, c2, c3, c4;
+    private DatePicker pda_date;
+    @FXML
+    private TextField txt_name, txt_email, txt_c4;
 
     public void setClient(String i) { client = i; }
     public void setUserType(String i) { type = i; }
@@ -45,6 +49,12 @@ public class pda_pageAdminFXController implements Initializable {
         col2.setCellValueFactory(new PropertyValueFactory<PDA, String>("wineProducer"));
         col3.setCellValueFactory(new PropertyValueFactory<PDA, String>("quantity"));
 
+        pda_table.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getClickCount()!=0) {
+                pda_temp = pda_table.getSelectionModel().getSelectedItem();
+            }
+        });
+
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_PDA");
@@ -54,28 +64,32 @@ public class pda_pageAdminFXController implements Initializable {
 
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
-                int idClient = Integer.parseInt(temp[0]);
-                String wineName = temp[1];
-                String wineProd = temp[2];
-                int wineYear = Integer.parseInt(temp[3]);
-                int quantity = Integer.parseInt(temp[4]);
-                String notes = temp[5];
+                int ID = Integer.parseInt(temp[0]);
+                int idClient = Integer.parseInt(temp[1]);
+                String wineName = temp[2];
+                String wineProd = temp[3];
+                int wineYear = Integer.parseInt(temp[4]);
+                int quantity = Integer.parseInt(temp[5]);
+                String notes = temp[6];
 
-                pda_list.add(new PDA(idClient, wineName, wineProd, wineYear, quantity, notes));
+                pda_list.add(new PDA(ID, idClient, wineName, wineProd, wineYear, quantity, notes));
                 pda_table.setItems(pda_list);
             }
 
         } catch (Exception e) {
-            System.out.println("wineListFXController, " + e);
+            System.out.println("pda_page_admin, init " + e);
         }
     }
 
     @FXML
     public void btn_send_is_clicked() {
         try (Socket s = getSocket()) {
-            //TODO: send the data to the courier
-        } catch (IOException e) {
-            System.out.println("HelpFXCotroller: " + e.getMessage());
+            out = new PrintWriter(s.getOutputStream(), true);
+            String data = pda_temp.getID() + "/" + txt_name.getText() + "/" + txt_email.getText() + "/" + pda_date.getValue() + "/" + txt_c4.getText();
+            System.out.println(data);
+
+        } catch (Exception e) {
+            System.out.println("pda_page_admin, btn_send " + e);
         }
     }
 

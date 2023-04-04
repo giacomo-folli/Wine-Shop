@@ -37,8 +37,6 @@ public class LoggedInAEFXController implements Initializable {
             lbl_user_type.setText("EMPLOYEE");
     }
 
-    //private void mouse_enters_img(ImageView a) { a.setVisible(false); }
-    //private void mouse_exits_img(ImageView a) { a.setVisible(true); }
     public void setUser(String i) { client = i; }
     public void setUserType(String i) { type = i; }
 
@@ -52,14 +50,11 @@ public class LoggedInAEFXController implements Initializable {
     public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUserADMIN(event, type, client); }
     @FXML
     public void btn_mail_is_clicked(ActionEvent event) throws IOException { lib.getMail(event, type); }
+    @FXML
+    public void btn_show_client_clicked(ActionEvent event) throws IOException { lib.getClientADMIN(event, type, client); }
 
     @FXML
     public void btn_search_wine_clicked(ActionEvent event) throws IOException {
         //TODO: the admin doesn't need to search for wines!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    }
-
-    @FXML
-    public void btn_show_client_clicked(ActionEvent event) {
-        //TODO: open client list page
     }
 }

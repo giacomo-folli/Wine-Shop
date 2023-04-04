@@ -146,5 +146,16 @@ public class MAIN_LIB {
         window.setTitle("User Page");
     }
 
+    public void getClientADMIN(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("client_page_admin.fxml"));
+        root = loader.load();
+        client_page_adminFXController CPFX = loader.getController();
+        CPFX.setUserType(type);
+        CPFX.setClient(client);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Client List");
+    }
+
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

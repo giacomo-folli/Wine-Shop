@@ -33,8 +33,6 @@ public class pda_pageAdminFXController implements Initializable {
     @FXML
     private TableColumn<PDA, String> col1, col2, col3;
     @FXML
-    private TableColumn<PDA, Integer> pda_type;
-    @FXML
     private DatePicker pda_date;
     @FXML
     private TextField txt_name, txt_email, txt_c4;
@@ -45,14 +43,13 @@ public class pda_pageAdminFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pda_list.clear();
-        col1.setCellValueFactory(new PropertyValueFactory<PDA, String>("wineName"));
-        col2.setCellValueFactory(new PropertyValueFactory<PDA, String>("wineProducer"));
-        col3.setCellValueFactory(new PropertyValueFactory<PDA, String>("quantity"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("wineName"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("wineProducer"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
         pda_table.setOnMouseClicked((MouseEvent event) -> {
-            if (event.getClickCount()!=0) {
+            if (event.getClickCount()!=0)
                 pda_temp = pda_table.getSelectionModel().getSelectedItem();
-            }
         });
 
         try (Socket s = getSocket()) {
@@ -75,10 +72,7 @@ public class pda_pageAdminFXController implements Initializable {
                 pda_list.add(new PDA(ID, idClient, wineName, wineProd, wineYear, quantity, notes));
                 pda_table.setItems(pda_list);
             }
-
-        } catch (Exception e) {
-            System.out.println("pda_page_admin, init " + e);
-        }
+        } catch (Exception e) { System.out.println("pda_page_admin, init " + e); }
     }
 
     @FXML
@@ -87,10 +81,7 @@ public class pda_pageAdminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             String data = pda_temp.getID() + "/" + txt_name.getText() + "/" + txt_email.getText() + "/" + pda_date.getValue() + "/" + txt_c4.getText();
             System.out.println(data);
-
-        } catch (Exception e) {
-            System.out.println("pda_page_admin, btn_send " + e);
-        }
+        } catch (Exception e) { System.out.println("pda_page_admin, btn_send " + e); }
     }
 
     @FXML

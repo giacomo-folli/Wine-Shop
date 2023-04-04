@@ -142,6 +142,15 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
+                else if (line.equals("GET_CLIENT")) {
+                    String query = "SELECT * FROM clienti WHERE type='null';";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    while (rs.next()) {
+                        String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Surname") + "/" + rs.getString("Email")  + "/" + rs.getString("Addres");
+                        out.println(out_data);
+                    }
+                    out.println("null");
+                }
                 else if (line.equals("GET_ID_CART")) {
                     String user = in.readLine();
                     String query = "SELECT * FROM cart JOIN clienti ON cart.IDBuyer = clienti.ID WHERE clienti.USR = '" + user + "';";

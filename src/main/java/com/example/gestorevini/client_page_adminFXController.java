@@ -23,8 +23,8 @@ public class client_page_adminFXController implements Initializable {
     private String client;
     private String type;
     private ObservableList<Client> data = FXCollections.observableArrayList();
-    private boolean visibility_pda = false;
-    private boolean visibility_info = false;
+    //private boolean visibility_pda = false;
+    //private boolean visibility_info = false;
 
     @FXML
     private TableView<Client> client_table;

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.discounts_page_adminFXController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="122.0" layoutX="-26.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@app_icon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_home" onAction="#btn_home_clicked" layoutX="9.0" layoutY="9.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="52.0" style="-fx-background-color: #00000000;" />
+         </children></AnchorPane>
+      <HBox>
+         <children>
+            <AnchorPane prefHeight="323.0" prefWidth="275.0">
+               <children>
+                  <TextField fx:id="txt_name" layoutX="112.0" layoutY="61.0" />
+                  <TextField fx:id="txt_number" layoutX="112.0" layoutY="111.0" />
+                  <TextField fx:id="txt_exp" layoutX="112.0" layoutY="161.0" />
+                  <TextField fx:id="txt_cvv" layoutX="112.0" layoutY="211.0" />
+                  <Label layoutX="112.0" layoutY="43.0" text="Name" />
+                  <Label layoutX="112.0" layoutY="91.0" text="Number" />
+                  <Label layoutX="112.0" layoutY="142.0" text="Expiry date" />
+                  <Label layoutX="112.0" layoutY="193.0" text="CVV" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="323.0" prefWidth="325.0" />
+         </children>
+      </HBox>
+  </items>
+</SplitPane>

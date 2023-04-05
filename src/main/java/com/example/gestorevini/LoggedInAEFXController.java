@@ -52,9 +52,6 @@ public class LoggedInAEFXController implements Initializable {
     public void btn_mail_is_clicked(ActionEvent event) throws IOException { lib.getMail(event, type); }
     @FXML
     public void btn_show_client_clicked(ActionEvent event) throws IOException { lib.getClientADMIN(event, type, client); }
-
     @FXML
-    public void btn_search_wine_clicked(ActionEvent event) throws IOException {
-        //TODO: the admin doesn't need to search for wines!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    }
+    public void btn_set_discount_clicked(ActionEvent event) throws IOException { lib.getDiscounts(event, type, client); }
 }

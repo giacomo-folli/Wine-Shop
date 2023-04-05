@@ -30,7 +30,7 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
          <children>
-            <GridPane alignment="BASELINE_CENTER" hgap="100.0" prefHeight="323.0" prefWidth="597.0" vgap="70.0">
+            <GridPane alignment="BASELINE_CENTER" hgap="100.0" prefHeight="323.0" prefWidth="597.0" vgap="70.0" AnchorPane.topAnchor="-10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -62,7 +62,7 @@
                         <Insets left="37.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="90.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="btn_set_discount" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_set_discount_clicked" prefHeight="90.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -91,7 +91,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="img_user1" accessibleText="user" disable="true" fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_user1" accessibleText="user" disable="true" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@analytics_icon.png" />
                      </image>
@@ -99,7 +99,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <GridPane.margin>
-                        <Insets bottom="10.0" />
+                        <Insets />
                      </GridPane.margin>
                   </ImageView>
                   <ImageView id="img4" fx:id="img4" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
@@ -109,6 +109,9 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <GridPane.margin>
+                        <Insets bottom="-6.0" />
+                     </GridPane.margin>
                   </ImageView>
                   <ImageView id="img3" fx:id="img3" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
@@ -126,9 +129,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="img1" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img1" disable="true" fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
-                        <Image url="@search_icon.png" />
+                        <Image url="@percentage.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -139,6 +142,15 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />
                </padding>
             </GridPane>
+            <AnchorPane prefHeight="323.0" prefWidth="597.0" AnchorPane.topAnchor="-5.0">
+               <children>
+                  <Label layoutX="76.0" layoutY="117.0" text="Wine List" />
+                  <Label layoutX="263.0" layoutY="117.0" text="Set Discounts" />
+                  <Label layoutX="473.0" layoutY="117.0" text="Client list" />
+                  <Label layoutX="79.0" layoutY="274.0" text="Support" />
+                  <Label layoutX="281.0" layoutY="274.0" text="Report" />
+                  <Label layoutX="459.0" layoutY="274.0" text="Manage Users" />
+               </children></AnchorPane>
          </children></AnchorPane>
   </items>
 </SplitPane>

@@ -62,7 +62,7 @@
                         <Insets left="37.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btn_search_wine" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_search_wine_clicked" prefHeight="90.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
+                  <Button fx:id="btn_set_discount" cancelButton="true" minWidth="100.0" mnemonicParsing="false" onAction="#btn_set_discount_clicked" prefHeight="90.0" prefWidth="100.0" stylesheets="@styles.css" GridPane.columnIndex="1" GridPane.valignment="CENTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

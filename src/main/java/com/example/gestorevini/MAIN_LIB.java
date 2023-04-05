@@ -157,5 +157,16 @@ public class MAIN_LIB {
         window.setTitle("Client List");
     }
 
+    public void getDiscounts(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("discounts_page_admin.fxml"));
+        root = loader.load();
+        discounts_page_adminFXController DPFX = loader.getController();
+        DPFX.setUserType(type);
+        DPFX.setUserID(client);
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setTitle("Discounts");
+    }
+
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

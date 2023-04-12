@@ -20,6 +20,7 @@ public class MAIN_LIB {
             LFXC.setUser(client);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
+            window.setResizable(false);
             window.setTitle("Home");
         } else {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in_AE.fxml"));
@@ -29,6 +30,7 @@ public class MAIN_LIB {
             LAEFX.setUserType(type);
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
+            window.setResizable(false);
             window.setTitle("Home");
         }
     }
@@ -37,6 +39,7 @@ public class MAIN_LIB {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
+        window.setResizable(false);
         window.setTitle("Login");
     }
 
@@ -47,6 +50,7 @@ public class MAIN_LIB {
         UPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("User Page");
     }
 
@@ -58,6 +62,7 @@ public class MAIN_LIB {
         WLFXC.SetUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Search Wine");
     }
 
@@ -69,6 +74,7 @@ public class MAIN_LIB {
         helpFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Help");
     }
 
@@ -81,6 +87,7 @@ public class MAIN_LIB {
         purchases_page.setTableView();
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Purchases");
     }
 
@@ -92,6 +99,7 @@ public class MAIN_LIB {
         search_wine_page.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Search Wine");
     }
 
@@ -102,6 +110,7 @@ public class MAIN_LIB {
         CPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Cart");
     }
 
@@ -112,6 +121,7 @@ public class MAIN_LIB {
         NPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Notifications");
     }
 
@@ -122,6 +132,7 @@ public class MAIN_LIB {
         RPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Report");
     }
 
@@ -132,6 +143,7 @@ public class MAIN_LIB {
         PPFX.setUserType(type);
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Support");
     }
 
@@ -143,6 +155,7 @@ public class MAIN_LIB {
         UPFX.setClient(client);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("User Page");
     }
 
@@ -154,6 +167,7 @@ public class MAIN_LIB {
         CPFX.setClient(client);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Client List");
     }
 
@@ -165,8 +179,9 @@ public class MAIN_LIB {
         DPFX.setUserID(client);
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setResizable(false);
         window.setTitle("Discounts");
     }
 
-    private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
+    public Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

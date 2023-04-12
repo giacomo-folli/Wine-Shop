@@ -123,7 +123,6 @@ public class search_wine_pageFXController implements Initializable {
             cartAdd.setUserID(client);
             cartAdd.setPrice(temp_wine.getPrezzo());
             cartAdd.setMaxQuantity(temp_wine.getNum());
-            cartAdd.getSocket(getSocket());
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
         }

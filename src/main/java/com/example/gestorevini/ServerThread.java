@@ -306,6 +306,23 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
+                else if (line.equals("CHECK_DISCOUNTS")) {
+                    String query = "SELECT * FROM discount WHERE ID=1;";
+                    ResultSet rs = this.stmt.executeQuery(query);
+                    if (rs.next())
+                        out.println(rs.getString("small") + "/" + rs.getString("medium") + "/" + rs.getString("large") + "/" + rs.getString("max"));
+                    else
+                        out.println("error");
+                }
+                else if (line.equals("UPDATE_DISCOUNTS")) {
+                    String discounts = in.readLine();
+                    String[] temp = discounts.split("/");
+                    String small = temp[0];
+                    String medium = temp[1];
+                    String large = temp[2];
+                    String max = temp[3];
+                    int count = this.stmt.executeUpdate("UPDATE discount SET small=" + small + ", medium=" + medium + ", large=" + large + ", max=" + max + " WHERE ID=1;");
+                }
                 else { System.out.println("ServerThread: Feature not added"); }
             }
         } catch (IOException | SQLException e) { System.out.println("ServerThread, " + e); }

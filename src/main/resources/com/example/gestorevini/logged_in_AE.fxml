@@ -30,6 +30,15 @@
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
          <children>
+            <AnchorPane prefHeight="323.0" prefWidth="597.0" AnchorPane.topAnchor="-5.0">
+               <children>
+                  <Label layoutX="76.0" layoutY="117.0" text="Wine List" />
+                  <Label layoutX="263.0" layoutY="117.0" text="Set Discounts" />
+                  <Label layoutX="473.0" layoutY="117.0" text="Client list" />
+                  <Label layoutX="79.0" layoutY="274.0" text="Support" />
+                  <Label layoutX="281.0" layoutY="274.0" text="Report" />
+                  <Label layoutX="459.0" layoutY="274.0" text="Manage Users" />
+               </children></AnchorPane>
             <GridPane alignment="BASELINE_CENTER" hgap="100.0" prefHeight="323.0" prefWidth="597.0" vgap="70.0" AnchorPane.topAnchor="-10.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -142,15 +151,6 @@
                   <Insets bottom="50.0" left="50.0" right="50.0" top="40.0" />
                </padding>
             </GridPane>
-            <AnchorPane prefHeight="323.0" prefWidth="597.0" AnchorPane.topAnchor="-5.0">
-               <children>
-                  <Label layoutX="76.0" layoutY="117.0" text="Wine List" />
-                  <Label layoutX="263.0" layoutY="117.0" text="Set Discounts" />
-                  <Label layoutX="473.0" layoutY="117.0" text="Client list" />
-                  <Label layoutX="79.0" layoutY="274.0" text="Support" />
-                  <Label layoutX="281.0" layoutY="274.0" text="Report" />
-                  <Label layoutX="459.0" layoutY="274.0" text="Manage Users" />
-               </children></AnchorPane>
          </children></AnchorPane>
   </items>
 </SplitPane>

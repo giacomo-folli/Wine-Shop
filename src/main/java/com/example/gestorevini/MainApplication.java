@@ -9,11 +9,12 @@ import java.io.IOException;
 public class MainApplication extends Application {
 
     @Override
-    public void start(Stage stage) throws IOException { //TODO: initialize JavaFX stage here
+    public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Home");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

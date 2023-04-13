@@ -23,7 +23,6 @@ public class addCartFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
     private String client;
     private String type;
-    private Socket s;
     private BufferedReader in;
     private PrintWriter out;
     private String name_wine;
@@ -32,7 +31,7 @@ public class addCartFXController implements Initializable {
     private int tot_price;
     private int temp_discount = 0;
     private int discounted_price;
-    private String wine_name, user_buyer, name_producer;
+    private String user_buyer, name_producer;
     private int quantity, wines_price, year;
 
     @FXML
@@ -107,11 +106,10 @@ public class addCartFXController implements Initializable {
     }
 
     @FXML
-    private void btn_add_to_cart_clicked(ActionEvent event) throws IOException, InterruptedException {
+    private void btn_add_to_cart_clicked(ActionEvent event) {
         try (Socket s = lib.getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            wine_name = name_wine;
             user_buyer = client;
             quantity = spin_quantity.getValue();
 

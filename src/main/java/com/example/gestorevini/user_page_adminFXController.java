@@ -49,7 +49,6 @@ public class user_page_adminFXController implements Initializable {
             data.clear();
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_EMPLOYEE");
-
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
 
@@ -58,25 +57,18 @@ public class user_page_adminFXController implements Initializable {
                 String ID = temp[0];
                 String Name = temp[1];
                 String Surname = temp[2];
-
                 data.add(new String[]{ID, Name, Surname});
                 pda_table.setItems(data);
             }
-
             pda_table.getColumns().addAll(col1, col2, col3);
-
-        } catch (Exception e) {
-            System.out.println("userPageADMIN, " + e);
-        }
+        } catch (Exception e) { System.out.println("userPageADMIN, " + e); }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        data.clear();
         col1.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[0]));
         col2.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[1]));
         col3.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[2]));
-
         setTable();
     }
 
@@ -86,10 +78,13 @@ public class user_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-
+            data.clear();
             setTable();
         } catch (IOException e) { System.out.println("userPageADMIN, sendBTN: " + e.getMessage()); }
     }
+
+    //TODO: add delete employee function
+    //TODO: add update employee function
 
     @FXML
     public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }

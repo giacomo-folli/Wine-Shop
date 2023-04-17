@@ -1,11 +1,9 @@
 package com.example.gestorevini;
 import java.io.*;
 import java.net.Socket;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class ServerThread extends Thread {
     final private Connection conn;
@@ -21,12 +19,25 @@ public class ServerThread extends Thread {
         this.conn = conn;
     }
 
+    private ArrayList<String> checkAvailability() throws SQLException {
+        ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
+        ArrayList<String> low_wines = new ArrayList<>();
+        while (at.next()) {
+            low_wines.add(at.getString("Name") +"/");
+        }
+        return low_wines;
+    }
+
     public void run() {
         try {
             in = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
+                if (checkAvailability().size()!=0) { System.out.println("Low wine capacity");
+                } else { System.out.println("Wine capacity ok"); }
+
+                //Manage requests
                 String line = in.readLine();
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
@@ -128,10 +139,6 @@ public class ServerThread extends Thread {
 
                     String query = "INSERT INTO clienti (Name, Surname, USR, PSW, Email, Cell, Addres, CF, Type) VALUES ('" + name + "', '" + surname + "', '" + usr + "', '" + pwd + "', '" + email + "', '" + cell + "', '" + Address + "', '" + cf + "', 'employee');";
                     int count = this.stmt.executeUpdate(query);
-                    if (count == 1)
-                        out.println("DONE");
-                    else
-                        out.println("ERROR");
                 }
                 else if (line.equals("GET_EMPLOYEE")) {
                     String query = "SELECT * FROM clienti WHERE type='employee';";

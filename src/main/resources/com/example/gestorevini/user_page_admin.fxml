@@ -39,9 +39,9 @@
                      <children>
                         <TableView fx:id="pda_table" layoutX="41.0" layoutY="23.0" prefHeight="323.0" prefWidth="361.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
                           <columns>
-                            <TableColumn fx:id="col1" prefWidth="76.66665172576904" text="Name" />
-                            <TableColumn fx:id="col2" minWidth="9.000007629394531" prefWidth="110.00004577636719" text="Surname" />
-                              <TableColumn fx:id="col3" editable="false" prefWidth="174.33328247070312" text="..." />
+                            <TableColumn fx:id="col1" prefWidth="76.66665172576904" text="id" />
+                            <TableColumn fx:id="col2" minWidth="9.000007629394531" prefWidth="110.00004577636719" text="Name" />
+                              <TableColumn fx:id="col3" editable="false" prefWidth="174.33328247070312" text="Surname" />
                           </columns>
                         </TableView>
                      </children>
@@ -161,11 +161,28 @@
                                     <Insets left="5.0" right="5.0" />
                                  </VBox.margin>
                               </TextField>
-                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="227.0" snapToPixel="false" text="Send">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="82.0" snapToPixel="false" style="-fx-background-color: green; -fx-text-fill: white;" text="Add">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="79.0" snapToPixel="false" style="-fx-background-color: blue; -fx-text-fill: white;" text="Update">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="75.0" snapToPixel="false" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </HBox>
                            </children>
                            <padding>
                               <Insets top="2.0" />

@@ -39,9 +39,9 @@
                      <children>
                         <TableView fx:id="pda_table" layoutX="41.0" layoutY="23.0" prefHeight="323.0" prefWidth="361.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
                           <columns>
-                            <TableColumn fx:id="col1" prefWidth="76.66665172576904" text="Name" />
-                            <TableColumn fx:id="col2" minWidth="9.000007629394531" prefWidth="110.00004577636719" text="Surname" />
-                              <TableColumn fx:id="col3" editable="false" prefWidth="174.33328247070312" text="..." />
+                            <TableColumn fx:id="col1" prefWidth="76.66665172576904" text="id" />
+                            <TableColumn fx:id="col2" minWidth="9.000007629394531" prefWidth="110.00004577636719" text="Name" />
+                              <TableColumn fx:id="col3" editable="false" prefWidth="174.33328247070312" text="Surname" />
                           </columns>
                         </TableView>
                      </children>

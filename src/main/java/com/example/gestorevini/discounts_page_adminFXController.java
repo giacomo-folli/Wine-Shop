@@ -30,8 +30,6 @@ public class discounts_page_adminFXController implements Initializable {
     private PrintWriter out;
 
     @FXML
-    private Button btn_discounts;
-    @FXML
     private Spinner<Integer> small_spin, med_spin, large_spin, max_spin;
     @FXML
     private Label lbl1, lbl2, lbl3, lbl4;
@@ -79,5 +77,5 @@ public class discounts_page_adminFXController implements Initializable {
     }
 
     @FXML
-    private void btn_home_clicked(ActionEvent event) throws IOException { lib.getHome(event, type, client); }
+    private void btn_home_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }
 }

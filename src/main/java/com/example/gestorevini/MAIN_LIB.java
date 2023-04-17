@@ -8,12 +8,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Objects;
 
 public class MAIN_LIB {
     private Parent root;
 
     public void getHome(ActionEvent event, String client, String type) throws IOException {
-        if (type == null) {
+        if (type.equals("client")) {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
             root = loader.load();
             LoggedInFXController LFXC = loader.getController();
@@ -22,7 +23,7 @@ public class MAIN_LIB {
             window.setScene(new Scene(root));
             window.setResizable(false);
             window.setTitle("Home");
-        } else {
+        } else if (type.equals("admin") || type.equals("employee")) {
             FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in_AE.fxml"));
             root = loader.load();
             LoggedInAEFXController LAEFX = loader.getController();
@@ -32,6 +33,8 @@ public class MAIN_LIB {
             window.setScene(new Scene(root));
             window.setResizable(false);
             window.setTitle("Home");
+        } else {
+            System.out.println("Error: Invalid user type");
         }
     }
 

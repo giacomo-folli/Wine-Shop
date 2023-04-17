@@ -19,12 +19,13 @@ public class    Server extends Application {
         try (
                 Connection conn = DriverManager.getConnection(DBURL, LOGIN, PASSWORD);
                 Statement stmt = conn.createStatement()
-        ) { //if connection is successful, manage client-server connection
+            ) {//manage client-server connection
             while (true) {
                 int port = 1234; //set port number
                 try (ServerSocket serverSocket = new ServerSocket(port))
-                { //create a new server socket
-                    while (true) {
+                { //new server socket
+                    while (true)
+                    {
                         final Socket socket = serverSocket.accept();
                         new ServerThread(socket, conn, stmt).start(); //create a new thread for each client
                     }

@@ -84,12 +84,13 @@ public class MainApplicationFXController implements Initializable {
                                 window.setScene(new Scene(root));
                                 window.setTitle("Home");
                                 System.out.println(usr + " logged in as admin");
-                            } else if (user_type.equals("null")) {
+                            } else if (user_type.equals("client")) {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("logged_in.fxml"));
                                 Parent root = loader.load();
                                 //inject username in LoggedInFXController
                                 LoggedInFXController loggedIn = loader.getController();
                                 loggedIn.setUser(usr);
+                                loggedIn.setUserType(user_type);
                                 Stage window = (Stage) btn_login.getScene().getWindow();
                                 window.setScene(new Scene(root));
                                 window.setTitle("Home");
@@ -99,7 +100,7 @@ public class MainApplicationFXController implements Initializable {
                     } else { System.out.println("Wrong password"); }
                 } else { System.out.println("Username doesn't exist"); }
             } catch (Exception e) { System.out.println(e); }
-        } catch (Exception e) { System.out.println("Failed to connect to database"); }
+        } catch (Exception e) { System.out.println("MainApplicationFXC, Failed to connect to database"); }
     }
 
     public static String getUserUSR() { return usr; }

@@ -66,16 +66,21 @@ public class alert_pageAdminFXController implements Initializable {
                 alert_list.add(new Alert(ID, wineName,Date));
                 alert_table.setItems(alert_list);
             }
-        } catch (Exception e) { System.out.println("pda_page_admin, init " + e); }
+        } catch (Exception e) { System.out.println("AlertPage_INITIALIZE, " + e); }
     }
 
     @FXML
-    public void btn_send_is_clicked() {
+    public void btn_send_is_clicked(ActionEvent event) {
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             String data = alert_temp.getID() + "/" + txt_name.getText() + "/" + txt_number.getText() + "/" + txt_notes.getText();
-            System.out.println(data);
-        } catch (Exception e) { System.out.println("pda_page_admin, btn_send " + e); }
+            out.println("DELETE_ALERT");
+            out.println(alert_temp.getID());
+            out.println("SET_QUANTITY");
+            out.println(alert_temp.getWineName());
+            out.println(txt_number.getText());
+            lib.getAlertADMIN(event, type, client);
+        } catch (Exception e) { System.out.println("AlertPage_SEND_BTN, btn_send " + e); }
     }
 
     @FXML

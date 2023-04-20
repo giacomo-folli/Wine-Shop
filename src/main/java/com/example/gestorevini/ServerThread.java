@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ServerThread extends Thread {
+    ArrayList<String> low_wines = new ArrayList<>();
     final private Connection conn;
     final private Socket socket;
     final private Statement stmt;
@@ -20,10 +21,10 @@ public class ServerThread extends Thread {
     }
 
     private ArrayList<String> checkAvailability() throws SQLException {
+        low_wines.clear();
         ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
-        ArrayList<String> low_wines = new ArrayList<>();
         while (at.next()) {
-            if (!low_wines.contains(at.getString("Name")))
+                if (!low_wines.contains(at.getString("Name")))
                 low_wines.add(at.getString("Name"));
         }
         return low_wines;
@@ -35,7 +36,7 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
-                if (checkAvailability().size()!=0) {
+                if (checkAvailability().size()>0) {
                     String today = date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
                     for (String i : checkAvailability()) {
                         String query = "INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');";
@@ -322,6 +323,18 @@ public class ServerThread extends Thread {
                     }
                     out.println("null");
                 }
+                else if (line.equals("GET_ALERT")) {
+                    ResultSet rs = this.stmt.executeQuery("SELECT * FROM alert;");
+                    while (rs.next()) {
+                        String out_data = rs.getInt("ID") + "/" + rs.getString("NameWine") + "/" + rs.getString("Date_alert");
+                        out.println(out_data);
+                    }
+                    out.println("null");
+                }
+                else if (line.equals("DELETE_ALERT")) {
+                    String id = in.readLine();
+                    int count = this.stmt.executeUpdate("DELETE FROM alert WHERE ID="+ id + ";");
+                }
                 else if (line.equals("CHECK_DISCOUNTS")) {
                     String query = "SELECT * FROM discount WHERE ID=1;";
                     ResultSet rs = this.stmt.executeQuery(query);
@@ -338,6 +351,15 @@ public class ServerThread extends Thread {
                     String large = temp[2];
                     String max = temp[3];
                     int count = this.stmt.executeUpdate("UPDATE discount SET small=" + small + ", medium=" + medium + ", large=" + large + ", max=" + max + " WHERE ID=1;");
+                }
+                else if (line.equals("SET_QUANTITY")) {
+                    String wineName = in.readLine();
+                    if (!wineName.equals("null")) {
+                        int quantity = Integer.parseInt(in.readLine());
+                        int count = this.stmt.executeUpdate("UPDATE wine SET Quantity=" + quantity + " WHERE Name='" + wineName + "';");
+                    } else {
+                        int quantity = Integer.parseInt(in.readLine());
+                    }
                 }
                 else { System.out.println("ServerThread: Feature not added"); }
             }

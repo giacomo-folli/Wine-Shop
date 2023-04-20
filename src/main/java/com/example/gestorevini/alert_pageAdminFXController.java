@@ -5,7 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -17,42 +20,39 @@ import java.net.Socket;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class pda_pageAdminFXController implements Initializable {
+public class alert_pageAdminFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
     private PrintWriter out;
     private BufferedReader in;
     private String client;
     private String type;
-    private ObservableList<PDA> pda_list = FXCollections.observableArrayList();
-    private PDA pda_temp;
+    private ObservableList<Alert> alert_list = FXCollections.observableArrayList();
+    private Alert alert_temp;
 
     @FXML
-    private TableView<PDA> pda_table;
+    private TableView<Alert> alert_table;
     @FXML
-    private TableColumn<PDA, String> col1, col2, col3;
+    private TableColumn<Alert, String> col1, col2, col3;
     @FXML
-    private DatePicker pda_date;
-    @FXML
-    private TextField txt_name, txt_email, txt_c4;
+    private TextField txt_name, txt_number, txt_notes;
 
     public void setClient(String i) { client = i; }
     public void setUserType(String i) { type = i; }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        pda_list.clear();
+        alert_list.clear();
         col1.setCellValueFactory(new PropertyValueFactory<>("wineName"));
-        col2.setCellValueFactory(new PropertyValueFactory<>("wineProducer"));
-        col3.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("Date"));
 
-        pda_table.setOnMouseClicked((MouseEvent event) -> {
+        alert_table.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount()!=0)
-                pda_temp = pda_table.getSelectionModel().getSelectedItem();
+                alert_temp = alert_table.getSelectionModel().getSelectedItem();
         });
 
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
-            out.println("GET_PDA");
+            out.println("GET_ALERT");
 
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
@@ -60,15 +60,11 @@ public class pda_pageAdminFXController implements Initializable {
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
                 int ID = Integer.parseInt(temp[0]);
-                int idClient = Integer.parseInt(temp[1]);
-                String wineName = temp[2];
-                String wineProd = temp[3];
-                int wineYear = Integer.parseInt(temp[4]);
-                int quantity = Integer.parseInt(temp[5]);
-                String notes = temp[6];
+                String wineName = temp[1];
+                String Date = temp[2];
 
-                pda_list.add(new PDA(ID, idClient, wineName, wineProd, wineYear, quantity, notes));
-                pda_table.setItems(pda_list);
+                alert_list.add(new Alert(ID, wineName,Date));
+                alert_table.setItems(alert_list);
             }
         } catch (Exception e) { System.out.println("pda_page_admin, init " + e); }
     }
@@ -77,7 +73,7 @@ public class pda_pageAdminFXController implements Initializable {
     public void btn_send_is_clicked() {
         try (Socket s = getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
-            String data = pda_temp.getID() + "/" + txt_name.getText() + "/" + txt_email.getText() + "/" + pda_date.getValue() + "/" + txt_c4.getText();
+            String data = alert_temp.getID() + "/" + txt_name.getText() + "/" + txt_number.getText() + "/" + txt_notes.getText();
             System.out.println(data);
         } catch (Exception e) { System.out.println("pda_page_admin, btn_send " + e); }
     }

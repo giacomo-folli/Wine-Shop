@@ -6,12 +6,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Objects;
 
 public class MAIN_LIB {
     private Parent root;
+    Stage window;
 
     public void getHome(ActionEvent event, String client, String type) throws IOException {
         if (type.equals("client")) {
@@ -19,7 +22,8 @@ public class MAIN_LIB {
             root = loader.load();
             LoggedInFXController LFXC = loader.getController();
             LFXC.setUser(client);
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            LFXC.setUserType(type);
+            window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
             window.setResizable(false);
             window.setTitle("Home");
@@ -29,7 +33,7 @@ public class MAIN_LIB {
             LoggedInAEFXController LAEFX = loader.getController();
             LAEFX.setUser(client);
             LAEFX.setUserType(type);
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window = (Stage)((Node)event.getSource()).getScene().getWindow();
             window.setScene(new Scene(root));
             window.setResizable(false);
             window.setTitle("Home");
@@ -40,7 +44,7 @@ public class MAIN_LIB {
 
     public void getLogout(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(fxmlLoader.load()));
         window.setResizable(false);
         window.setTitle("Login");
@@ -51,7 +55,7 @@ public class MAIN_LIB {
         root = loader.load();
         user_pageFXController UPFX = loader.getController();
         UPFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("User Page");
@@ -63,7 +67,7 @@ public class MAIN_LIB {
         wineListFXController WLFXC = loader.getController();
         WLFXC.SetUserID(client);
         WLFXC.SetUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Search Wine");
@@ -75,7 +79,7 @@ public class MAIN_LIB {
         helpFXController helpFX = loader.getController();
         helpFX.setClient(client);
         helpFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Help");
@@ -88,7 +92,7 @@ public class MAIN_LIB {
         purchases_page.setClient(client);
         purchases_page.setUserType(type);
         purchases_page.setTableView();
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Purchases");
@@ -100,7 +104,7 @@ public class MAIN_LIB {
         search_wine_pageFXController search_wine_page = loader.getController();
         search_wine_page.setUserID(client);
         search_wine_page.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Search Wine");
@@ -111,7 +115,7 @@ public class MAIN_LIB {
         root = loader.load();
         cart_pageFXController CPFX = loader.getController();
         CPFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Cart");
@@ -122,7 +126,7 @@ public class MAIN_LIB {
         root = loader.load();
         notifications_pageFXController NPFX = loader.getController();
         NPFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Notifications");
@@ -133,7 +137,7 @@ public class MAIN_LIB {
         root = loader.load();
         report_pageFXController RPFX = loader.getController();
         RPFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Report");
@@ -144,10 +148,22 @@ public class MAIN_LIB {
         root = loader.load();
         pda_pageAdminFXController PPFX = loader.getController();
         PPFX.setUserType(type);
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Support");
+    }
+
+    public void getAlertADMIN(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("alert_page_admin.fxml"));
+        root = loader.load();
+        alert_pageAdminFXController APFX = loader.getController();
+        APFX.setUserType(type);
+        APFX.setClient(client);
+        window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setResizable(false);
+        window.setTitle("Alerts");
     }
 
     public void getUserADMIN(ActionEvent event, String type, String client) throws IOException {
@@ -156,7 +172,7 @@ public class MAIN_LIB {
         user_page_adminFXController UPFX = loader.getController();
         UPFX.setUserType(type);
         UPFX.setClient(client);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("User Page");
@@ -168,7 +184,7 @@ public class MAIN_LIB {
         client_page_adminFXController CPFX = loader.getController();
         CPFX.setUserType(type);
         CPFX.setClient(client);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Client List");
@@ -180,7 +196,7 @@ public class MAIN_LIB {
         discounts_page_adminFXController DPFX = loader.getController();
         DPFX.setUserType(type);
         DPFX.setUserID(client);
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Discounts");

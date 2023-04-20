@@ -72,7 +72,7 @@ public class discounts_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("UPDATE_DISCOUNTS");
             out.println(small_spin.getValue() + "/" + med_spin.getValue() + "/" + large_spin.getValue() + "/" + max_spin.getValue());
-            lib.getHome(event, type, client);
+            lib.getHome(event, client, type);
         } catch (Exception e) { System.out.println("discount_page, " + e); }
     }
 

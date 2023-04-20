@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.alert_pageAdminFXController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="553.0" layoutY="19.0" preserveRatio="true">
+               <image>
+                  <Image url="@log_out.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <Button fx:id="btn_logout" layoutX="556.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <HBox layoutY="-1.0" prefHeight="323.0" prefWidth="597.0">
+               <children>
+                  <AnchorPane fx:id="pane_pda" prefHeight="331.0" prefWidth="346.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <TableView fx:id="alert_table" editable="true" layoutX="41.0" layoutY="23.0" prefHeight="330.6666666666667" prefWidth="298.6666666666667" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="col1" prefWidth="92.33331310749054" text="Name" />
+                            <TableColumn fx:id="col2" prefWidth="96.33331298828125" text="Alert Date" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="pane_contact_info" prefHeight="323.0" prefWidth="299.0" style="-fx-background-color: #eeeeee;">
+                     <children>
+                        <VBox alignment="BASELINE_CENTER" layoutX="19.0" layoutY="10.0" prefHeight="331.0" prefWidth="280.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Courier Info" />
+                              <Label text="Name" />
+                              <TextField fx:id="txt_name" prefWidth="236.0">
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin></TextField>
+                              <Label text="Number of bottles" />
+                              <TextField fx:id="txt_number">
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin></TextField>
+                              <Label text="Notes" />
+                              <TextField fx:id="txt_notes">
+                                 <VBox.margin>
+                                    <Insets left="30.0" right="30.0" />
+                                 </VBox.margin></TextField>
+                              <Button mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="25.0" prefWidth="82.0" text="Send">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="30.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

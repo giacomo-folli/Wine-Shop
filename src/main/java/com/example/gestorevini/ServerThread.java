@@ -23,7 +23,8 @@ public class ServerThread extends Thread {
         ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
         ArrayList<String> low_wines = new ArrayList<>();
         while (at.next()) {
-            low_wines.add(at.getString("Name") +"/");
+            if (!low_wines.contains(at.getString("Name")))
+                low_wines.add(at.getString("Name"));
         }
         return low_wines;
     }
@@ -38,7 +39,9 @@ public class ServerThread extends Thread {
                     String today = date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
                     for (String i : checkAvailability()) {
                         String query = "INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');";
-                        int rs = this.stmt.executeUpdate(query);
+                        try {
+                            int rs = this.stmt.executeUpdate(query);
+                        } catch (SQLIntegrityConstraintViolationException e) {}
                     }
                     System.out.println("Wine capacity low handling");
                 } else { System.out.println("Wine capacity ok"); }

@@ -34,7 +34,13 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
-                if (checkAvailability().size()!=0) { System.out.println("Low wine capacity");
+                if (checkAvailability().size()!=0) {
+                    String today = date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
+                    for (String i : checkAvailability()) {
+                        String query = "INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');";
+                        int rs = this.stmt.executeUpdate(query);
+                    }
+                    System.out.println("Wine capacity low handling");
                 } else { System.out.println("Wine capacity ok"); }
 
                 //Manage requests

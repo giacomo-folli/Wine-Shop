@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MAIN_LIB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplicationFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplicationFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/discounts_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/discounts_page_adminFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/user_page_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +166,10 @@
       <workItem from="1681300425633" duration="1173000" />
       <workItem from="1681301840444" duration="6647000" />
       <workItem from="1681391322273" duration="4058000" />
-      <workItem from="1681737339582" duration="8212000" />
+      <workItem from="1681737339582" duration="8508000" />
+      <workItem from="1681931869908" duration="14000" />
+      <workItem from="1681976330660" duration="346000" />
+      <workItem from="1681976692459" duration="469000" />
     </task>
     <servers />
   </component>

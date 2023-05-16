@@ -24,7 +24,7 @@ public class ServerThread extends Thread {
         low_wines.clear();
         ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
         while (at.next()) {
-                if (!low_wines.contains(at.getString("Name")))
+            if (!low_wines.contains(at.getString("Name")))
                 low_wines.add(at.getString("Name"));
         }
         return low_wines;

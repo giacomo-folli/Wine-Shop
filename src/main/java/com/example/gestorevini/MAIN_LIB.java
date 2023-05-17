@@ -121,11 +121,12 @@ public class MAIN_LIB {
         window.setTitle("Cart");
     }
 
-    public void getNotifications(ActionEvent event, String type) throws IOException {
+    public void getNotifications(ActionEvent event, String type, String client) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("notifications_page.fxml"));
         root = loader.load();
         notifications_pageFXController NPFX = loader.getController();
         NPFX.setUserType(type);
+        NPFX.setUser(client);
         window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);

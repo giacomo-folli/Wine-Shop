@@ -141,7 +141,7 @@ public class search_wine_pageFXController implements Initializable {
     public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
 
     @FXML
-    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type); }
+    public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type, client); }
 
     private Socket getSocket() throws Exception { return new Socket("localhost", 1234); }
 }

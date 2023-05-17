@@ -23,19 +23,15 @@ public class notifications_pageFXController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(client + ", " + type);
         //TODO: implementare la funzione di notifica(?)
     }
 
     @FXML
     public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
-
     @FXML
     public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type);}
-
     @FXML
     public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
-
     @FXML
     public void btn_user_is_clicked(ActionEvent event) throws IOException { lib.getUser(event, type); }
 }

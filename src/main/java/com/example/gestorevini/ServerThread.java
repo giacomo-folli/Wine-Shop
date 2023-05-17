@@ -147,7 +147,7 @@ public class ServerThread extends Thread {
                     String Address = temp[6];
                     String cf = temp[7];
 
-                    String query = "INSERT INTO clienti (Name, Surname, USR, PSW, Email, Cell, Addres, CF, Type) VALUES ('" + name + "', '" + surname + "', '" + usr + "', '" + pwd + "', '" + email + "', '" + cell + "', '" + Address + "', '" + cf + "', 'employee');";
+                    String query = "INSERT INTO clienti (Name, Surname, USR, PSW, Email, Cell, Addres, Cf, type) VALUES ('" + name + "', '" + surname + "', '" + usr + "', '" + pwd + "', '" + email + "', '" + cell + "', '" + Address + "', '" + cf + "', 'employee');";
                     int count = this.stmt.executeUpdate(query);
                 }
                 else if (line.equals("GET_EMPLOYEE")) {
@@ -158,6 +158,10 @@ public class ServerThread extends Thread {
                         out.println(out_data);
                     }
                     out.println("null");
+                }
+                else if (line.equals("DELETE_EMPLOYEE")) {
+                    String employee = in.readLine();
+                    int rs = this.stmt.executeUpdate("DELETE FROM clienti WHERE ID="+ employee +";");
                 }
                 else if (line.equals("GET_CLIENT")) {
                     String query = "SELECT * FROM clienti WHERE type='null';";

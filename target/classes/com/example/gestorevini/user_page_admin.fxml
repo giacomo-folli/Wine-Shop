@@ -37,7 +37,7 @@
                <children>
                   <AnchorPane fx:id="pane_pda" prefHeight="331.0" prefWidth="424.0" style="-fx-background-color: #eeeeee;">
                      <children>
-                        <TableView fx:id="pda_table" layoutX="41.0" layoutY="23.0" prefHeight="323.0" prefWidth="361.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                        <TableView fx:id="user_table" layoutX="41.0" layoutY="23.0" prefHeight="323.0" prefWidth="361.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
                           <columns>
                             <TableColumn fx:id="col1" prefWidth="76.66665172576904" text="id" />
                             <TableColumn fx:id="col2" minWidth="9.000007629394531" prefWidth="110.00004577636719" text="Name" />
@@ -168,12 +168,12 @@
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="79.0" snapToPixel="false" style="-fx-background-color: blue; -fx-text-fill: white;" text="Update">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_update_is_clicked" layoutX="10.0" layoutY="10.0"  prefHeight="30.0" prefWidth="79.0" snapToPixel="false" style="-fx-background-color: blue; -fx-text-fill: white;" text="Update">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
                                     </Button>
-                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="75.0" snapToPixel="false" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete">
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_delete_is_clicked" layoutX="84.0" layoutY="10.0"  prefHeight="30.0" prefWidth="75.0" snapToPixel="false" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>

@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +18,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class user_page_adminFXController implements Initializable {
@@ -26,18 +26,17 @@ public class user_page_adminFXController implements Initializable {
     private BufferedReader in;
     private String client;
     private String type;
-    private ObservableList<String[]> data = FXCollections.observableArrayList();
-    private boolean visibility_pda = false;
-    private boolean visibility_info = false;
+    private ObservableList<Client> data = FXCollections.observableArrayList();
+    private Client temp_user;
 
     @FXML
-    private TableView<String[]> pda_table;
+    private TableView<Client> user_table;
     @FXML
-    private TableColumn<String[], String> col1 = new TableColumn<>("ID");
+    private TableColumn<Client, String> col1 = new TableColumn<>("ID");
     @FXML
-    private TableColumn<String[], String> col2 = new TableColumn<>("Name");
+    private TableColumn<Client, String> col2 = new TableColumn<>("Name");
     @FXML
-    private TableColumn<String[], String> col3 = new TableColumn<>("Surname");
+    private TableColumn<Client, String> col3 = new TableColumn<>("Surname");
     @FXML
     private TextField txt_name, txt_surname, txt_user, txt_pwd, txt_email, txt_cell, txt_address, txt_cf;
 
@@ -46,30 +45,36 @@ public class user_page_adminFXController implements Initializable {
 
     private void setTable() {
         try (Socket s = getSocket()) {
-            data.clear();
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_EMPLOYEE");
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
 
+            data.clear();
+
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
-                String ID = temp[0];
+                int ID = Integer.parseInt(temp[0]);
                 String Name = temp[1];
                 String Surname = temp[2];
-                data.add(new String[]{ID, Name, Surname});
-                pda_table.setItems(data);
+
+                data.add(new Client("", ID, Name, Surname, "", "", 0, "", ""));
+                user_table.setItems(data);
             }
-            pda_table.getColumns().addAll(col1, col2, col3);
-        } catch (Exception e) { System.out.println("userPageADMIN, " + e); }
+        } catch (Exception e) { System.out.println("userPageADMIN, SetTable " + e); }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        col1.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[0]));
-        col2.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[1]));
-        col3.setCellValueFactory(stringCellDataFeatures -> new SimpleStringProperty(stringCellDataFeatures.getValue()[2]));
+        col1.setCellValueFactory(new PropertyValueFactory<>("IDClient"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("Surname"));
         setTable();
+
+        user_table.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getClickCount()!=0)
+                temp_user = user_table.getSelectionModel().getSelectedItem();
+        });
     }
 
     @FXML
@@ -78,13 +83,24 @@ public class user_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-            data.clear();
             setTable();
-        } catch (IOException e) { System.out.println("userPageADMIN, sendBTN: " + e.getMessage()); }
+        } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
     }
 
-    //TODO: add delete employee function
-    //TODO: add update employee function
+    @FXML
+    public void btn_update_is_clicked() {}
+
+    @FXML
+    public void btn_delete_is_clicked() {
+        try (Socket s = getSocket()) {
+            out = new PrintWriter(s.getOutputStream(), true);
+            out.println("DELETE_EMPLOYEE");
+            out.println(temp_user.getIDClient());
+            data.clear();
+            temp_user = null;
+            setTable();
+        } catch (Exception e) { System.out.println("userPageADMIN, DeleteBTN: " + e.getMessage()); }
+    }
 
     @FXML
     public void btn_home_is_clicked(ActionEvent event) throws IOException { lib.getHome(event, client, type); }

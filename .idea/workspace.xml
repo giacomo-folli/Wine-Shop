@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestorevini/user_page_adminFXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestorevini/user_page_adminFXController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +32,11 @@
         <option name="url" value="https://github.com/giacomo-folli/Wine-Shop.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="JsbtTreeLayoutManager">
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -181,7 +186,8 @@
       <workItem from="1684246114986" duration="5109000" />
       <workItem from="1684308378926" duration="5183000" />
       <workItem from="1684326398309" duration="840000" />
-      <workItem from="1684327297025" duration="2192000" />
+      <workItem from="1684327297025" duration="4982000" />
+      <workItem from="1684337534381" duration="1119000" />
     </task>
     <servers />
   </component>

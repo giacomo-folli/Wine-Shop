@@ -1,6 +1,5 @@
 package com.example.gestorevini;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +17,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class user_page_adminFXController implements Initializable {
@@ -52,7 +52,7 @@ public class user_page_adminFXController implements Initializable {
 
             data.clear();
 
-            while ((line = in.readLine())!="null") {
+            while (!Objects.equals(line = in.readLine(), "null")) {
                 String[] temp = line.split("/");
                 int ID = Integer.parseInt(temp[0]);
                 String Name = temp[1];
@@ -61,7 +61,7 @@ public class user_page_adminFXController implements Initializable {
                 data.add(new Client("", ID, Name, Surname, "", "", 0, "", ""));
                 user_table.setItems(data);
             }
-        } catch (Exception e) { System.out.println("userPageADMIN, SetTable " + e); }
+        } catch (IOException e) { System.out.println("userPageADMIN, SetTable " + e); }
     }
 
     @Override
@@ -88,7 +88,9 @@ public class user_page_adminFXController implements Initializable {
     }
 
     @FXML
-    public void btn_update_is_clicked() {}
+    public void btn_update_is_clicked() {
+        //...
+    }
 
     @FXML
     public void btn_delete_is_clicked() {

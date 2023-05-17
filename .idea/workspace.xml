@@ -7,7 +7,8 @@
     <list default="true" id="2458ffe6-4169-43f5-ba89-615c528bd010" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/user_page_adminFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/client_page_adminFXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestorevini/client_page_adminFXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/pda_page_admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestorevini/pda_page_admin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +188,8 @@
       <workItem from="1684308378926" duration="5183000" />
       <workItem from="1684326398309" duration="840000" />
       <workItem from="1684327297025" duration="4982000" />
-      <workItem from="1684337534381" duration="1119000" />
+      <workItem from="1684337534381" duration="1410000" />
+      <workItem from="1684339304970" duration="1781000" />
     </task>
     <servers />
   </component>

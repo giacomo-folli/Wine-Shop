@@ -23,8 +23,6 @@ public class client_page_adminFXController implements Initializable {
     private String client;
     private String type;
     private ObservableList<Client> data = FXCollections.observableArrayList();
-    //private boolean visibility_pda = false;
-    //private boolean visibility_info = false;
 
     @FXML
     private TableView<Client> client_table;
@@ -46,12 +44,13 @@ public class client_page_adminFXController implements Initializable {
         add_col.setCellValueFactory(new PropertyValueFactory<Client, String>("Address"));
 
         try (Socket s = getSocket()) {
-            data.clear();
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_CLIENT");
 
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
+
+            data.clear();
 
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
@@ -61,9 +60,8 @@ public class client_page_adminFXController implements Initializable {
                 String Address = temp[3];
                 String Email = temp[4];
 
-                Client c = new Client("", ID, Name, Surname, "", Email, 0, Address, "");
-                data.add(c);
-                client_table.getItems().add(c);
+                data.add(new Client("", ID, Name, Surname, "", Email, 0, Address, ""));
+                client_table.setItems(data);
             }
 
         } catch (Exception e) { System.out.println("userPageADMIN, " + e); }

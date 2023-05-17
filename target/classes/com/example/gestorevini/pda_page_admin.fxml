@@ -39,9 +39,9 @@
                      <children>
                         <TableView fx:id="pda_table" editable="true" layoutX="41.0" layoutY="23.0" prefHeight="330.6666666666667" prefWidth="298.6666666666667" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
-                            <TableColumn fx:id="col1" prefWidth="92.33331310749054" text="col 1" />
-                            <TableColumn fx:id="col2" prefWidth="96.33331298828125" text="col 2" />
-                              <TableColumn fx:id="col3" prefWidth="131.66668701171875" text="col 3" />
+                            <TableColumn fx:id="col1" prefWidth="92.33331310749054" text="Name" />
+                            <TableColumn fx:id="col2" prefWidth="96.33331298828125" text="Producer" />
+                              <TableColumn fx:id="col3" prefWidth="131.66668701171875" text="Quantity" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

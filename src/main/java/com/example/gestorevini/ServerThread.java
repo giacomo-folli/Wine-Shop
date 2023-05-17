@@ -24,7 +24,9 @@ public class ServerThread extends Thread {
         low_wines.clear();
         ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
         while (at.next()) {
-            if (!low_wines.contains(at.getString("Name")))
+            if (low_wines.contains(at.getString("Name")))
+                System.out.println("Wine already in list");
+            else
                 low_wines.add(at.getString("Name"));
         }
         return low_wines;
@@ -180,7 +182,7 @@ public class ServerThread extends Thread {
                     int rs = this.stmt.executeUpdate("DELETE FROM clienti WHERE ID="+ employee +";");
                 }
                 else if (line.equals("GET_CLIENT")) {
-                    String query = "SELECT * FROM clienti WHERE type='null';";
+                    String query = "SELECT * FROM clienti WHERE type='client';";
                     ResultSet rs = this.stmt.executeQuery(query);
                     while (rs.next()) {
                         String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Surname") + "/" + rs.getString("Email")  + "/" + rs.getString("Addres");

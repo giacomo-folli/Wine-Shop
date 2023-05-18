@@ -46,8 +46,7 @@ public class ServerThread extends Thread {
                             int rs = this.stmt.executeUpdate(query);
                         } catch (SQLIntegrityConstraintViolationException e) {}
                     }
-                    System.out.println("Wine capacity low handling");
-                } else { System.out.println("Wine capacity ok"); }
+                }
 
                 //Manage requests
                 String line = in.readLine();

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class ServerThread extends Thread {
     ArrayList<String> low_wines = new ArrayList<>();
+    ArrayList<String> temp_wines = new ArrayList<>();
     final private Connection conn;
     final private Socket socket;
     final private Statement stmt;
@@ -22,12 +23,9 @@ public class ServerThread extends Thread {
 
     private ArrayList<String> checkAvailability() throws SQLException {
         low_wines.clear();
-        ResultSet at = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
-        while (at.next()) {
-            if (low_wines.contains(at.getString("Name")))
-                System.out.println("Wine already in list");
-            else
-                low_wines.add(at.getString("Name"));
+        ResultSet lol = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
+        while (lol.next()) {
+            low_wines.add(lol.getString("Name"));
         }
         return low_wines;
     }
@@ -38,15 +36,32 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
-                if (checkAvailability().size()>0) {
-                    String today = date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth();
+                /*
+                //check wines availability
+                if (checkAvailability()!=null && checkAvailability().size()>0) {
+                    String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
+
+                    //download alerts already fired
+                    temp_wines.clear();
+                    ResultSet rs = this.stmt.executeQuery("SELECT NameWine FROM alert;");
+                    while (rs.next()) {
+                        temp_wines.add(rs.getString("NameWine"));
+                    }
+
+                    //check for duplicates and fires new alerts
                     for (String i : checkAvailability()) {
-                        String query = "INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');";
-                        try {
-                            int rs = this.stmt.executeUpdate(query);
-                        } catch (SQLIntegrityConstraintViolationException e) {}
+                        if (temp_wines.contains(i))
+                            continue;
+                        else {
+                            try {
+                                int rss = this.stmt.executeUpdate("INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');");
+                            } catch (Exception e) {
+                                System.out.println("ERROR CheckAvailability() UPDATE");
+                            }
+                        }
                     }
                 }
+                 */
 
                 //Manage requests
                 String line = in.readLine();

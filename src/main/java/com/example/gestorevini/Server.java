@@ -3,13 +3,11 @@ package com.example.gestorevini;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.*;
-import java.util.Scanner;
 
-public class    Server extends Application {
+public class Server extends Application {
 
     public void start(Stage stage) throws IOException { //initialize Server and connect to DB
         final String DBURL = "jdbc:mysql://localhost:3306/wineshop";

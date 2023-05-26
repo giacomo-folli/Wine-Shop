@@ -83,7 +83,7 @@ public class user_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-            data.clear();
+            //data.clear();
             temp_user = null;
             setTable();
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
@@ -105,7 +105,7 @@ public class user_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("DELETE_EMPLOYEE");
             out.println(temp_user.getIDClient());
-            data.clear();
+            //data.clear();
             temp_user = null;
             setTable();
         } catch (Exception e) { System.out.println("userPageADMIN, DeleteBTN: " + e.getMessage()); }

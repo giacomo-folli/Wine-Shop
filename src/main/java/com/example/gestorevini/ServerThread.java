@@ -36,23 +36,22 @@ public class ServerThread extends Thread {
             out = new PrintWriter(this.socket.getOutputStream(), true);
 
             while (true) {
-                /*
+                low_wines.clear();
+                low_wines = checkAvailability();
                 //check wines availability
-                if (checkAvailability()!=null && checkAvailability().size()>0) {
+                if (low_wines!=null && low_wines.size()>0) {
                     String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
 
                     //download alerts already fired
                     temp_wines.clear();
-                    ResultSet rs = this.stmt.executeQuery("SELECT NameWine FROM alert;");
-                    while (rs.next()) {
-                        temp_wines.add(rs.getString("NameWine"));
+                    ResultSet as = this.stmt.executeQuery("SELECT NameWine FROM alert;");
+                    while (as.next()) {
+                        temp_wines.add(as.getString("NameWine"));
                     }
 
-                    //check for duplicates and fires new alerts
-                    for (String i : checkAvailability()) {
-                        if (temp_wines.contains(i))
-                            continue;
-                        else {
+                    //check for duplicates and fire new alerts
+                    for (String i : low_wines) {
+                        if (!temp_wines.contains(i)) {
                             try {
                                 int rss = this.stmt.executeUpdate("INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');");
                             } catch (Exception e) {
@@ -60,8 +59,8 @@ public class ServerThread extends Thread {
                             }
                         }
                     }
+                    low_wines.clear();
                 }
-                 */
 
                 //Manage requests
                 String line = in.readLine();

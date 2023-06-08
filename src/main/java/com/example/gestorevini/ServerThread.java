@@ -47,33 +47,8 @@ public class ServerThread extends Thread {
         try
         {
             while (true) {
-                low_wines.clear();
-                low_wines = checkAvailability();
-                //check wines availability
-                if (low_wines!=null && low_wines.size()>0) {
-                    String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
+                serverCheck(); //check for low availability in storage
 
-                    //download alerts already fired
-                    temp_wines.clear();
-                    ResultSet as = this.stmt.executeQuery("SELECT NameWine FROM alert;");
-                    while (as.next()) {
-                        temp_wines.add(as.getString("NameWine"));
-                    }
-
-                    //check for duplicates and fire new alerts
-                    for (String i : low_wines) {
-                        if (!temp_wines.contains(i)) {
-                            try {
-                                int rss = this.stmt.executeUpdate("INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');");
-                            } catch (Exception e) {
-                                System.out.println("ERROR CheckAvailability() UPDATE");
-                            }
-                        }
-                    }
-                    low_wines.clear();
-                }
-
-                //Manage requests
                 String line = in.readLine();
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
@@ -106,6 +81,40 @@ public class ServerThread extends Thread {
                 }
             }
         } catch (IOException | SQLException e) { System.out.println("ServerThread, " + e); }
+    }
+
+    /** Check if there are low wines
+     * @throws SQLException If an error occured
+     * @var low_wines List of all low wines
+     * @function checkAvailability() Check if there are low wines
+     */
+    private void serverCheck() throws SQLException {
+        low_wines.clear();
+        low_wines = checkAvailability();
+
+        //check wines availability
+        if (low_wines!=null && low_wines.size()>0) {
+            String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
+
+            //download alerts already fired
+            temp_wines.clear();
+            ResultSet as = this.stmt.executeQuery("SELECT NameWine FROM alert;");
+            while (as.next()) {
+                temp_wines.add(as.getString("NameWine"));
+            }
+
+            //check for duplicates and fire new alerts
+            for (String i : low_wines) {
+                if (!temp_wines.contains(i)) {
+                    try {
+                        int rss = this.stmt.executeUpdate("INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');");
+                    } catch (Exception e) {
+                        System.out.println("ERROR CheckAvailability() UPDATE");
+                    }
+                }
+            }
+            low_wines.clear();
+        }
     }
 
     /** Show all wines in the database */
@@ -195,12 +204,10 @@ public class ServerThread extends Thread {
     private void showPurch() throws IOException, SQLException
     {
         String user = in.readLine();
-        System.out.println("Showing purchases for " + user);
         String query = "SELECT * FROM purchase JOIN clienti ON purchase.IDBuyer=clienti.ID WHERE USR='" + user + "';";
         ResultSet rs = this.stmt.executeQuery(query);
         while (rs.next()) {
             String out_data = rs.getString("ID") + "/" + rs.getString("WineName") + "/" + rs.getString("WineQuantity") + "/" + rs.getString("Price") + "/" + rs.getString("CardName");
-            System.out.println(out_data);
             out.println(out_data);
         }
         out.println("null");
@@ -258,8 +265,12 @@ public class ServerThread extends Thread {
     /** Delete an employee */
     private void deleteEmployee() throws IOException, SQLException
     {
-        String employee = in.readLine();
-        int rs = this.stmt.executeUpdate("DELETE FROM clienti WHERE ID=" + employee + ";");
+        String temp_id = in.readLine();
+        int rs = this.stmt.executeUpdate("DELETE FROM clienti WHERE ID=" + temp_id + ";");
+        if (rs == 1)
+            out.println("DONE");
+        else
+            out.println("ERROR");
     }
 
     /** Get all clients */
@@ -510,6 +521,5 @@ public class ServerThread extends Thread {
             int count = this.stmt.executeUpdate("UPDATE wine SET Quantity=" + quantity + " WHERE Name='" + wineName + "';");
         }
     }
-
 }
 

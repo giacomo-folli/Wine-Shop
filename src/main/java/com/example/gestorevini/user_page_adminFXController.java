@@ -83,7 +83,6 @@ public class user_page_adminFXController implements Initializable {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-            //data.clear();
             temp_user = null;
             setTable();
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
@@ -101,13 +100,25 @@ public class user_page_adminFXController implements Initializable {
 
     @FXML
     public void btn_delete_is_clicked() {
-        try (Socket s = getSocket()) {
+        try (Socket s = getSocket())
+        {
             out = new PrintWriter(s.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
             out.println("DELETE_EMPLOYEE");
             out.println(temp_user.getIDClient());
-            //data.clear();
-            temp_user = null;
-            setTable();
+
+            //this way client waits confirm from server
+            String result = in.readLine();
+            if (result.equals("DONE"))
+            {
+                temp_user = null;
+                setTable();
+            } else {
+                System.out.println("ERROR MESSAGE RECEIVED FROM SERVER");
+            }
+
+
         } catch (Exception e) { System.out.println("userPageADMIN, DeleteBTN: " + e.getMessage()); }
     }
 

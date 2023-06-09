@@ -1,11 +1,14 @@
-*/.idea/
-*/.mvn/
-*/lib/
-*/target/
+.idea
+.mvn
+lib
+target
 
-*/pom.xml
-*/mvnw.cmd
-*/.mvnw
+####
+
+mvnw
+mvnw.cmd
+pom.xml
+Wine Shop.iml
 
 ### VS Code ###
 .vscode/

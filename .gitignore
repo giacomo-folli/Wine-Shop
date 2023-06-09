@@ -1,7 +1,7 @@
-.idea
-.mvn
-lib
-target
+**/.idea
+**/.mvn
+**/lib
+**/target
 
 ####
 

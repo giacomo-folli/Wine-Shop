@@ -2,13 +2,11 @@ git adtarget/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*/Wine Shop/target/
+
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-*/Wine Shop/target/
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr

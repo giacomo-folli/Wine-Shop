@@ -1,11 +1,11 @@
-.idea/
-.mvn/
-lib/
-target/
+*/.idea/
+*/.mvn/
+*/lib/
+*/target/
 
-pom.xml
-mvnw.cmd
-.mvnw
+*/pom.xml
+*/mvnw.cmd
+*/.mvnw
 
 ### VS Code ###
 .vscode/

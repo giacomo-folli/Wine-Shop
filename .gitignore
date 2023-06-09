@@ -5,6 +5,7 @@ git adtarget/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
+*/Wine Shop/target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/

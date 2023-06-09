@@ -44,7 +44,8 @@ public class user_page_adminFXController implements Initializable {
     public void setUserType(String i) { type = i; }
 
     private void setTable() {
-        try (Socket s = getSocket()) {
+        try (Socket s = getSocket())
+        {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("GET_EMPLOYEE");
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -79,7 +80,8 @@ public class user_page_adminFXController implements Initializable {
 
     @FXML
     public void btn_send_is_clicked() {
-        try (Socket s = getSocket()) {
+        try (Socket s = getSocket())
+        {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("ADD_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
@@ -90,7 +92,8 @@ public class user_page_adminFXController implements Initializable {
 
     @FXML
     public void btn_update_is_clicked() {
-        try (Socket s = getSocket()) {
+        try (Socket s = getSocket())
+        {
             out = new PrintWriter(s.getOutputStream(), true);
             out.println("UPDATE_EMPLOYEE");
             out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText() + "/" + temp_user.getIDClient());

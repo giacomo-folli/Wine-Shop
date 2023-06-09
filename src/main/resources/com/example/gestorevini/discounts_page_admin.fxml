@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.*?>
 
 <SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.discounts_page_adminFXController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
          <children>
             <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -61,5 +61,5 @@
                </children></AnchorPane>
          </children>
       </HBox>
-  </items>
+   </items>
 </SplitPane>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/c7f3c150-3dea-436f-afc0-65d534cf312e/console.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/example/gestorevini/MainApplicationFXController.java" dialect="GenericSQL" />
-    <file url="PROJECT" dialect="MySQL" />
-  </component>
-</project>

@@ -79,6 +79,8 @@
                         <Label fx:id="lbl_discount" layoutX="336.0" layoutY="187.0" prefHeight="17.0" prefWidth="38.0" />
                         <Label layoutX="225.0" layoutY="203.0" text="Discounted price:" />
                         <Label fx:id="lbl_tot_price" layoutX="336.0" layoutY="203.0" prefHeight="17.0" prefWidth="38.0" />
+                        <Label fx:id="lbl_max1" layoutX="380.0" layoutY="149.0" prefHeight="17.0" prefWidth="192.0" text="" />
+                        <Label fx:id="lbl_max2" layoutX="380.0" layoutY="162.0" prefHeight="17.0" prefWidth="192.0" text="" />
                      </children></AnchorPane>
                </children></HBox>
          </children></AnchorPane>

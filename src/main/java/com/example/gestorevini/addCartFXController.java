@@ -26,16 +26,17 @@ public class addCartFXController implements Initializable {
     private BufferedReader in;
     private PrintWriter out;
     private String name_wine;
+    private String user_buyer;
+    private int max_quantity = 0;
     private int temp_quantity = 1;
     private int price;
     private int tot_price;
     private int temp_discount = 0;
     private int discounted_price;
-    private String user_buyer, name_producer;
-    private int quantity, wines_price, year;
+    private int quantity;
 
     @FXML
-    public Label lbl_cart_info, lbl_est_cost, lbl_discount, lbl_tot_price;
+    public Label lbl_cart_info, lbl_discount, lbl_tot_price, lbl_max1, lbl_max2;
     @FXML
     private Spinner<Integer> spin_quantity;
 
@@ -55,6 +56,7 @@ public class addCartFXController implements Initializable {
     public void setMaxQuantity(int a) {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, a, 1);
         spin_quantity.setValueFactory(valueFactory);
+        max_quantity = a;
     }
 
     @Override
@@ -68,9 +70,20 @@ public class addCartFXController implements Initializable {
             getDiscount();
             temp_quantity = spin_quantity.getValue();
             tot_price = price * temp_quantity;
-            lbl_est_cost.setText(tot_price + "€");
             discounted_price = disc_price(tot_price, temp_discount);
             lbl_tot_price.setText(discounted_price + "€");
+        });
+
+        spin_quantity.setOnMouseClicked((MouseEvent event) -> {
+
+            if (spin_quantity.getValue() == max_quantity) {
+                lbl_max1.setText("You can't buy more than " + max_quantity + " bottles");
+                lbl_max2.setText("Write a PDA to buy more wine");
+            }
+            else {
+                lbl_max1.setText("");
+                lbl_max2.setText("");
+            }
         });
     }
 
@@ -116,7 +129,7 @@ public class addCartFXController implements Initializable {
             out.println(name_wine + "/" + client + "/" + quantity + "/" + discounted_price);
             if (in.readLine().equals("ADDED")) {
                 lbl_cart_info.setText("Added to cart");
-                lib.searchWine(event, client, type);
+                lib.searchWine(event, type, client);
             }
         } catch (Exception e) { System.out.println("addCartFXC, " + e); }
     }

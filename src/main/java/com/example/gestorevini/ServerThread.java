@@ -97,7 +97,9 @@ public class ServerThread extends Thread {
     /** Check if there are low wines
      * @throws SQLException If an error occurred
      * @var low_wines List of all low wines
-     * @function checkAvailability() Check if there are low wines
+     * @var temp_wines List of all alerts already fired
+     * @function checkAvailability() Update low_wines
+     * @function checkAlerts() Update temp_wines
      */
     private void serverCheck() throws SQLException
     {
@@ -110,7 +112,7 @@ public class ServerThread extends Thread {
             for (int i : low_wines) {
                 if (!temp_wines.contains(i)) {
                     try {
-                        int rss = this.stmt.executeUpdate("INSERT INTO alert(Date_alert, ID_Wine, Name) VALUES ('" + today + "', " + i + ", '" + getWineName(i) + "');");
+                        int rss = this.stmt.executeUpdate("INSERT INTO alert(Date_alert, ID_Wine, Name, Availability) VALUES ('" + today + "', " + i + ", '" + getWineName(i) + "', " + getQuantityByID(i) + ");");
                     } catch (Exception e) {
                         System.out.println("ERROR CheckAvailability() UPDATE");
                     }
@@ -143,13 +145,23 @@ public class ServerThread extends Thread {
     }
 
     /** Get Wine name from ID */
-    private String getWineName(int ID) throws IOException, SQLException
+    private String getWineName(int ID) throws SQLException
     {
         String name = null;
         ResultSet rs = this.stmt.executeQuery("SELECT Name FROM wine WHERE ID=" + ID + ";");
         if (rs.next())
             name = rs.getString("Name");
         return name;
+    }
+    
+    /** Get Availability by ID */
+    private int getQuantityByID(int ID) throws SQLException
+    {
+        int num = 0;
+        ResultSet rs = this.stmt.executeQuery("SELECT Quantity FROM wine WHERE ID=" + ID + ";");
+        if (rs.next())
+            num = rs.getInt("Quantity");
+        return num;
     }
 
     /** Search a wine by name */
@@ -565,7 +577,7 @@ public class ServerThread extends Thread {
     {
         ResultSet rs = this.stmt.executeQuery("SELECT * FROM alert;");
         while (rs.next()) {
-            String out_data = rs.getInt("ID") + "/" + rs.getString("ID_Wine") + "/" + rs.getString("Name") + "/" + rs.getString("Date_alert");
+            String out_data = rs.getInt("ID") + "/" + rs.getString("ID_Wine") + "/" + rs.getString("Name") + "/" + rs.getString("Date_alert") + "/" + rs.getString("Availability");
             out.println(out_data);
         }
         out.println("null");

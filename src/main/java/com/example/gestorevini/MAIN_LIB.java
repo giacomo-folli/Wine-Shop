@@ -38,7 +38,7 @@ public class MAIN_LIB {
             window.setResizable(false);
             window.setTitle("Home");
         } else {
-            System.out.println("Error: Invalid user type");
+            System.out.println("Error: Invalid user type " + type + ", " + client);
         }
     }
 

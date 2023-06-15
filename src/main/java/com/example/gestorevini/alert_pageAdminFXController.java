@@ -44,6 +44,7 @@ public class alert_pageAdminFXController implements Initializable {
         alert_list.clear();
         col1.setCellValueFactory(new PropertyValueFactory<>("Name"));
         col2.setCellValueFactory(new PropertyValueFactory<>("Date"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("Availability"));
 
         alert_table.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount()!=0)
@@ -63,8 +64,9 @@ public class alert_pageAdminFXController implements Initializable {
                 int ID_Wine = Integer.parseInt(temp[1]);
                 String Name = temp[2];
                 String Date = temp[3];
+                int Avail = Integer.parseInt(temp[4]);
 
-                alert_list.add(new Alert(ID, ID_Wine, Name, Date));
+                alert_list.add(new Alert(ID, ID_Wine, Name, Date, Avail));
                 alert_table.setItems(alert_list);
             }
         } catch (Exception e) { System.out.println("AlertPage_INITIALIZE, " + e); }

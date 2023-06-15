@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class user_page_adminFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
+    private StringMatch match = new StringMatch();
     private PrintWriter out;
     private BufferedReader in;
     private String client;
@@ -82,11 +83,16 @@ public class user_page_adminFXController implements Initializable {
     public void btn_send_is_clicked() {
         try (Socket s = getSocket())
         {
-            out = new PrintWriter(s.getOutputStream(), true);
-            out.println("ADD_EMPLOYEE");
-            out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-            temp_user = null;
-            setTable();
+            if (!match.nameCheck(txt_name.getText()) && !match.nameCheck(txt_surname.getText()) && !match.cellCheck(txt_cell.getText()))
+            {
+                out = new PrintWriter(s.getOutputStream(), true);
+                out.println("ADD_EMPLOYEE");
+                out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
+                temp_user = null;
+                setTable();
+            } else {
+                System.out.println("userPageADMIN, SendBTN: Invalid input! CHECK NAME AND CELL");
+            }
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
     }
 

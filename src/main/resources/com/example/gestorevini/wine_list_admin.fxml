@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.17953020134228184" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestorevini.wine_list_adminFXController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="597.0">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="36.0" layoutX="19.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@home.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_logout" accessibleText="log out" fitHeight="30.0" fitWidth="36.0" layoutX="756.0" layoutY="19.0" preserveRatio="true">
+               <image>
+                  <Image url="@log_out.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ImageView>
+            <Button fx:id="btn_logout" layoutX="759.0" layoutY="21.0" mnemonicParsing="false" onAction="#btn_logout_is_clicked" prefHeight="25.0" prefWidth="24.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btn_home" layoutX="11.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_home_is_clicked" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #00000000;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="295.0" prefWidth="597.0">
+         <children>
+            <HBox layoutY="-1.0" prefHeight="323.0" prefWidth="797.0">
+               <children>
+                  <AnchorPane fx:id="pane_pda" prefHeight="323.0" prefWidth="546.0" style="-fx-background-color: #eeeeee;">
+                     <children>
+                        <TableView fx:id="wine_table" layoutX="41.0" layoutY="23.0" prefHeight="317.0" prefWidth="542.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="3.0">
+                          <columns>
+                             <TableColumn fx:id="name" prefWidth="85.99998235702515" text="Name" />
+                             <TableColumn fx:id="producer" prefWidth="84.66669464111328" text="Producer" />
+                             <TableColumn fx:id="origin" prefWidth="104.00001525878906" text="Origin" />
+                             <TableColumn fx:id="year" prefWidth="72.66665649414062" text="Year" />
+                             <TableColumn fx:id="grape" prefWidth="76.6666259765625" text="Grape" />
+                             <TableColumn fx:id="price" prefWidth="49.0" text="Price" />
+                             <TableColumn fx:id="quantity" prefWidth="62.666717529296875" text="Quantity" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="pane_contact_info" prefHeight="323.0" prefWidth="260.0" style="-fx-background-color: #eeeeee;">
+                     <children>
+                        <VBox alignment="TOP_CENTER" prefHeight="323.0" prefWidth="254.0" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="112.0" text="Manage Wine List">
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin></Label>
+                              <HBox prefHeight="144.0" prefWidth="229.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="144.0" prefWidth="154.0" spacing="2.0">
+                                       <children>
+                                          <Label text="Name">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <TextField fx:id="txt_name" layoutX="40.0" layoutY="133.0">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label layoutX="114.0" layoutY="104.0" text="Origin">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_origin">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Grape">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_grape">
+                                             <VBox.margin>
+                                                <Insets left="5.0" right="2.5" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="144.0" prefWidth="140.0" spacing="2.0">
+                                       <children>
+                                          <Label text="Producer">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <TextField fx:id="txt_producer" layoutX="40.0" layoutY="133.0">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label layoutX="114.0" layoutY="104.0" text="Year">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_year">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                          <Label text="Price">
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TextField fx:id="txt_price">
+                                             <VBox.margin>
+                                                <Insets left="2.5" right="5.0" />
+                                             </VBox.margin>
+                                          </TextField>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <Label snapToPixel="false" text="Quantity">
+                                 <VBox.margin>
+                                    <Insets left="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="txt_quantity" prefHeight="25.0" prefWidth="217.0">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <HBox prefWidth="243.0" spacing="5.0">
+                                 <children>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btn_send_is_clicked" prefHeight="30.0" prefWidth="82.0" snapToPixel="false" style="-fx-background-color: green; -fx-text-fill: white;" text="Add">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_update_is_clicked" prefHeight="30.0" prefWidth="79.0" snapToPixel="false" style="-fx-background-color: blue; -fx-text-fill: white;" text="Update">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" onAction="#btn_delete_is_clicked" prefHeight="30.0" prefWidth="75.0" snapToPixel="false" style="-fx-background-color: red; -fx-text-fill: white;" text="Delete">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets top="2.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

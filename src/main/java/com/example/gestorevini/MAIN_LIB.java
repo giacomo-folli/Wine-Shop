@@ -152,7 +152,7 @@ public class MAIN_LIB {
         window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(new Scene(root));
         window.setResizable(false);
-        window.setTitle("Support");
+        window.setTitle("PDA page");
     }
 
     public void getAlertADMIN(ActionEvent event, String type, String client) throws IOException {
@@ -189,6 +189,18 @@ public class MAIN_LIB {
         window.setScene(new Scene(root));
         window.setResizable(false);
         window.setTitle("Client List");
+    }
+
+    public void showWinesADMIN(ActionEvent event, String type, String client) throws IOException {
+        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("wine_list_admin.fxml"));
+        root = loader.load();
+        wine_list_adminFXController WLFX = loader.getController();
+        WLFX.setUserType(type);
+        WLFX.setClient(client);
+        window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setResizable(false);
+        window.setTitle("Wines");
     }
 
     public void getDiscounts(ActionEvent event, String type, String client) throws IOException {

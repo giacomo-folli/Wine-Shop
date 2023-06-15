@@ -9,7 +9,7 @@ import java.sql.*;
 
 public class Server extends Application {
 
-    public void start(Stage stage) throws IOException { //initialize Server and connect to DB
+    public void start(Stage stage) { //initialize Server and connect to DB
         final String DBURL = "jdbc:mysql://localhost:3306/wineshop";
         final String LOGIN = "root";
         final String PASSWORD = "";

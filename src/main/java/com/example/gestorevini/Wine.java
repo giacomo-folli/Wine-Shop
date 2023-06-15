@@ -1,6 +1,7 @@
 package com.example.gestorevini;
 public class Wine {
 
+    public int IDWine;
     public String nome;
     public String produttore;
     public String provenienza;
@@ -10,7 +11,8 @@ public class Wine {
     public String vitigniProvenienza;
     public int num;
 
-    public Wine(String nome, String produttore, String provenienza, int anno, String note, String vitigniProvenienza, int prezzo, int num) {
+    public Wine(int IDWine, String nome, String produttore, String provenienza, int anno, String note, String vitigniProvenienza, int prezzo, int num) {
+        this.IDWine = IDWine;
         this.nome = nome;
         this.produttore = produttore;
         this.provenienza = provenienza;
@@ -22,6 +24,7 @@ public class Wine {
     }
 
     //getters
+    public int getIDWine() {return this.IDWine;}
     public String getNome() {return this.nome;}
     public String getProduttore() {return this.produttore;}
     public String getProvenienza() {return this.provenienza;}
@@ -32,6 +35,7 @@ public class Wine {
     public String getVitigniProvenienza() {return this.vitigniProvenienza;}
 
     //setters
+    public void setIDWine(int IDWine) {this.IDWine = IDWine;}
     public void setVitigniProvenienza(String vitigniProvenienza) {this.vitigniProvenienza = vitigniProvenienza;}
     public void setNome(String nome) {this.nome = nome;}
     public void setProduttore(String produttore) {this.produttore = produttore;}

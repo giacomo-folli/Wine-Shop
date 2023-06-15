@@ -43,7 +43,7 @@ public class LoggedInAEFXController implements Initializable {
     @FXML
     private void btn_alert_is_clicked(ActionEvent event) throws IOException { lib.getAlertADMIN(event, type, client); }
     @FXML
-    private void btn_show_wines_clicked(ActionEvent event) throws IOException { lib.showWines(event, type, client); }
+    private void btn_show_wines_clicked(ActionEvent event) throws IOException { lib.showWinesADMIN(event, type, client); }
     @FXML
     public void btn_logout_is_clicked(ActionEvent event) throws IOException { lib.getLogout(event); }
     @FXML

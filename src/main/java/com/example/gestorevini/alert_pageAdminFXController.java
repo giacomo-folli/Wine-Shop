@@ -42,7 +42,7 @@ public class alert_pageAdminFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         alert_list.clear();
-        col1.setCellValueFactory(new PropertyValueFactory<>("wineName"));
+        col1.setCellValueFactory(new PropertyValueFactory<>("Name"));
         col2.setCellValueFactory(new PropertyValueFactory<>("Date"));
 
         alert_table.setOnMouseClicked((MouseEvent event) -> {
@@ -60,10 +60,11 @@ public class alert_pageAdminFXController implements Initializable {
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
                 int ID = Integer.parseInt(temp[0]);
-                String wineName = temp[1];
-                String Date = temp[2];
+                int ID_Wine = Integer.parseInt(temp[1]);
+                String Name = temp[2];
+                String Date = temp[3];
 
-                alert_list.add(new Alert(ID, wineName,Date));
+                alert_list.add(new Alert(ID, ID_Wine, Name, Date));
                 alert_table.setItems(alert_list);
             }
         } catch (Exception e) { System.out.println("AlertPage_INITIALIZE, " + e); }
@@ -77,7 +78,7 @@ public class alert_pageAdminFXController implements Initializable {
             out.println("DELETE_ALERT");
             out.println(alert_temp.getID());
             out.println("SET_QUANTITY");
-            out.println(alert_temp.getWineName());
+            out.println(alert_temp.getID_Wine());
             out.println(txt_number.getText());
             lib.getAlertADMIN(event, type, client);
         } catch (Exception e) { System.out.println("AlertPage_SEND_BTN, btn_send " + e); }

@@ -55,7 +55,6 @@ public class addCartFXController implements Initializable {
     public void setMaxQuantity(int a) {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, a, 1);
         spin_quantity.setValueFactory(valueFactory);
-        lbl_est_cost.setText(price + "€");
     }
 
     @Override
@@ -117,7 +116,6 @@ public class addCartFXController implements Initializable {
             out.println(name_wine + "/" + client + "/" + quantity + "/" + discounted_price);
             if (in.readLine().equals("ADDED")) {
                 lbl_cart_info.setText("Added to cart");
-                sleep(1000);
                 lib.searchWine(event, client, type);
             }
         } catch (Exception e) { System.out.println("addCartFXC, " + e); }

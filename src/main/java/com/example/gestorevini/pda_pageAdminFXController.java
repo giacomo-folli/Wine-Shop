@@ -42,8 +42,8 @@ public class pda_pageAdminFXController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         pda_list.clear();
         col1.setCellValueFactory(new PropertyValueFactory<>("wineName"));
-        col2.setCellValueFactory(new PropertyValueFactory<>("wineProducer"));
-        col3.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        col2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        col3.setCellValueFactory(new PropertyValueFactory<>("date"));
 
         pda_table.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount()!=0)
@@ -57,6 +57,8 @@ public class pda_pageAdminFXController implements Initializable {
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
             String line;
 
+            pda_list.clear();
+
             while ((line = in.readLine())!="null") {
                 String[] temp = line.split("/");
                 int ID = Integer.parseInt(temp[0]);
@@ -66,8 +68,9 @@ public class pda_pageAdminFXController implements Initializable {
                 int wineYear = Integer.parseInt(temp[4]);
                 int quantity = Integer.parseInt(temp[5]);
                 String notes = temp[6];
+                String date = temp[7];
 
-                pda_list.add(new PDA(ID, idClient, wineName, wineProd, wineYear, quantity, notes));
+                pda_list.add(new PDA(ID, idClient, wineName, wineProd, wineYear, quantity, notes, date));
                 pda_table.setItems(pda_list);
             }
         } catch (Exception e) { System.out.println("pda_page_admin, init " + e); }

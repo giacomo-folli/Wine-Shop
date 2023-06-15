@@ -96,18 +96,19 @@ public class search_wine_pageFXController implements Initializable {
 
                 while ((line = in.readLine())!="null") {
                     String[] temp = line.split("/");
-                    String name = temp[0];
-                    String prod = temp[1];
-                    String orig = temp[2];
-                    String year = temp[3];
-                    int price = Integer.parseInt(temp[4]);
-                    int num = Integer.parseInt(temp[5]);
+                    int id = Integer.parseInt(temp[0]);
+                    String name = temp[1];
+                    String prod = temp[2];
+                    String orig = temp[3];
+                    int year = Integer.parseInt(temp[4]);
+                    int price = Integer.parseInt(temp[5]);
+                    int num = Integer.parseInt(temp[6]);
 
-                    list.add(new Wine(name, prod, orig, (Integer.parseInt(year)), "", "", price, num));
+                    list.add(new Wine(id, name, prod, orig, year, "", "", price, num));
                     search_table.setItems(list);
                 }
             }
-        } catch (Exception t) { System.out.println("wineListFXController, " + t); }
+        } catch (Exception t) { System.out.println("searchWinePage, " + t); }
     }
 
     public void btn_add_to_cart_is_clicked(ActionEvent event) throws Exception {

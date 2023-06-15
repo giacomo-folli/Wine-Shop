@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.net.URL;
 
@@ -20,6 +21,7 @@ public class helpFXController implements Initializable {
     private String type;
     private boolean visibility_pda = false;
     private boolean visibility_info = false;
+    LocalDate date = LocalDate.now();
 
     @FXML
     private Button btn_support, btn_pda;
@@ -67,9 +69,11 @@ public class helpFXController implements Initializable {
     @FXML
     public void btn_send_is_clicked() {
         try (Socket s = getSocket()) {
+            String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
+
             out = new PrintWriter(s.getOutputStream(), true);
-            String pda = client + "/" + txt_name.getText() + "/" + txt_year.getText() + "/" + txt_producer.getText() + "/" + txt_notes.getText() + "/" + spin_quantity.getValue();
             out.println("ADD_PDA");
+            String pda = client + "/" + txt_name.getText() + "/" + txt_producer.getText() + "/" + txt_year.getText() + "/" + txt_notes.getText() + "/" + spin_quantity.getValue() + "/" + today;
             out.println(pda);
             //Hide the pane when the request is sent
             pane_pda.setVisible(false);

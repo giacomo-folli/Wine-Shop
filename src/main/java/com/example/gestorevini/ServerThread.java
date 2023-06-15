@@ -6,8 +6,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ServerThread extends Thread {
-    ArrayList<String> low_wines = new ArrayList<>();
-    ArrayList<String> temp_wines = new ArrayList<>();
+    ArrayList<Integer> low_wines = new ArrayList<>();
+    ArrayList<Integer> temp_wines = new ArrayList<>();
     /** The connection to the database. */
     final private Connection conn;
     /** The socket to communicate with the client. */
@@ -17,6 +17,7 @@ public class ServerThread extends Thread {
     private BufferedReader in;
     private PrintWriter out;
     LocalDate date = LocalDate.now();
+    String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
 
     /**
      * Instantiates a server child
@@ -34,13 +35,20 @@ public class ServerThread extends Thread {
         out = new PrintWriter(this.socket.getOutputStream(), true);
     }
 
-    private ArrayList<String> checkAvailability() throws SQLException {
+    private void checkAvailability() throws SQLException {
         low_wines.clear();
-        ResultSet lol = this.stmt.executeQuery("SELECT Name FROM wine WHERE wine.Quantity<=1;");
+        ResultSet lol = this.stmt.executeQuery("SELECT ID FROM wine WHERE wine.Quantity<=5;");
         while (lol.next()) {
-            low_wines.add(lol.getString("Name"));
+            low_wines.add(Integer.parseInt(lol.getString("ID")));
         }
-        return low_wines;
+    }
+
+    private void checkAlerts() throws SQLException {
+        temp_wines.clear();
+        ResultSet as = this.stmt.executeQuery("SELECT ID_Wine FROM alert;");
+        while (as.next()) {
+            temp_wines.add(Integer.parseInt(as.getString("ID_Wine")));
+        }
     }
 
     public void run() {
@@ -58,10 +66,13 @@ public class ServerThread extends Thread {
                     case "SEARCH_WINE_YEAR" -> searchWineYear();
                     case "BUY_WINE" -> buyWine();
                     case "SHOW_PURCH" -> showPurch();
+                    case "ADD_WINE" -> addWine();
                     case "ADD_EMPLOYEE" -> addEmployee();
                     case "UPDATE_EMPLOYEE" -> updateEmployee();
+                    case "UPDATE_WINE" -> updateWine();
                     case "GET_EMPLOYEE" -> getEmployee();
                     case "DELETE_EMPLOYEE" -> deleteEmployee();
+                    case "DELETE_WINE" -> deleteWine();
                     case "GET_CLIENT" -> getClient();
                     case "GET_ID_CART" -> getIdCart();
                     case "ADD_TO_CART" -> addToCart();
@@ -84,36 +95,38 @@ public class ServerThread extends Thread {
     }
 
     /** Check if there are low wines
-     * @throws SQLException If an error occured
+     * @throws SQLException If an error occurred
      * @var low_wines List of all low wines
      * @function checkAvailability() Check if there are low wines
      */
-    private void serverCheck() throws SQLException {
-        low_wines.clear();
-        low_wines = checkAvailability();
+    private void serverCheck() throws SQLException
+    {
+        checkAvailability();
+        checkAlerts();
 
         //check wines availability
         if (low_wines!=null && low_wines.size()>0) {
-            String today = date.getYear() + ":" + date.getMonthValue() + ":" + date.getDayOfMonth();
-
-            //download alerts already fired
-            temp_wines.clear();
-            ResultSet as = this.stmt.executeQuery("SELECT NameWine FROM alert;");
-            while (as.next()) {
-                temp_wines.add(as.getString("NameWine"));
-            }
-
             //check for duplicates and fire new alerts
-            for (String i : low_wines) {
+            for (int i : low_wines) {
                 if (!temp_wines.contains(i)) {
                     try {
-                        int rss = this.stmt.executeUpdate("INSERT INTO alert(NameWine, Date_alert) VALUES ('"+i+"','"+today+"');");
+                        int rss = this.stmt.executeUpdate("INSERT INTO alert(Date_alert, ID_Wine, Name) VALUES ('" + today + "', " + i + ", '" + getWineName(i) + "');");
                     } catch (Exception e) {
                         System.out.println("ERROR CheckAvailability() UPDATE");
                     }
                 }
             }
-            low_wines.clear();
+
+            //for each wine in temp_wines, check if it's still low
+            for (int i : temp_wines) {
+                if (!low_wines.contains(i)) {
+                    try {
+                        int rss = this.stmt.executeUpdate("DELETE FROM alert WHERE ID_Wine=" + i + ";");
+                    } catch (Exception e) {
+                        System.out.println("ERROR CheckAvailability() DELETE");
+                    }
+                }
+            }
         }
     }
 
@@ -123,10 +136,20 @@ public class ServerThread extends Thread {
             String query = "SELECT * FROM wine;";
             ResultSet rs = this.stmt.executeQuery(query);
             while (rs.next()) {
-                String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Notes") + "/" + rs.getString("Grape") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
+                String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Notes") + "/" + rs.getString("Grape") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
                 out.println(out_data);
             }
             out.println("null");
+    }
+
+    /** Get Wine name from ID */
+    private String getWineName(int ID) throws IOException, SQLException
+    {
+        String name = null;
+        ResultSet rs = this.stmt.executeQuery("SELECT Name FROM wine WHERE ID=" + ID + ";");
+        if (rs.next())
+            name = rs.getString("Name");
+        return name;
     }
 
     /** Search a wine by name */
@@ -141,12 +164,10 @@ public class ServerThread extends Thread {
         while (rs.next())
         {
             trovato = 1;
-            String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
+            String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
             out.println(out_data);
         }
-
-        out.println((trovato == 0) ? "La sua ricerca non ha prodotto risultati" : "null");
-
+        out.println("null");
     }
 
     /** Search a wine by year */
@@ -160,14 +181,10 @@ public class ServerThread extends Thread {
 
         while (rs.next()) {
             trovato = 1;
-            String out_data = rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
+            String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
             out.println(out_data);
         }
-        if (trovato == 0) {
-            out.println("La sua ricerca non ha prodotto risultati");
-        }
         out.println("null");
-
     }
 
     /** Buy a wine */
@@ -213,6 +230,36 @@ public class ServerThread extends Thread {
         out.println("null");
     }
 
+    /** Add a new wine */
+    private void addWine() throws IOException, SQLException
+    {
+        String info = in.readLine();
+        String[] temp = info.split("/");
+        String name = temp[0];
+        String prod = temp[1];
+        String origin = temp[2];
+        String year = temp[3];
+        String grapes = temp[4];
+        String price = temp[5];
+        String quantity = temp[6];
+        String notes = "";
+
+        String query = "INSERT INTO wine (Name, Producer, Origin, Data, Notes, Grape, Price, Quantity) VALUES ('"
+                + name + "', '"
+                + prod + "', '"
+                + origin + "', "
+                + year + ", '"
+                + notes + "', '"
+                + grapes + "', "
+                + price + ", "
+                + quantity + ");";
+        int res = this.stmt.executeUpdate(query);
+        if (res==1)
+            out.println("DONE");
+        else
+            out.println("ERROR");
+    }
+
     /** Add a new employee */
     private void addEmployee() throws IOException, SQLException
     {
@@ -250,6 +297,36 @@ public class ServerThread extends Thread {
         int count = this.stmt.executeUpdate(query);
     }
 
+    /** Update a wine */
+    private void updateWine() throws IOException, SQLException
+    {
+        String info = in.readLine();
+        String[] temp = info.split("/");
+        String ID_WINE = temp[0];
+        String name = temp[1];
+        String prod = temp[2];
+        String origin = temp[3];
+        String data = temp[4];
+        String grape = temp[5];
+        String price = temp[6];
+        String quantity = temp[7];
+
+        String query = "UPDATE wine SET " +
+                "Name='" + name + "', " +
+                "Producer='" + prod + "', " +
+                "Origin='" + origin + "', " +
+                "Data=" + data + ", " +
+                "Grape='" + grape + "', " +
+                "Price=" + price + ", " +
+                "Quantity=" + quantity + " " +
+                "WHERE ID=" + ID_WINE + ";";
+        int res = this.stmt.executeUpdate(query);
+        if (res==1)
+            out.println("DONE");
+        else
+            out.println("ERROR");
+    }
+
     /** Get all employees */
     private void getEmployee() throws IOException, SQLException
     {
@@ -267,6 +344,17 @@ public class ServerThread extends Thread {
     {
         String temp_id = in.readLine();
         int rs = this.stmt.executeUpdate("DELETE FROM clienti WHERE ID=" + temp_id + ";");
+        if (rs == 1)
+            out.println("DONE");
+        else
+            out.println("ERROR");
+    }
+
+    /** Delete a wine */
+    private void deleteWine() throws IOException, SQLException
+    {
+        String temp_id = in.readLine();
+        int rs = this.stmt.executeUpdate("DELETE FROM wine WHERE ID=" + temp_id + ";");
         if (rs == 1)
             out.println("DONE");
         else
@@ -449,6 +537,7 @@ public class ServerThread extends Thread {
         String wine_year = temp[3];
         String notes = temp[4];
         int quantity = Integer.parseInt(temp[5]);
+        String date = temp[6];
 
         int id = 0;
 
@@ -456,7 +545,7 @@ public class ServerThread extends Thread {
         if (rs.next()) //if user exists, get his ID and insert the purchase
             id = rs.getInt("ID");
 
-        int count = this.stmt.executeUpdate("INSERT INTO pda (IDClient, WineName, WineProducer, WineYear, Quantity, Notes) VALUES (" + id + ", '" + wine_name + "', '" + wine_producer + "', '" + wine_year + "', " + quantity + ", '" + notes + "');");
+        int count = this.stmt.executeUpdate("INSERT INTO pda (IDClient, WineName, WineProducer, WineYear, Quantity, Notes, Date) VALUES (" + id + ", '" + wine_name + "', '" + wine_producer + "', '" + wine_year + "', " + quantity + ", '" + notes + "', '" + date + "');");
         System.out.println(count == 1 ? "SUCCESSFULL_ADD" : "FAILED_ADD");
     }
 
@@ -465,7 +554,7 @@ public class ServerThread extends Thread {
     {
         ResultSet rs = this.stmt.executeQuery("SELECT * FROM pda;");
         while (rs.next()) {
-            String out_data = rs.getString("ID") + "/" + rs.getString("IDClient") + "/" + rs.getString("WineName") + "/" + rs.getString("WineProducer") + "/" + rs.getString("WineYear") + "/" + rs.getString("Quantity") + "/" + rs.getString("Notes");
+            String out_data = rs.getString("ID") + "/" + rs.getString("IDClient") + "/" + rs.getString("WineName") + "/" + rs.getString("WineProducer") + "/" + rs.getString("WineYear") + "/" + rs.getString("Quantity") + "/" + rs.getString("Notes") + "/" + rs.getString("Date");
             out.println(out_data);
         }
         out.println("null");
@@ -476,7 +565,7 @@ public class ServerThread extends Thread {
     {
         ResultSet rs = this.stmt.executeQuery("SELECT * FROM alert;");
         while (rs.next()) {
-            String out_data = rs.getInt("ID") + "/" + rs.getString("NameWine") + "/" + rs.getString("Date_alert");
+            String out_data = rs.getInt("ID") + "/" + rs.getString("ID_Wine") + "/" + rs.getString("Name") + "/" + rs.getString("Date_alert");
             out.println(out_data);
         }
         out.println("null");
@@ -515,11 +604,8 @@ public class ServerThread extends Thread {
     /** Set quantity */
     private void setQuantity() throws IOException, SQLException
     {
-        String wineName = in.readLine();
-        if (!wineName.equals("null")) {
-            int quantity = Integer.parseInt(in.readLine());
-            int count = this.stmt.executeUpdate("UPDATE wine SET Quantity=" + quantity + " WHERE Name='" + wineName + "';");
-        }
+        int ID_Wine = Integer.parseInt(in.readLine());
+        int quantity = Integer.parseInt(in.readLine());
+        int count = this.stmt.executeUpdate("UPDATE wine SET Quantity=" + quantity + " WHERE ID=" + ID_Wine + ";");
     }
 }
-

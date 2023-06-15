@@ -62,16 +62,17 @@ public class wineListFXController implements Initializable {
 
             while (!(line = in.readLine()).equals("null")) {
                 String[] temp = line.split("/");
-                String name = temp[0];
-                String prod =temp[1];
-                String orig = temp[2];
-                String year = temp[3];
-                String notes = temp[4];
-                String grapes = temp[5];
-                int price = Integer.parseInt(temp[6]);
-                int num = Integer.parseInt(temp[7]);
+                int id = Integer.parseInt(temp[0]);
+                String name = temp[1];
+                String prod =temp[2];
+                String orig = temp[3];
+                int year = Integer.parseInt(temp[4]);
+                String notes = temp[5];
+                String grapes = temp[6];
+                int price = Integer.parseInt(temp[7]);
+                int num = Integer.parseInt(temp[8]);
 
-                Wine w = new Wine(name, prod, orig, (Integer.parseInt(year)), notes, grapes, price, num);
+                Wine w = new Wine(id,name, prod, orig, year, notes, grapes, price, num);
                 list.add(w);
                 table_view.getItems().add(w);
             }

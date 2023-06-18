@@ -25,6 +25,7 @@ import static java.lang.Thread.sleep;
 
 public class buyInfoFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
+    private StringMatch match = new StringMatch();
     private String type;
     private String client;
     private ArrayList temp_id;
@@ -34,8 +35,6 @@ public class buyInfoFXController implements Initializable {
     private String name_wine;
     private int price;
 
-    @FXML
-    private Button btn_home;
     @FXML
     private TextField txt_name, txt_number, txt_cvv, txt_exp;
     @FXML
@@ -55,36 +54,40 @@ public class buyInfoFXController implements Initializable {
     }
 
     @FXML
-    private void btn_buy_wine_is_clicked(ActionEvent event) {
-        if (txt_name.getText().isEmpty() || txt_number.getText().isEmpty() || txt_cvv.getText().isEmpty() || txt_exp.getText().isEmpty()) {
+    private void btn_buy_wine_is_clicked(ActionEvent event)
+    {
+        if (txt_name.getText().isEmpty() || txt_number.getText().isEmpty() || txt_cvv.getText().isEmpty() || txt_exp.getText().isEmpty()) //check input fields
+        {
             lbl_cart_info.setText("Please fill all the fields");
-        } else {
-            try (Socket s = getSocket()) {
-                out = new PrintWriter(s.getOutputStream(), true);
-                in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                System.out.println("list is long " + temp_id.size());
-
-                for (int i = 0; i < temp_id.size(); i++)
+        } else
+        {
+            if (match.globalCardCheck(txt_name.getText(), txt_number.getText(), txt_cvv.getText())) //check card info misspellings
+            {
+                try (Socket s = getSocket())
                 {
-                    out.println("BUY_WINE");
-                    out.println(temp_id.get(i) + "/" + txt_name.getText() + "/" + txt_number.getText());
-                    String next;
-                    if ((next = in.readLine())=="DONE")
-                        System.out.println(txt_name + " bought");
-                }
+                    out = new PrintWriter(s.getOutputStream(), true);
+                    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-                //sleep(1000);
+                    for (int i = 0; i < temp_id.size(); i++)
+                    {
+                        out.println("BUY_WINE");
+                        out.println(temp_id.get(i) + "/" + txt_name.getText() + "/" + txt_number.getText());
+                        String next;
+                        if ((next = in.readLine()) == "DONE")
+                            System.out.println(txt_name + " bought");
+                    }
 
-                //get back to main page
-                FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource("logged_in.fxml"));
-                Parent root = loader.load();
-                LoggedInFXController controller = loader.getController();
-                controller.setUser(client);
-                controller.setUserType(type);
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                window.setScene(new Scene(root));
-                window.setTitle("Home");
-            } catch (Exception e) { System.out.println("buyInfoFX, " + e); }
+                    //get back to main page
+                    lib.getHome(event, client, type);
+
+                } catch (Exception e) { System.out.println("buyInfoFX, " + e); }
+            } else { match.ErrorDialog(); }
         }
+    }
+
+    @FXML
+    private void btn_home_is_clicked(ActionEvent event) throws IOException
+    {
+        lib.getHome(event, client, type);
     }
 }

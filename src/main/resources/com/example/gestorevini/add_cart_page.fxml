@@ -79,8 +79,14 @@
                         <Label fx:id="lbl_discount" layoutX="336.0" layoutY="187.0" prefHeight="17.0" prefWidth="38.0" />
                         <Label layoutX="225.0" layoutY="203.0" text="Discounted price:" />
                         <Label fx:id="lbl_tot_price" layoutX="336.0" layoutY="203.0" prefHeight="17.0" prefWidth="38.0" />
-                        <Label fx:id="lbl_max1" layoutX="380.0" layoutY="149.0" prefHeight="17.0" prefWidth="192.0" text="" />
-                        <Label fx:id="lbl_max2" layoutX="380.0" layoutY="162.0" prefHeight="17.0" prefWidth="192.0" text="" />
+                        <Label fx:id="lbl_max1" layoutX="382.0" layoutY="156.0" prefHeight="17.0" prefWidth="192.0" styleClass="txt_decoration" stylesheets="@styles.css">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor></Label>
+                        <Button fx:id="btn_send_PDA" disable="true" layoutX="382.0" layoutY="152.0" mnemonicParsing="false" onAction="#btn_send_to_PDA_clicked" prefHeight="25.0" prefWidth="192.0" style="-fx-background-color: #00000000;">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                      </children></AnchorPane>
                </children></HBox>
          </children></AnchorPane>

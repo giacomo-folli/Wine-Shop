@@ -1,13 +1,13 @@
 package com.example.gestorevini;
 
-public class Alert {
+public class AlertMessage {
     private int ID;
     private int ID_Wine;
     private String Name;
     private String Date;
     private int Availability;
 
-    public Alert(int ID,int ID_Wine, String Name, String Date, int Availability) {
+    public AlertMessage(int ID, int ID_Wine, String Name, String Date, int Availability) {
         this.ID = ID;
         this.ID_Wine = ID_Wine;
         this.Name = Name;

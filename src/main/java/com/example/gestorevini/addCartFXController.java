@@ -36,9 +36,11 @@ public class addCartFXController implements Initializable {
     private int quantity;
 
     @FXML
-    public Label lbl_cart_info, lbl_discount, lbl_tot_price, lbl_max1, lbl_max2;
+    public Label lbl_cart_info, lbl_discount, lbl_tot_price, lbl_max1;
     @FXML
     private Spinner<Integer> spin_quantity;
+    @FXML
+    private Button btn_send_PDA;
 
     public void setUserID(String c) { client = c; }
     public void setUserType(String c) { type = c; }
@@ -75,14 +77,13 @@ public class addCartFXController implements Initializable {
         });
 
         spin_quantity.setOnMouseClicked((MouseEvent event) -> {
-
             if (spin_quantity.getValue() == max_quantity) {
-                lbl_max1.setText("You can't buy more than " + max_quantity + " bottles");
-                lbl_max2.setText("Write a PDA to buy more wine");
+                lbl_max1.setText("Send a PDA to buy more wine");
+                btn_send_PDA.setDisable(false);
             }
             else {
                 lbl_max1.setText("");
-                lbl_max2.setText("");
+                btn_send_PDA.setDisable(true);
             }
         });
     }
@@ -118,7 +119,8 @@ public class addCartFXController implements Initializable {
     }
 
     @FXML
-    private void btn_add_to_cart_clicked(ActionEvent event) {
+    private void btn_add_to_cart_clicked(ActionEvent event)
+    {
         try (Socket s = lib.getSocket()) {
             out = new PrintWriter(s.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(s.getInputStream()));
@@ -144,4 +146,6 @@ public class addCartFXController implements Initializable {
     public void btn_cart_is_clicked(ActionEvent event) throws IOException { lib.getCart(event, type); }
     @FXML
     public void btn_notifications_is_clicked(ActionEvent event) throws IOException { lib.getNotifications(event, type, client); }
+    @FXML
+    public void btn_send_to_PDA_clicked(ActionEvent event) throws IOException  { lib.getHelp(event, type, client); }
 }

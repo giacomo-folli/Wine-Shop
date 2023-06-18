@@ -25,3 +25,8 @@
 .info_pane {
     -fx-background-color: #eeeeee;
 }
+
+.txt_decoration {
+    -fx-text-fill: #0004aa;
+    -fx-underline: true;
+}

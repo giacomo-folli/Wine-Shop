@@ -111,7 +111,8 @@ public class search_wine_pageFXController implements Initializable {
         } catch (Exception t) { System.out.println("searchWinePage, " + t); }
     }
 
-    public void btn_add_to_cart_is_clicked(ActionEvent event) throws Exception {
+    public void btn_add_to_cart_is_clicked(ActionEvent event) throws Exception
+    {
         if (temp_wine==null) {
             System.out.println("You have to select a wine");
         } else {

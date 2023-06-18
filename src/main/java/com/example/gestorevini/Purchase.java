@@ -8,8 +8,9 @@ public class Purchase {
     private int winePrice;
     private String cardName;
     private String cardNumber;
+    private String purchDate;
 
-    public Purchase(int id, int idBuyer, String wineName, int wineQuantity, int winePrice, String cardName, String cardNumber) {
+    public Purchase(int id, int idBuyer, String wineName, int wineQuantity, int winePrice, String cardName, String cardNumber, String purchDate) {
         this.ID = id;
         this.IDBuyer = idBuyer;
         this.wineName = wineName;
@@ -17,6 +18,7 @@ public class Purchase {
         this.winePrice = winePrice;
         this.cardName = cardName;
         this.cardNumber = cardNumber;
+        this.purchDate = purchDate;
     }
 
     //getters
@@ -27,6 +29,7 @@ public class Purchase {
     public int getWinePrice() { return winePrice; }
     public String getCardName() { return cardName; }
     public String getCardNumber() { return cardNumber; }
+    public String getPurchDate() { return purchDate; }
 
     //setters
     public void setID(int id) { this.ID = id; }
@@ -36,5 +39,6 @@ public class Purchase {
     public void setWinePrice(int winePrice) { this.winePrice = winePrice; }
     public void setCardName(String cardName) { this.cardName = cardName; }
     public void setCardNumber(String cardNumber) { this.cardNumber = cardNumber; }
+    public void setPurchDate(String purchDate) { this.purchDate = purchDate; }
 
 }

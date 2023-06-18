@@ -41,7 +41,7 @@ public class helpFXController implements Initializable {
         pane_pda.setVisible(visibility_pda);
         pane_contact_info.setVisible(visibility_info);
 
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 12);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100, 1);
         valueFactory.setValue(1);
         spin_quantity.setValueFactory(valueFactory);
 

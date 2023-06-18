@@ -38,7 +38,7 @@ public class purchasesFXController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         wine_name_col.setCellValueFactory(new PropertyValueFactory<>("wineName"));
         card_col.setCellValueFactory(new PropertyValueFactory<>("cardName"));
-        id_col.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        id_col.setCellValueFactory(new PropertyValueFactory<>("purchDate"));
         quantity_col.setCellValueFactory(new PropertyValueFactory<>("wineQuantity"));
         price_col.setCellValueFactory(new PropertyValueFactory<>("winePrice"));
 
@@ -63,8 +63,9 @@ public class purchasesFXController implements Initializable {
                 int wineQuantity = Integer.parseInt(temp[2]);
                 int totPrice = Integer.parseInt(temp[3]);
                 String cardName = temp[4];
+                String purchDate = temp[5];
 
-                Purchase p = new Purchase(id, 0, wineName, wineQuantity, totPrice, cardName, "");
+                Purchase p = new Purchase(id, 0, wineName, wineQuantity, totPrice, cardName, "", purchDate);
                 list.add(p);
                 purchaseTableView.getItems().add(p);
             }

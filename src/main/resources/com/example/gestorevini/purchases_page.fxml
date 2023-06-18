@@ -69,11 +69,11 @@
          <children>
             <TableView fx:id="purchaseTableView" prefHeight="286.6666666666667" prefWidth="597.3333333333334" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="id_col" prefWidth="42.0" text="ID" />
-                  <TableColumn fx:id="wine_name_col" prefWidth="190.66665649414062" text="WINE NAME" />
-                  <TableColumn fx:id="quantity_col" prefWidth="72.33331298828125" text="QUANTITY" />
-                  <TableColumn fx:id="price_col" prefWidth="78.0" text="TOT PRICE" />
-                  <TableColumn fx:id="card_col" prefWidth="218.0" text="CARD NAME" />
+                <TableColumn fx:id="id_col" editable="false" prefWidth="112.66665661334991" text="DATE" />
+                  <TableColumn fx:id="wine_name_col" editable="false" prefWidth="156.0" text="WINE NAME" />
+                  <TableColumn fx:id="quantity_col" editable="false" prefWidth="89.0" text="QUANTITY" />
+                  <TableColumn fx:id="price_col" editable="false" prefWidth="78.3333740234375" text="TOT PRICE" />
+                  <TableColumn fx:id="card_col" editable="false" prefWidth="167.0" text="CARD NAME" />
               </columns>
             </TableView>
          </children></AnchorPane>

@@ -215,8 +215,7 @@ public class ServerThread extends Thread {
             String name_wine = rs.getString("WineName");
             int quantity = rs.getInt("WineQuantity");
             int tot_price = rs.getInt("Price");
-            System.out.println("ID: " + id + " Name: " + name_wine + " Quantity: " + quantity + " Price: " + tot_price);
-            String query = "INSERT INTO purchase (IDBuyer, WineName, WineQuantity, Price, CardName, CardNumber) VALUES (" + id + ", '" + name_wine + "', " + quantity + ", " + tot_price + ", '" + card_name + "', '" + card_number + "');";
+            String query = "INSERT INTO purchase (IDBuyer, WineName, WineQuantity, Price, CardName, CardNumber, PurchDate) VALUES (" + id + ", '" + name_wine + "', " + quantity + ", " + tot_price + ", '" + card_name + "', '" + card_number + "', '" + today + "');";
             int count = this.stmt.executeUpdate(query);
 
             if (count == 1) {
@@ -236,7 +235,7 @@ public class ServerThread extends Thread {
         String query = "SELECT * FROM purchase JOIN clienti ON purchase.IDBuyer=clienti.ID WHERE USR='" + user + "';";
         ResultSet rs = this.stmt.executeQuery(query);
         while (rs.next()) {
-            String out_data = rs.getString("ID") + "/" + rs.getString("WineName") + "/" + rs.getString("WineQuantity") + "/" + rs.getString("Price") + "/" + rs.getString("CardName");
+            String out_data = rs.getString("ID") + "/" + rs.getString("WineName") + "/" + rs.getString("WineQuantity") + "/" + rs.getString("Price") + "/" + rs.getString("CardName") + "/" + rs.getString("PurchDate");
             out.println(out_data);
         }
         out.println("null");

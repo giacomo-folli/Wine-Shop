@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,6 +25,7 @@ import static java.lang.Thread.sleep;
 
 public class wine_list_adminFXController implements Initializable {
     private MAIN_LIB lib = new MAIN_LIB();
+    private StringMatch match = new StringMatch();
     private PrintWriter out;
     private BufferedReader in;
     private String client;
@@ -97,25 +99,25 @@ public class wine_list_adminFXController implements Initializable {
     {
         try (Socket s = getSocket())
         {
-            out = new PrintWriter(s.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-
-            out.println("ADD_WINE");
-            out.println(txt_name.getText()
-                    + "/" + txt_producer.getText()
-                    + "/" + txt_origin.getText()
-                    + "/" + txt_year.getText()
-                    + "/" + txt_grape.getText()
-                    + "/" + txt_price.getText()
-                    + "/" + txt_quantity.getText());
-
-            String result = in.readLine();
-            if (result.equals("DONE"))
+            if (txt_name.getText().isEmpty() || txt_producer.getText().isEmpty() || txt_grape.getText().isEmpty() || txt_price.getText().isEmpty() || txt_year.getText().isEmpty() || txt_quantity.getText().isEmpty())
             {
-                temp_wine = null;
-                setTable();
-            } else { System.out.println("ERROR MESSAGE RECEIVED FROM SERVER"); }
-        } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
+                match.ErrorDialog();
+            }
+            else
+            {
+                if (match.globalWineCheck(txt_name.getText(), txt_producer.getText(), txt_grape.getText(), txt_price.getText(), txt_year.getText(), txt_quantity.getText())) {
+                    out = new PrintWriter(s.getOutputStream(), true);
+                    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                    out.println("ADD_WINE");
+                    out.println(txt_name.getText() + "/" + txt_producer.getText() + "/" + txt_origin.getText() + "/" + txt_year.getText() + "/" + txt_grape.getText() + "/" + txt_price.getText() + "/" + txt_quantity.getText());
+                    String result = in.readLine();
+                    if (result.equals("DONE")) {
+                        temp_wine = null;
+                        setTable();
+                    } else { System.out.println("ERROR MESSAGE RECEIVED FROM SERVER"); }
+                } else { match.ErrorDialog(); } //show error dialog}
+            }
+        } catch (Exception e) { System.out.println("wineListADMIN, SendBTN: " + e.getMessage()); }
     }
 
     @FXML
@@ -123,26 +125,29 @@ public class wine_list_adminFXController implements Initializable {
     {
         try (Socket s = getSocket())
         {
-            out = new PrintWriter(s.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-            out.println("UPDATE_WINE");
-            String temp_data = temp_wine.getIDWine()
-                    + "/" + txt_name.getText()
-                    + "/" + txt_producer.getText()
-                    + "/" + txt_origin.getText()
-                    + "/" + txt_year.getText()
-                    + "/" + txt_grape.getText()
-                    + "/" + txt_price.getText()
-                    + "/" + txt_quantity.getText();
-            out.println(temp_data);
-
-            String result = in.readLine();
-            if (result.equals("DONE"))
+            if (txt_name.getText().isEmpty() || txt_producer.getText().isEmpty() || txt_grape.getText().isEmpty() || txt_price.getText().isEmpty() || txt_year.getText().isEmpty() || txt_quantity.getText().isEmpty())
             {
-                temp_wine = null;
-                sleep(500);
-                setTable();
-            } else { System.out.println("ERROR MESSAGE RECEIVED FROM SERVER"); }
+                match.ErrorDialog();
+            } else
+            {
+                if (match.globalWineCheck(txt_name.getText(), txt_producer.getText(), txt_grape.getText(), txt_price.getText(), txt_year.getText(), txt_quantity.getText())) {
+                    out = new PrintWriter(s.getOutputStream(), true);
+                    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                    out.println("UPDATE_WINE");
+                    String temp_data = temp_wine.getIDWine() + "/" + txt_name.getText() + "/" + txt_producer.getText() + "/" + txt_origin.getText() + "/" + txt_year.getText() + "/" + txt_grape.getText() + "/" + txt_price.getText() + "/" + txt_quantity.getText();
+                    out.println(temp_data);
+                    String result = in.readLine();
+                    if (result.equals("DONE")) {
+                        temp_wine = null;
+                        sleep(500);
+                        setTable();
+                    } else {
+                        System.out.println("ERROR MESSAGE RECEIVED FROM SERVER");
+                    }
+                } else {
+                    match.ErrorDialog();
+                }
+            }
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
     }
 

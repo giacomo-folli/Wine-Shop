@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -83,15 +84,20 @@ public class user_page_adminFXController implements Initializable {
     public void btn_send_is_clicked() {
         try (Socket s = getSocket())
         {
-            if (!match.nameCheck(txt_name.getText()) && !match.nameCheck(txt_surname.getText()) && !match.cellCheck(txt_cell.getText()))
+            if (txt_name.getText().isEmpty() || txt_surname.getText().isEmpty() || txt_user.getText().isEmpty() || txt_pwd.getText().isEmpty() || txt_cell.getText().isEmpty() || txt_cf.getText().isEmpty() || txt_email.getText().isEmpty() || txt_address.getText().isEmpty())
             {
-                out = new PrintWriter(s.getOutputStream(), true);
-                out.println("ADD_EMPLOYEE");
-                out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
-                temp_user = null;
-                setTable();
-            } else {
-                System.out.println("userPageADMIN, SendBTN: Invalid input! CHECK NAME AND CELL");
+                match.ErrorDialog();
+            } else
+            {
+                if (match.globalUserCheck(txt_name.getText(), txt_surname.getText(), txt_cell.getText(), txt_cf.getText(), txt_email.getText())) {
+                    out = new PrintWriter(s.getOutputStream(), true);
+                    out.println("ADD_EMPLOYEE");
+                    out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText());
+                    temp_user = null;
+                    setTable();
+                } else {
+                    match.ErrorDialog();
+                }
             }
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
     }
@@ -100,10 +106,20 @@ public class user_page_adminFXController implements Initializable {
     public void btn_update_is_clicked() {
         try (Socket s = getSocket())
         {
-            out = new PrintWriter(s.getOutputStream(), true);
-            out.println("UPDATE_EMPLOYEE");
-            out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText() + "/" + temp_user.getIDClient());
-            setTable();
+            if (txt_name.getText().isEmpty() || txt_surname.getText().isEmpty() || txt_user.getText().isEmpty() || txt_pwd.getText().isEmpty() || txt_cell.getText().isEmpty() || txt_cf.getText().isEmpty() || txt_email.getText().isEmpty() || txt_address.getText().isEmpty())
+            {
+                match.ErrorDialog();
+            } else {
+                if (match.globalUserCheck(txt_name.getText(), txt_surname.getText(), txt_cell.getText(), txt_cf.getText(), txt_email.getText())) {
+                    out = new PrintWriter(s.getOutputStream(), true);
+                    out.println("UPDATE_EMPLOYEE");
+                    out.println(txt_name.getText() + "/" + txt_surname.getText() + "/" + txt_user.getText() + "/" + txt_pwd.getText() + "/" + txt_email.getText() + "/" + txt_cell.getText() + "/" + txt_address.getText() + "/" + txt_cf.getText() + "/" + temp_user.getIDClient());
+                    setTable();
+                } else {
+                    match.ErrorDialog();
+                }
+            }
+
         } catch (Exception e) { System.out.println("userPageADMIN, SendBTN: " + e.getMessage()); }
     }
 

@@ -57,8 +57,8 @@ public class client_page_adminFXController implements Initializable {
                 int ID = Integer.parseInt(temp[0]);
                 String Name = temp[1];
                 String Surname = temp[2];
-                String Address = temp[3];
-                String Email = temp[4];
+                String Email = temp[3];
+                String Address = temp[4];
 
                 data.add(new Client("", ID, Name, Surname, "", Email, 0, Address, ""));
                 client_table.setItems(data);

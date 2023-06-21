@@ -61,33 +61,33 @@ public class ServerThread extends Thread {
                 System.out.println("SERVER RECEIVED CMD: " + line);
 
                 switch (line) {
+                    case "REGISTER" -> register();
                     case "SHOW_WINES" -> showWines();
+                    case "SHOW_CART" -> showCart();
+                    case "SHOW_PURCH" -> showPurch();
                     case "SEARCH_WINE_NAME" -> searchWineName();
                     case "SEARCH_WINE_YEAR" -> searchWineYear();
-                    case "BUY_WINE" -> buyWine();
-                    case "SHOW_PURCH" -> showPurch();
+                    case "ADD_TO_CART" -> addToCart();
                     case "ADD_WINE" -> addWine();
                     case "ADD_EMPLOYEE" -> addEmployee();
+                    case "ADD_PDA" -> addPDA();
                     case "UPDATE_EMPLOYEE" -> updateEmployee();
                     case "UPDATE_WINE" -> updateWine();
+                    case "UPDATE_DISCOUNTS" -> updateDiscounts();
                     case "GET_EMPLOYEE" -> getEmployee();
-                    case "DELETE_EMPLOYEE" -> deleteEmployee();
-                    case "DELETE_WINE" -> deleteWine();
                     case "GET_CLIENT" -> getClient();
                     case "GET_ID_CART" -> getIdCart();
-                    case "ADD_TO_CART" -> addToCart();
-                    case "REGISTER" -> register();
-                    case "SHOW_CART" -> showCart();
-                    case "GET_WEEKLY_SALES" -> getWeeklySales();
-                    case "SEND_REPORT" -> sendReport();
-                    case "GET_MOST_SOLD" -> getMostSold();
-                    case "ADD_PDA" -> addPDA();
-                    case "GET_PDA" -> getPDA();
                     case "GET_ALERT" -> getAlert();
+                    case "GET_WEEKLY_SALES" -> getWeeklySales();
+                    case "GET_MOST_SOLD" -> getMostSold();
+                    case "GET_PDA" -> getPDA();
                     case "DELETE_ALERT" -> deleteAlert();
+                    case "DELETE_EMPLOYEE" -> deleteEmployee();
+                    case "DELETE_WINE" -> deleteWine();
+                    case "BUY_WINE" -> buyWine();
                     case "CHECK_DISCOUNTS" -> checkDiscounts();
-                    case "UPDATE_DISCOUNTS" -> updateDiscounts();
                     case "SET_QUANTITY" -> setQuantity();
+                    case "SEND_REPORT" -> sendReport();
                     default -> System.out.println("ServerThread: Feature not added");
                 }
             }

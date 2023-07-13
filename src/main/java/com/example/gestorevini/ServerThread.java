@@ -185,14 +185,12 @@ public class ServerThread extends Thread {
     /** Search a wine by year */
     private void searchWineYear() throws IOException, SQLException
     {
-        int trovato = 0;
         String year = in.readLine();
         System.out.println("Searching for " + year);
         String query = "SELECT * FROM wine WHERE wine.Data='" + year + "';";
         ResultSet rs = this.stmt.executeQuery(query);
 
         while (rs.next()) {
-            trovato = 1;
             String out_data = rs.getString("ID") + "/" + rs.getString("Name") + "/" + rs.getString("Producer") + "/" + rs.getString("Origin") + "/" + rs.getString("Data") + "/" + rs.getString("Price") + "/" + rs.getString("Quantity");
             out.println(out_data);
         }
@@ -411,7 +409,7 @@ public class ServerThread extends Thread {
         int quantity = Integer.parseInt(temp[2]);
         int tot_price = Integer.parseInt(temp[3]);
         String name_producer = "Error";
-        int year = 000;
+        int year = 0;
         int current_q = 0;
         int id = 0;
 
@@ -527,11 +525,11 @@ public class ServerThread extends Thread {
     {
         String query = "SELECT WineName, COUNT(WineQuantity) AS Num FROM purchase GROUP BY WineName ORDER BY Num DESC";
         ResultSet rs = this.stmt.executeQuery(query);
-        String names = "";
-        String nums = "";
+        StringBuilder names = new StringBuilder();
+        StringBuilder nums = new StringBuilder();
         while (rs.next()) {
-            names += rs.getString("WineName") + "/";
-            nums += rs.getString("Num") + "/";
+            names.append(rs.getString("WineName")).append("/");
+            nums.append(rs.getString("Num")).append("/");
         }
         out.println(names);
         out.println(nums);

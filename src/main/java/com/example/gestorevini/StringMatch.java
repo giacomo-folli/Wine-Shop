@@ -39,11 +39,11 @@ public class StringMatch {
         return !matcher.find();
     }
 
-    public boolean mailCheck(String fisc)
+    public boolean mailCheck(String mail)
     {
         String regex = "^(.+)@(.+)$";
         pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-        matcher = pattern.matcher(fisc);
+        matcher = pattern.matcher(mail);
         return !matcher.find();
     }
 

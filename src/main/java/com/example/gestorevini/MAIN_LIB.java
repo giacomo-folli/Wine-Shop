@@ -6,15 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Objects;
 
 public class MAIN_LIB {
     private Parent root;
-    Stage window;
+    private Stage window;
 
     public void getHome(ActionEvent event, String client, String type) throws IOException {
         if (type.equals("client")) {

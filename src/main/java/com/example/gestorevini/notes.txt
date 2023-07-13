@@ -1,4 +1,0 @@
-Il sistema suddivide i clienti in cliente normale e cliente con privilegi. Admin e Employer sono clienti con privilegi.
-Il DB indica il cliente con l'attributo "type"-> null
-                Admin con l'attributo "type"-> "admin"
-                Employee con l'attributo "type"-> "employee"

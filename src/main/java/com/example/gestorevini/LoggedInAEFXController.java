@@ -24,6 +24,10 @@ public class LoggedInAEFXController implements Initializable {
 
     @FXML
     private Label lbl_user_type;
+    @FXML
+    private Button btn_set_discount, btn_report, btn_user;
+    @FXML
+    private ImageView img_users, img_discounts, img_reports;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -33,8 +37,15 @@ public class LoggedInAEFXController implements Initializable {
 
         if (type.equals("admin"))
             lbl_user_type.setText("ADMIN");
-        else
+        else {
             lbl_user_type.setText("EMPLOYEE");
+            btn_set_discount.setVisible(false);
+            btn_report.setVisible(false);
+            btn_user.setVisible(false);
+            img_discounts.setOpacity(0.3);
+            img_users.setOpacity(0.3);
+            img_reports.setOpacity(0.3);
+        }
     }
 
     public void setUser(String i) { client = i; }

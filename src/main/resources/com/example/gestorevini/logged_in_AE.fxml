@@ -105,7 +105,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <ImageView fx:id="img_user" accessibleText="user" disable="true" fitHeight="75.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_support" accessibleText="support" disable="true" fitHeight="75.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@help_icon.png" />
                      </image>
@@ -113,7 +113,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="img_user1" accessibleText="user" disable="true" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_reports" accessibleText="report" disable="true" fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@analytics_icon.png" />
                      </image>
@@ -124,7 +124,7 @@
                         <Insets />
                      </GridPane.margin>
                   </ImageView>
-                  <ImageView id="img4" fx:id="img4" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_users" accessibleText="users" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@users_icon.png" />
                      </image>
@@ -135,7 +135,7 @@
                         <Insets bottom="-6.0" />
                      </GridPane.margin>
                   </ImageView>
-                  <ImageView id="img3" fx:id="img3" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView id="img3" fx:id="img_clients" accessibleText="client" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@purch_icon.png" />
                      </image>
@@ -143,7 +143,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView id="img2" fx:id="img2" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView id="img2" fx:id="img_wines" accessibleText="wines" disable="true" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" styleClass="image" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@list_icon.png" />
                      </image>
@@ -151,7 +151,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fx:id="img1" disable="true" fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                  <ImageView fx:id="img_discounts" accessibleText="discounts" disable="true" fitHeight="45.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                      <image>
                         <Image url="@percentage.png" />
                      </image>

@@ -42,31 +42,32 @@ all’ultimoaggiornamento.
 ## Requisitifunzionali
 
 Di seguito, presentiamo una tabella che riassume i requisiti derivanti dal documento corrispondente. Questi requisiti descrivono le funzionalità globali che il sistema deve fornire. Ogni utente potrà accedere ad un sottoinsieme di tali funzionalità, a seconda del tipo di account a lui conferito.
-```
-ID Nome Stato Priorità
-F1 Registrazionediunnuovocliente implemented high
-F2 Login implemented high
-F3 Logout implemented high
-F4 Modificapassword implemented medium
-F5 Visualizzazionesconti implemented low
-F6 Visualizzazionevini implemented medium
-F7 Ricercaconfiltri implemented low
-F8 Inserimentovininelcarrello implemented high
-F9 Acquistovininelcarrello implemented high
-F10 Compilazioneproposted’acquisto implemented high
-F11 Ricezioneordinidivendita implemented medium
-F12 Visualizzazioneclienti implemented medium
-F13 Riceverepropostediacquisto implemented high
-F14 Creazioneordinidiacquisto implemented high
-F15 Firmadigitalediordinidiacquisto implemented medium
-F16 Ricezionedinotifichedimancanzadivini implemented high
-F17 Cambiocredenzialicliente implemented medium
-F18 Cambiocredenzialiimpiegato implemented medium
-F19 Inviorichiestadisupporto implemented low
-F20 Ricezionenotifiche implemented medium
-F21 Cancellazioneaccountimpiegato implemented medium
-F22 Registrazionenuovovino implemented high
-F23 Aggiornamentoinfovini implemented medium
-F24 Cancellazionevinidasistema implemented medium
-F25 Creazionediunreportmensile implemented high
-```
+
+|ID     | Nome | Stato | Priorità |
+| :--   | :--: | :--:  | :-- |
+|F1     | Registrazione di un nuovo cliente | implemented | high|
+|F2 |Login |implemented |high|
+|F3 |Logout| implemented| high|
+|F4 |Modifica password |implemented| medium|
+|F5 |Visualizzazione sconti| implemented| low|
+|F6 |Visualizzazione vini |implemented |medium|
+|F7 |Ricerca con filtri |implemented| low|
+|F8 |Inserimento vini nel carrello| implemented| high|
+|F9 |Acquisto vini nel carrello |implemented |high|
+|F10|Compilazione proposte d’acquisto| implemented| high|
+|F11|Ricezione ordini di vendita | implemented| medium|
+|F12|Visualizzazione clienti |implemented |medium|
+|F13|Ricevere proposte di acquisto| implemented| high|
+|F14|Creazione ordini di acquisto |implemented |high|
+|F15|Firma digitale di ordini di acquisto| implemented| medium|
+|F16|Ricezione di notifiche di mancanza di vini |implemented |high|
+|F17|Cambio credenziali cliente |implemented |medium|
+|F18|Cambio credenziali impiegato| implemented| medium|
+|F19|Inviorichiestadisupporto |implemented |low|
+|F20|Ricezione notifiche| implemented |medium|
+|F21|Cancellazione account impiegato| implemented| medium|
+|F22|Registrazione nuovo vino |implemented |high|
+|F23|Aggiornamento info vini| implemented| medium|
+|F24|Cancellazione vini da sistema |implemented |medium|
+|F25|Creazione di un report mensile | implemented| high|
+

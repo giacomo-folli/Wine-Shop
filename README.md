@@ -27,24 +27,18 @@ Il negozio si avvarrà di un fornitore e di un corriere per rifornimento e spedi
 Nella seguente tabella riportiamole diverseversioni dellapresente documentazione,fino
 all’ultimoaggiornamento.
 
-|Versione|Data|Descrizione|
-|1.0|03/04/2023|Comprensione dei requisiti informali assegnati e stesura dell'introduzione e dei requisiti funzionali.|
-|1.1|05/04/2023|Pianificazione e organizzazione del lavoro. Compilazione dei diagrammi UML necessari.|
-|1.2|19/04/2023|Progettazione del DB con schema concettuale e schema|
-|-|-|-|
+| Versione | Data       | Descrizione |
+| :---     |  :----:    |  ---:  |
+| 1.0      | 03/04/2023 | Comprensione dei requisiti informali assegnati e stesura dell'introduzione e dei requisiti funzionali.|
+| 1.1      | 05/04/2023 | Pianificazione e organizzazione del lavoro. Compilazione dei diagrammi UML necessari.|
+| 1.2      | 19/04/2023 | Progettazione del DB con schema concettuale e schema logico.|
+| 1.2.1    | 20/04/2023 | Scritturadelle prime classi principali e programmazione delle interazioni basse con il Server|
+| 1.2      | 23/04/2023 | Scrittura delle funzioni descritte nel Use Case Diagram e aggiornamento della documentazione visti i nuovi requisiti insorti|
+| 1.3      | 10/05/2023 | Test di componenti, unità, sistema e interazioni|
+| 1.4      | 20/05/2023 | Aggiunta del Manuale completo|
+| 1.5      | 10/06/2023 | Correzioni finali.|
 
-Documentazionedelprogetto
-```
-logico.
-1.2.1 20/04/2023 Scritturadelleprimeclassiprincipalieprogrammazionedelle
-interazionibasseconilServer
-1.2 23/04/2023 Scrittura delle funzioni descritte nel UseCase Diagrame
-aggiornamento delladocumentazionevistii nuovirequisiti
-insorti
-1.3 10/05/2023 Testdicomponenti,unità,sistemaeinterazioni
-1.4 20/05/2023 AggiuntadelManualecompleto
-1.5 10/06/2023 Correzionifinali.
-```
+
 ## Requisitifunzionali
 
 Di seguito, presentiamo una tabella che riassume i requisiti derivanti dal documento corrispondente. Questi requisiti descrivono le funzionalità globali che il sistema deve fornire. Ogni utente potrà accedere ad un sottoinsieme di tali funzionalità, a seconda del tipo di account a lui conferito.

@@ -5,15 +5,6 @@ Documentazionedelprogetto
 1. Introduzione
 2. Revision history
 3. Requisiti funzionali
-4. Casi d’uso
-5. Progettazione del database
-6. Class Diagrams
-  * Classi principali
-7. Manuale
-  * Installazione, Configurazione e Utilizzo del sistema
-  * Installazione database
-  * Guida Utente
-8. Test delle funzionalità
 
 ## Introduzione
 

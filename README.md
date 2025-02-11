@@ -38,8 +38,7 @@ all’ultimoaggiornamento.
 | 1.4      | 20/05/2023 | Aggiunta del Manuale completo|
 | 1.5      | 10/06/2023 | Correzioni finali.|
 
-
-## Requisitifunzionali
+## Requisiti funzionali
 
 Di seguito, presentiamo una tabella che riassume i requisiti derivanti dal documento corrispondente. Questi requisiti descrivono le funzionalità globali che il sistema deve fornire. Ogni utente potrà accedere ad un sottoinsieme di tali funzionalità, a seconda del tipo di account a lui conferito.
 

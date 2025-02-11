@@ -8,11 +8,11 @@ Documentazionedelprogetto
 4. Casi d’uso
 5. Progettazione del database
 6. Class Diagrams
-    6.1. Classi principali
+6.1. Classi principali
 7. Manuale
-    7.1. Installazione, Configurazione e Utilizzo del sistema
-    7.2. Installazione database
-    7.3. Guida Utente
+7.1. Installazione, Configurazione e Utilizzo del sistema
+7.2. Installazione database
+7.3. Guida Utente
 8. Test delle funzionalità
 
 ## Introduzione

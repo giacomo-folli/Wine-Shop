@@ -26,14 +26,12 @@ Il negozio si avvarrà di un fornitore e di un corriere per rifornimento e spedi
 ## Revision history
 Nella seguente tabella riportiamole diverseversioni dellapresente documentazione,fino
 all’ultimoaggiornamento.
-```
-Versione Data Descrizione
-1.0 03/04/2023 Comprensione dei requisiti informali assegnati e stesura
-dell'introduzioneedeirequisitifunzionali.
-1.1 05/04/2023 Pianificazioneeorganizzazionedellavoro.Compilazionedei
-diagrammiUMLnecessari.
-1.2 19/04/2023 Progettazione del DB con schema concettuale e schema
-```
+
+|-|-|-|
+|Versione|Data|Descrizione|
+|1.0|03/04/2023|Comprensione dei requisiti informali assegnati e stesura dell'introduzione e dei requisiti funzionali.|
+|1.1|05/04/2023|Pianificazione e organizzazione del lavoro. Compilazione dei diagrammi UML necessari.|
+|1.2|19/04/2023|Progettazione del DB con schema concettuale e schema|
 
 Documentazionedelprogetto
 ```

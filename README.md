@@ -1,63 +1,71 @@
-Documentazionedelprogetto
+# Wine Shop
 
-# WineShop
+**Sistema gestionale per un'enoteca online sviluppato in Java.**
 
-1. Introduzione
-2. Revision history
-3. Requisiti funzionali
+Wine Shop è un'applicazione client-server progettata per la gestione di un'attività di vendita online di vini. Il sistema gestisce i principali processi aziendali di un e-commerce, dall'acquisto da parte dei clienti alla gestione del magazzino e degli ordini ai fornitori.
 
-## Introduzione
+Il progetto affronta la progettazione e lo sviluppo di un'applicazione software articolata, con diversi ruoli utente, funzionalità dedicate e processi interconnessi.
 
-Si richiede lo sviluppo di un sistema di gestione per un negozio online di vini, con tre tipi di utenti: clienti, impiegati e amministratori. Di seguito le funzionalità principali:
-- Clienti: registrazione, visualizzazione e acquisto dei vini, consultazione dello storico ordini.
-- Impiegati: preparazione ordini, gestione magazzino.
-- Amministratori: panoramica dello stato del negozio, gestione impiegati.
-Il negozio si avvarrà di un fornitore e di un corriere per rifornimento e spedizione. L'applicazione seguirà un'architettura client-server,con operazioni varianti in base all'account utente.
+## Funzionalità
 
-## Revision history
-Nella seguente tabella riportiamole diverseversioni dellapresente documentazione,fino
-all’ultimoaggiornamento.
+Il sistema prevede tre tipologie di utenti, ciascuna con specifiche funzionalità e responsabilità.
 
-| Versione | Data       | Descrizione |
-| :---     |  :----:    |  ---:  |
-| 1.0      | 03/04/2023 | Comprensione dei requisiti informali assegnati e stesura dell'introduzione e dei requisiti funzionali.|
-| 1.1      | 05/04/2023 | Pianificazione e organizzazione del lavoro. Compilazione dei diagrammi UML necessari.|
-| 1.2      | 19/04/2023 | Progettazione del DB con schema concettuale e schema logico.|
-| 1.2.1    | 20/04/2023 | Scritturadelle prime classi principali e programmazione delle interazioni basse con il Server|
-| 1.2      | 23/04/2023 | Scrittura delle funzioni descritte nel Use Case Diagram e aggiornamento della documentazione visti i nuovi requisiti insorti|
-| 1.3      | 10/05/2023 | Test di componenti, unità, sistema e interazioni|
-| 1.4      | 20/05/2023 | Aggiunta del Manuale completo|
-| 1.5      | 10/06/2023 | Correzioni finali.|
+### Cliente
+- Registrazione e autenticazione.
+- Ricerca dei vini tramite filtri.
+- Visualizzazione degli sconti disponibili.
+- Gestione del carrello e acquisto dei prodotti.
+- Consultazione dello storico degli acquisti.
+- Modifica delle credenziali di accesso.
+- Invio di richieste di assistenza.
 
-## Requisiti funzionali
+### Dipendente
+- Gestione del magazzino e delle informazioni sui vini.
+- Gestione degli ordini ricevuti dai clienti.
+- Preparazione di proposte d'acquisto per i fornitori.
+- Creazione e firma digitale degli ordini d'acquisto.
+- Ricezione di notifiche relative alle scorte in esaurimento.
+- Consultazione delle informazioni sui clienti.
 
-Di seguito, presentiamo una tabella che riassume i requisiti derivanti dal documento corrispondente. Questi requisiti descrivono le funzionalità globali che il sistema deve fornire. Ogni utente potrà accedere ad un sottoinsieme di tali funzionalità, a seconda del tipo di account a lui conferito.
+### Amministratore
+- Gestione degli account dei dipendenti.
+- Supervisione delle attività del negozio.
+- Gestione del catalogo dei vini.
+- Generazione di report mensili sull'andamento dell'attività.
 
-|ID     | Nome | Stato | Priorità |
-| :--   | :--: | :--:  | :-- |
-|F1     | Registrazione di un nuovo cliente | implemented | high|
-|F2 |Login |implemented |high|
-|F3 |Logout| implemented| high|
-|F4 |Modifica password |implemented| medium|
-|F5 |Visualizzazione sconti| implemented| low|
-|F6 |Visualizzazione vini |implemented |medium|
-|F7 |Ricerca con filtri |implemented| low|
-|F8 |Inserimento vini nel carrello| implemented| high|
-|F9 |Acquisto vini nel carrello |implemented |high|
-|F10|Compilazione proposte d’acquisto| implemented| high|
-|F11|Ricezione ordini di vendita | implemented| medium|
-|F12|Visualizzazione clienti |implemented |medium|
-|F13|Ricevere proposte di acquisto| implemented| high|
-|F14|Creazione ordini di acquisto |implemented |high|
-|F15|Firma digitale di ordini di acquisto| implemented| medium|
-|F16|Ricezione di notifiche di mancanza di vini |implemented |high|
-|F17|Cambio credenziali cliente |implemented |medium|
-|F18|Cambio credenziali impiegato| implemented| medium|
-|F19|Inviorichiestadisupporto |implemented |low|
-|F20|Ricezione notifiche| implemented |medium|
-|F21|Cancellazione account impiegato| implemented| medium|
-|F22|Registrazione nuovo vino |implemented |high|
-|F23|Aggiornamento info vini| implemented| medium|
-|F24|Cancellazione vini da sistema |implemented |medium|
-|F25|Creazione di un report mensile | implemented| high|
+## Architettura
 
+L'applicazione adotta un'architettura **client-server**, organizzando le funzionalità in base al ruolo e ai permessi dell'utente autenticato.
+
+Il sistema modella inoltre le interazioni con soggetti esterni, tra cui fornitori e corrieri, rappresentando il flusso completo delle principali operazioni commerciali.
+
+## Progettazione e sviluppo
+
+Il progetto copre diverse fasi del ciclo di sviluppo del software:
+
+- **Analisi dei requisiti:** raccolta, analisi e formalizzazione dei requisiti funzionali.
+- **Progettazione UML:** modellazione del sistema attraverso diagrammi UML.
+- **Progettazione del database:** definizione del modello concettuale e logico dei dati.
+- **Programmazione orientata agli oggetti:** progettazione e implementazione dei componenti applicativi in Java.
+- **Architettura client-server:** progettazione della comunicazione tra le componenti dell'applicazione.
+- **Testing:** test unitari, di componente, di sistema e di integrazione.
+- **Documentazione:** produzione della documentazione tecnica e generazione della Javadoc.
+
+## Tecnologie
+
+- **Java** – linguaggio principale per lo sviluppo dell'applicazione.
+- **UML** – analisi dei requisiti e modellazione del sistema.
+- **Javadoc** – documentazione del codice sorgente.
+
+## Documentazione
+
+Il repository include ulteriore documentazione relativa al progetto:
+
+- [Documentazione tecnica](WineShop_DOCUMENTATION.pdf) – requisiti, specifiche funzionali e progettazione del sistema.
+- [Javadoc](javadoc/) – documentazione generata delle API e delle componenti del progetto.
+
+## Obiettivi del progetto
+
+Wine Shop nasce come progetto di Software Engineering con l'obiettivo di applicare i principi di progettazione e sviluppo del software alla realizzazione di un'applicazione gestionale completa.
+
+L'attenzione non è rivolta soltanto all'implementazione delle singole funzionalità, ma anche alla modellazione dei requisiti, all'organizzazione delle componenti software e alla gestione delle interazioni tra utenti e processi aziendali.
